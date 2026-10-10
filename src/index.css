@@ -1,0 +1,146 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-color: #0D0D0D;
+  --primary-red: #FF0022;
+  --secondary-red: #FF3D00;
+  --ivory: #FCFAED;
+  --white: #FFFFFF;
+  --neutral-dark: #1A1A1A;
+  --neutral-gray: #565656;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color);
+  color: var(--ivory);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0D0D0D;
+}
+::-webkit-scrollbar-thumb {
+  background: #262626;
+  border-radius: 0px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #FF0022;
+}
+
+/* Subtle Technical Grid Background */
+.tech-grid-bg {
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.tech-dot-bg {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Comic Paper Grain & Halftone Dot Patterns */
+.comic-grain-bg {
+  background-image: radial-gradient(rgba(252, 250, 237, 0.08) 1px, transparent 0);
+  background-size: 10px 10px;
+}
+
+.comic-halftone-pattern {
+  background-image: radial-gradient(#FF0022 1.5px, transparent 1.5px), radial-gradient(#FCFAED 1px, transparent 1px);
+  background-size: 12px 12px;
+  background-position: 0 0, 6px 6px;
+}
+
+/* Diagonal Hazard Stripes (VHS aesthetic) */
+.hazard-stripes {
+  background: repeating-linear-gradient(
+    -45deg,
+    #FF0022,
+    #FF0022 10px,
+    #0D0D0D 10px,
+    #0D0D0D 20px
+  );
+}
+
+.hazard-stripes-muted {
+  background: repeating-linear-gradient(
+    -45deg,
+    rgba(255, 0, 34, 0.4),
+    rgba(255, 0, 34, 0.4) 6px,
+    transparent 6px,
+    transparent 12px
+  );
+}
+
+/* Diagonal Clip Paths */
+.clip-diagonal-right {
+  clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
+}
+
+.clip-diagonal-left {
+  clip-path: polygon(15% 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.clip-skew-corner {
+  clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 0 100%);
+}
+
+.clip-badge {
+  clip-path: polygon(12px 0%, 100% 0%, calc(100% - 12px) 100%, 0% 100%);
+}
+
+/* Scanline Overlay (VHS experimental) */
+.vhs-scanlines {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.25) 50%
+  ), linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0.02),
+    rgba(0, 255, 0, 0.005),
+    rgba(0, 0, 255, 0.02)
+  );
+  background-size: 100% 3px, 6px 100%;
+  z-index: 999;
+  opacity: 0.35;
+}
+
+/* Typography styles */
+.font-display {
+  font-family: 'Syne', 'Space Grotesk', sans-serif;
+}
+
+.font-mono-tech {
+  font-family: 'Space Mono', 'JetBrains Mono', monospace;
+}
+
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
