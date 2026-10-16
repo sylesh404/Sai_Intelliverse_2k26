@@ -15,21 +15,25 @@ const FacultyCard: React.FC<FacultyCardProps> = ({ member, featured = false, ind
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 18 }}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-30px" }}
-      transition={{ duration: 0.35, delay: (index % 3) * 0.05 }}
-      className={`group bg-[#141414] border border-[#262626] hover:border-[#FF0022] transition-all duration-300 flex flex-col justify-between overflow-hidden shadow-md hover:shadow-[0_0_20px_rgba(255,0,34,0.12)] min-w-0 w-full ${
+      transition={{ duration: 0.4, delay: (index % 5) * 0.05, ease: "easeOut" }}
+      className={`group bg-[#141414] border border-[#262626] hover:border-[#FF0022] transition-all duration-300 flex flex-col justify-between overflow-hidden shadow-md hover:shadow-[0_0_22px_rgba(255,0,34,0.16)] min-w-0 w-full relative ${
         featured ? 'ring-1 ring-[#FF0022]/40 shadow-xl' : ''
       }`}
     >
+      {/* Interactive Top Red Scanline on Hover */}
+      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#FF0022] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-30 pointer-events-none" />
+
       {/* Portrait Container - Consistent ~4:5 Ratio */}
       <div className={`relative aspect-[4/5] w-full overflow-hidden bg-[#0A0A0A] ${featured ? 'bg-[#0D0D0D]' : ''}`}>
         {member.image ? (
           <img
             src={member.image}
             alt={member.name}
-            className="w-full h-full object-cover object-top grayscale contrast-125 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500 ease-out"
+            className="w-full h-full object-cover object-top grayscale contrast-110 group-hover:grayscale-0 transition-all duration-500 ease-out"
+            loading="lazy"
           />
         ) : (
           /* Technical Minimalist Placeholder for Unfilled Positions */
@@ -47,16 +51,16 @@ const FacultyCard: React.FC<FacultyCardProps> = ({ member, featured = false, ind
         )}
 
         {/* Diagonal Corner Accent */}
-        <div className="absolute top-0 right-0 w-4 h-4 sm:w-6 sm:h-6 bg-[#FF0022]/10 clip-diagonal-left group-hover:bg-[#FF0022] transition-colors" />
+        <div className="absolute top-0 right-0 w-4 h-4 sm:w-6 sm:h-6 bg-[#FF0022]/10 clip-diagonal-left group-hover:bg-[#FF0022] transition-colors pointer-events-none z-10" />
 
         {/* Numbered Position Badge */}
-        <div className="absolute top-1.5 left-1.5 sm:top-2 sm:left-2 bg-[#0D0D0D]/90 backdrop-blur-xs px-1.5 py-0.5 font-mono-tech text-[8px] sm:text-[10px] text-[#888888] group-hover:text-[#FF0022] border border-[#262626] font-bold">
+        <div className="absolute top-1.5 left-1.5 sm:top-2 sm:left-2 bg-[#0D0D0D]/90 backdrop-blur-xs px-1.5 py-0.5 font-mono-tech text-[8px] sm:text-[10px] text-[#888888] group-hover:text-[#FF0022] border border-[#262626] font-bold z-10">
           {padIndex}
         </div>
 
         {/* Lead Badge for Featured Member */}
         {featured && (
-          <div className="absolute bottom-1.5 right-1.5 sm:bottom-2 sm:right-2 bg-[#FF0022] text-white px-1.5 sm:px-2 py-0.5 font-mono-tech text-[8px] sm:text-[9px] font-bold uppercase tracking-wider flex items-center gap-1 shadow-lg">
+          <div className="absolute bottom-1.5 right-1.5 sm:bottom-2 sm:right-2 bg-[#FF0022] text-white px-1.5 sm:px-2 py-0.5 font-mono-tech text-[8px] sm:text-[9px] font-bold uppercase tracking-wider flex items-center gap-1 shadow-lg z-10">
             <Award className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
             <span>HOD</span>
           </div>
@@ -64,19 +68,19 @@ const FacultyCard: React.FC<FacultyCardProps> = ({ member, featured = false, ind
       </div>
 
       {/* Faculty Information Details */}
-      <div className={`p-2 sm:p-3.5 lg:p-4 bg-[#0D0D0D] border-t border-[#262626] flex flex-col justify-between flex-grow space-y-1 sm:space-y-1.5 min-w-0 ${
-        featured ? 'bg-[#101010] p-4 sm:p-5' : ''
+      <div className={`p-2.5 sm:p-3 lg:p-3.5 xl:p-4 bg-[#0D0D0D] border-t border-[#262626] flex flex-col justify-between flex-grow space-y-1 sm:space-y-1.5 min-w-0 ${
+        featured ? 'bg-[#101010] p-3.5 sm:p-5' : ''
       }`}>
         <div className="min-w-0">
-          <h3 className={`font-display font-extrabold text-[#FCFAED] group-hover:text-[#FF0022] transition-colors uppercase leading-snug break-words ${
-            featured ? 'text-lg sm:text-xl font-black text-white' : 'text-[10px] sm:text-xs lg:text-sm'
+          <h3 className={`font-display font-extrabold text-[#FCFAED] group-hover:text-white transition-colors uppercase leading-snug break-words ${
+            featured ? 'text-base sm:text-xl font-black text-white' : 'text-[11px] sm:text-xs lg:text-[13px] xl:text-sm'
           }`}>
             {member.name}
           </h3>
 
           {member.designation && (
-            <div className={`font-mono-tech uppercase font-semibold tracking-wide leading-tight mt-0.5 sm:mt-1 break-words ${
-              featured ? 'text-xs sm:text-sm text-[#FF0022]' : 'text-[8px] sm:text-[10px] lg:text-[11px] text-[#FF0022]'
+            <div className={`font-mono-tech uppercase font-semibold tracking-wide leading-tight mt-0.5 sm:mt-1 break-words text-[#FF0022] ${
+              featured ? 'text-xs sm:text-sm' : 'text-[8px] sm:text-[9px] lg:text-[10px] xl:text-[11px]'
             }`}>
               {member.designation}
             </div>
@@ -84,10 +88,11 @@ const FacultyCard: React.FC<FacultyCardProps> = ({ member, featured = false, ind
         </div>
 
         {member.department && (
-          <div className={`font-mono-tech text-[#888888] uppercase pt-0.5 sm:pt-1 border-t border-[#1C1C1C] leading-tight break-words ${
-            featured ? 'text-[10px] sm:text-xs' : 'text-[7px] sm:text-[9px] lg:text-[10px]'
+          <div className={`font-mono-tech text-[#888888] uppercase pt-1 border-t border-[#1C1C1C] leading-tight break-words flex items-center justify-between ${
+            featured ? 'text-[10px] sm:text-xs' : 'text-[7px] sm:text-[8px] lg:text-[9px] xl:text-[10px]'
           }`}>
-            {member.department}
+            <span>{member.department}</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-[#FF0022]/40 group-hover:bg-[#FF0022] transition-colors" />
           </div>
         )}
       </div>
@@ -145,7 +150,7 @@ export const TeamSection: React.FC = () => {
 
           {/* ROW 2: 5 PHOTOS — EVENLY DISTRIBUTED IN ONE ROW (FACULTY 02 - 06) */}
           <div>
-            <div className="grid grid-cols-5 gap-5">
+            <div className="grid grid-cols-5 gap-3 lg:gap-3.5 xl:gap-5">
               {facultyRowGroups.row2.map((member, idx) => (
                 <FacultyCard
                   key={member.id}
@@ -158,7 +163,7 @@ export const TeamSection: React.FC = () => {
 
           {/* ROW 3: 5 PHOTOS — EVENLY DISTRIBUTED IN ONE ROW (FACULTY 07 - 11) */}
           <div>
-            <div className="grid grid-cols-5 gap-5">
+            <div className="grid grid-cols-5 gap-3 lg:gap-3.5 xl:gap-5">
               {facultyRowGroups.row3.map((member, idx) => (
                 <FacultyCard
                   key={member.id}
@@ -172,7 +177,7 @@ export const TeamSection: React.FC = () => {
           {/* ROW 4: 4 PHOTOS — EVENLY DISTRIBUTED & CENTERED (FACULTY 12 - 15) */}
           <div className="flex justify-center">
             <div className="w-full max-w-6xl">
-              <div className="grid grid-cols-4 gap-5">
+              <div className="grid grid-cols-4 gap-3 lg:gap-3.5 xl:gap-5">
                 {facultyRowGroups.row4.map((member, idx) => (
                   <FacultyCard
                     key={member.id}
@@ -187,7 +192,7 @@ export const TeamSection: React.FC = () => {
           {/* ROW 5: 3 PHOTOS — CENTERED AND BALANCED (FACULTY 16 - 18) */}
           <div className="flex justify-center">
             <div className="w-full max-w-[780px]">
-              <div className="grid grid-cols-3 gap-5">
+              <div className="grid grid-cols-3 gap-3 lg:gap-3.5 xl:gap-5">
                 {facultyRowGroups.row5.map((member, idx) => (
                   <FacultyCard
                     key={member.id}

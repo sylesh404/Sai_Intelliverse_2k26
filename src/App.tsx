@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import { useLenis } from './hooks/useLenis';
 import type { EventItem, GalleryItem } from './types';
 import symposiumConfig from './config/symposiumConfig';
@@ -11,16 +11,18 @@ import ComicTitleIntro from './animations/intro/ComicTitleIntro';
 import Navbar from './components/Navbar';
 import HeroSection from './sections/HeroSection';
 import TransitionHeroDepartment from './transitions/TransitionHeroDepartment';
-import DepartmentSection from './sections/DepartmentSection';
-import TransitionDepartmentAbout from './transitions/TransitionDepartmentAbout';
+
 import MarqueeTicker from './components/MarqueeTicker';
 import AboutSection from './sections/AboutSection';
+import TransitionAboutVision from './transitions/TransitionAboutVision';
+import VisionMissionSection from './sections/VisionMissionSection';
 import TransitionAboutEvents from './transitions/TransitionAboutEvents';
 import EventsSection from './sections/EventsSection';
 import TransitionEventsSchedule from './transitions/TransitionEventsSchedule';
 import ScheduleSection from './sections/ScheduleSection';
 import TransitionScheduleTeam from './transitions/TransitionScheduleTeam';
 import TeamSection from './sections/TeamSection';
+import TransitionFacultyGallery from './transitions/TransitionFacultyGallery';
 import GallerySection from './sections/GallerySection';
 import TransitionGalleryCTA from './transitions/TransitionGalleryCTA';
 import RegistrationCTA from './sections/RegistrationCTA';
@@ -35,30 +37,42 @@ export function App() {
   // Initialize Lenis smooth scroll
   useLenis();
 
-  // Helper to determine if current path is root '/'
-  const isRootRoute = useCallback(() => {
+  // Intro state: Opens with cinematic Comic Title & Impact Flash Animation by default
+  const [showIntro, setShowIntro] = useState<boolean>(() => {
     if (typeof window === 'undefined') return true;
-    const path = window.location.pathname;
-    return path === '/' || path === '' || path === '/index.html';
-  }, []);
+    const params = new URLSearchParams(window.location.search);
+    return params.get('intro') !== 'false';
+  });
 
-  // Intro state: ALWAYS plays on every new page load (NEVER persisted to storage)
-  // Direct entry at root / plays intro. Sub-routes (like /events) do not leave intro overlay stuck.
-  const [showIntro, setShowIntro] = useState<boolean>(() => isRootRoute());
-
-  // Listen to browser navigation (back/forward, direct URL access, popstate)
+  // Listen to browser navigation
   useEffect(() => {
     const handlePopState = () => {
-      if (isRootRoute()) {
-        setShowIntro(true);
-      } else {
-        setShowIntro(false);
-      }
+      const params = new URLSearchParams(window.location.search);
+      setShowIntro(params.get('intro') !== 'false');
     };
 
     window.addEventListener('popstate', handlePopState);
     return () => window.removeEventListener('popstate', handlePopState);
-  }, [isRootRoute]);
+  }, []);
+
+  // Recalculate ScrollTrigger measurements across responsive breakpoints, orientation & zoom levels
+  useEffect(() => {
+    let timeoutId: ReturnType<typeof setTimeout>;
+    const handleResize = () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        ScrollTrigger.refresh();
+      }, 150);
+    };
+
+    window.addEventListener('resize', handleResize, { passive: true });
+    window.addEventListener('orientationchange', handleResize, { passive: true });
+    return () => {
+      clearTimeout(timeoutId);
+      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('orientationchange', handleResize);
+    };
+  }, []);
 
   // Modal states
   const [selectedEvent, setSelectedEvent] = useState<EventItem | null>(null);
@@ -101,21 +115,14 @@ export function App() {
         {/* 1. HERO SECTION */}
         <HeroSection onOpenRegister={() => handleOpenRegister()} />
 
-        {/* TRANSITION: HERO ➔ DEPARTMENT */}
+        {/* TRANSITION: HERO ➔ ABOUT */}
         <TransitionHeroDepartment />
-
-        {/* 2. DEPARTMENT REVEAL & RESEARCH IDENTITY */}
-        <DepartmentSection />
-
-        {/* TRANSITION: DEPARTMENT ➔ ABOUT */}
-        <TransitionDepartmentAbout />
 
         {/* Velocity-Reactive Continuous Ticker */}
         <MarqueeTicker
           theme="dark"
           items={[
-            "AUTONOMOUS SYSTEMS",
-            "COGNITIVE COMPUTING",
+            "AI & MACHINE LEARNING",
             "BRUTALIST ARCHITECTURES",
             "REVERSE LLM CHALLENGE",
             "12HR HACK-A-VERSE",
@@ -124,10 +131,16 @@ export function App() {
           ]}
         />
 
-        {/* 3. ABOUT SYMPOSIUM */}
+        {/* 2. ABOUT SYMPOSIUM */}
         <AboutSection />
 
-        {/* TRANSITION: ABOUT ➔ EVENTS */}
+        {/* TRANSITION: ABOUT ➔ VISION & MISSION */}
+        <TransitionAboutVision />
+
+        {/* 3. DEPARTMENT VISION & MISSION */}
+        <VisionMissionSection />
+
+        {/* TRANSITION: VISION & MISSION ➔ EVENTS */}
         <TransitionAboutEvents />
 
         {/* 4. EVENTS ARENA */}
@@ -159,6 +172,9 @@ export function App() {
 
         {/* 6. FACULTY COMMITTEE */}
         <TeamSection />
+
+        {/* TRANSITION: FACULTY ➔ MEMORY GALLERY */}
+        <TransitionFacultyGallery />
 
         {/* 7. MEMORY GALLERY */}
         <GallerySection

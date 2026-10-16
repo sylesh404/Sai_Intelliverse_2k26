@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
-import { motion, useScroll, useTransform, useMotionValue } from 'framer-motion';
+import { motion, useMotionValue, useTransform } from 'framer-motion';
 import type { GalleryItem } from '../types';
 import { galleryData } from '../data/gallery';
 import { Maximize2, ChevronLeft, ChevronRight, Layers, Sparkles } from 'lucide-react';
@@ -27,42 +27,6 @@ const DesktopCinematicCard: React.FC<DesktopCardProps> = ({
   prefersReducedMotion,
 }) => {
   const cardRef = useRef<HTMLDivElement>(null);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const [isHovered, setIsHovered] = useState(false);
-
-  // Scroll-linked parallax inside the image container
-  const { scrollYProgress } = useScroll({
-    target: cardRef,
-    offset: ["start end", "end start"],
-  });
-
-  const imageParallax = useTransform(
-    scrollYProgress,
-    [0, 1],
-    prefersReducedMotion ? ["0%", "0%"] : ["-5%", "5%"]
-  );
-
-  const subtleDrift = useTransform(
-    scrollYProgress,
-    [0, 1],
-    prefersReducedMotion ? [0, 0] : [index % 2 === 0 ? -6 : 6, index % 2 === 0 ? 6 : -6]
-  );
-
-  // Mouse tilt handlers for desktop cursor interaction
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (prefersReducedMotion || !cardRef.current) return;
-    const rect = cardRef.current.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width - 0.5;
-    const y = (e.clientY - rect.top) / rect.height - 0.5;
-    setMousePos({ x: x * 6, y: -y * 6 });
-  };
-
-  const handleMouseEnter = () => setIsHovered(true);
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-    setMousePos({ x: 0, y: 0 });
-  };
-
   const padIndex = String(index + 1).padStart(2, '0');
 
   return (
@@ -76,37 +40,22 @@ const DesktopCinematicCard: React.FC<DesktopCardProps> = ({
         delay: (index % 4) * 0.08,
         ease: [0.16, 1, 0.3, 1],
       }}
-      style={{ x: subtleDrift }}
-      onMouseMove={handleMouseMove}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
       onClick={onSelect}
-      className={`group relative bg-[#141414] border transition-all duration-300 cursor-pointer overflow-hidden flex flex-col justify-between shadow-lg ${
-        isActive
+      className={`group relative bg-[#141414] border transition-colors duration-300 cursor-pointer overflow-hidden flex flex-col justify-between shadow-lg ${isActive
           ? 'border-[#FF0022] shadow-[0_0_25px_rgba(255,0,34,0.22)] ring-1 ring-[#FF0022]/50'
-          : 'border-[#262626] hover:border-[#FF0022]/80 hover:shadow-[0_12px_28px_rgba(0,0,0,0.8),0_0_20px_rgba(255,0,34,0.14)]'
-      }`}
+          : 'border-[#262626] hover:border-[#FF0022]/80 hover:shadow-[0_0_20px_rgba(255,0,34,0.18)]'
+        }`}
     >
-      {/* 3D Tilt Container */}
-      <motion.div
-        animate={{
-          rotateX: isHovered ? mousePos.y : 0,
-          rotateY: isHovered ? mousePos.x : 0,
-        }}
-        transition={{ type: "spring", stiffness: 260, damping: 20 }}
-        style={{ transformStyle: "preserve-3d" }}
-        className="w-full h-full flex flex-col justify-between"
-      >
+      <div className="w-full h-full flex flex-col justify-between">
         {/* Top Accent Scanline on Hover */}
         <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#FF0022] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20 pointer-events-none" />
 
-        {/* Image Frame with Parallax */}
+        {/* Image Frame */}
         <div className="relative aspect-[4/3] w-full overflow-hidden bg-black">
-          <motion.img
+          <img
             src={item.image}
             alt={item.title}
-            style={{ y: imageParallax }}
-            className="w-full h-[112%] -top-[6%] relative object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+            className="w-full h-full object-cover grayscale contrast-110 group-hover:grayscale-0 transition-all duration-500 ease-out"
             loading="lazy"
           />
 
@@ -129,20 +78,20 @@ const DesktopCinematicCard: React.FC<DesktopCardProps> = ({
         </div>
 
         {/* Metadata Details Bar */}
-        <div className="p-3.5 sm:p-4 bg-[#0D0D0D] border-t border-[#262626] flex items-center justify-between z-10">
-          <div>
-            <h3 className="text-sm font-display font-black text-white group-hover:text-[#FF0022] transition-colors uppercase tracking-wider">
+        <div className="p-3.5 sm:p-4 bg-[#0D0D0D] border-t border-[#262626] flex items-center justify-between z-10 gap-2">
+          <div className="min-w-0 flex-1">
+            <h3 className="text-sm font-display font-black text-white group-hover:text-[#FF0022] transition-colors uppercase tracking-wider truncate">
               {item.title}
             </h3>
-            <p className="font-mono-tech text-[10px] text-[#777777] uppercase tracking-widest mt-0.5">
+            <p className="font-mono-tech text-[10px] text-[#777777] uppercase tracking-widest mt-0.5 truncate">
               SYMPOSIUM CHRONICLE
             </p>
           </div>
-          <span className="font-mono-tech text-[10px] text-[#888888] group-hover:text-[#FCFAED] border border-[#222222] px-2 py-0.5 transition-colors">
+          <span className="font-mono-tech text-[10px] text-[#888888] group-hover:text-[#FCFAED] border border-[#222222] px-2 py-0.5 transition-colors shrink-0">
             {padIndex} / 08
           </span>
         </div>
-      </motion.div>
+      </div>
     </motion.div>
   );
 };
@@ -259,8 +208,8 @@ const MobileStackedGallery: React.FC<MobileStackedGalleryProps> = ({
 
   return (
     <div className="w-full flex flex-col items-center">
-      {/* Visual Stack Container with controlled height to prevent vertical jitter */}
-      <div className="relative w-full max-w-[340px] sm:max-w-[380px] h-[330px] sm:h-[360px] flex items-start justify-center pt-2">
+      {/* Visual Stack Container with controlled height to prevent vertical jitter and button overlap */}
+      <div className="relative w-full max-w-[340px] sm:max-w-[380px] h-[360px] sm:h-[405px] flex items-start justify-center pt-2">
         {galleryData.map((item, idx) => {
           const stack = getStackStyle(idx);
           const isActive = idx === activeIndex;
@@ -292,24 +241,23 @@ const MobileStackedGallery: React.FC<MobileStackedGalleryProps> = ({
               }}
               {...(isActive
                 ? {
-                    drag: "x" as const,
-                    dragDirectionLock: true,
-                    dragConstraints: { left: 0, right: 0 },
-                    dragElastic: 0.65,
-                    onDragStart: handleDragStart,
-                    onDragEnd: handleDragEnd,
-                  }
+                  drag: "x" as const,
+                  dragDirectionLock: true,
+                  dragConstraints: { left: 0, right: 0 },
+                  dragElastic: 0.65,
+                  onDragStart: handleDragStart,
+                  onDragEnd: handleDragEnd,
+                }
                 : {})}
               onClick={() => {
                 if (isActive && !isDraggingRef.current) {
                   onExpand(item);
                 }
               }}
-              className={`absolute top-0 w-full bg-[#141414] border rounded-xs overflow-hidden select-none cursor-grab active:cursor-grabbing ${
-                isActive
+              className={`absolute top-0 w-full bg-[#141414] border rounded-xs overflow-hidden select-none cursor-grab active:cursor-grabbing ${isActive
                   ? 'border-[#FF0022]/80 shadow-[0_16px_36px_rgba(0,0,0,0.9),0_0_24px_rgba(255,0,34,0.18)]'
                   : 'border-[#262626] shadow-[0_12px_28px_rgba(0,0,0,0.7)]'
-              }`}
+                }`}
             >
               {/* Photo Area */}
               <div className="relative aspect-[4/3] w-full overflow-hidden bg-black">
@@ -400,11 +348,10 @@ const MobileStackedGallery: React.FC<MobileStackedGalleryProps> = ({
               key={i}
               onClick={() => onSelectCard(i)}
               aria-label={`Jump to memory ${i + 1}`}
-              className={`transition-all cursor-pointer ${
-                i === activeIndex
+              className={`transition-all cursor-pointer ${i === activeIndex
                   ? 'w-6 h-1.5 bg-[#FF0022] rounded-xs shadow-[0_0_8px_rgba(255,0,34,0.6)]'
                   : 'w-2 h-1.5 bg-[#262626] hover:bg-[#444444] rounded-xs'
-              }`}
+                }`}
             />
           ))}
         </div>

@@ -516,26 +516,46 @@ export const AnimatedBackground: React.FC = () => {
       </motion.div>
 
       {/* ============================================================== */}
-      {/* LAYER 7: SUBTLE ATMOSPHERIC RADIAL BREATHING GLOW               */}
-      {/* Soft, deep red radial pulse with 60s+ cycle                      */}
+      {/* LAYER 7: SUBTLE ATMOSPHERIC VOLUMETRIC AMBIENT LIGHTING         */}
+      {/* Slow-moving deep amber-orange & signal-red gradient pools       */}
       {/* ============================================================== */}
+      {/* Orb 1: Upper Atmospheric Red Glow */}
       <motion.div
         animate={
           prefersReducedMotion
             ? { opacity: 0.08 }
             : {
                 opacity: [0.06, 0.12, 0.06],
-                scale: [0.95, 1.05, 0.95],
-                x: ['-50%', '-48%', '-50%'],
-                y: ['-20%', '-24%', '-20%'],
+                x: ['-50%', '-48%', '-52%', '-50%'],
+                y: ['-20%', '-25%', '-18%', '-20%'],
               }
         }
         transition={{
-          duration: 48,
+          duration: 52,
           repeat: Infinity,
           ease: "easeInOut",
         }}
         className="absolute top-1/4 left-1/2 w-[380px] sm:w-[650px] lg:w-[850px] h-[320px] sm:h-[480px] lg:h-[600px] bg-[#FF0022]/10 rounded-full blur-[110px] sm:blur-[140px] pointer-events-none z-2"
+      />
+
+      {/* Orb 2: Lower-Right Warm Orange Volumetric Pool */}
+      <motion.div
+        animate={
+          prefersReducedMotion
+            ? { opacity: 0.06 }
+            : {
+                opacity: [0.05, 0.11, 0.05],
+                x: [0, 40, -30, 0],
+                y: [0, -50, 20, 0],
+              }
+        }
+        transition={{
+          duration: 64,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 5,
+        }}
+        className="absolute bottom-1/4 right-1/4 w-[350px] sm:w-[580px] lg:w-[750px] h-[300px] sm:h-[440px] lg:h-[550px] bg-[#FF3D00]/[0.08] rounded-full blur-[120px] sm:blur-[150px] pointer-events-none z-2"
       />
     </div>
   );

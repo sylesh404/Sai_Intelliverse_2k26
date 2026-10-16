@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { EventItem } from '../types';
 import symposiumConfig from '../config/symposiumConfig';
-import { X, Clock, Users, Award, ShieldCheck, Phone, Calendar, FileText, AlertTriangle, Sparkles } from 'lucide-react';
+import { X, Clock, Users, Award, ShieldCheck, Phone, Calendar, FileText, AlertTriangle, Sparkles, Ticket, Trophy } from 'lucide-react';
 import MagneticButton from './MagneticButton';
 
 interface EventDetailModalProps {
@@ -50,7 +50,7 @@ export const EventDetailModal: React.FC<EventDetailModalProps> = ({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 16 }}
             transition={{ duration: 0.22, ease: "easeOut" }}
-            className="relative w-full max-w-4xl bg-[#141414] border border-[#262626] text-[#FCFAED] z-10 shadow-2xl h-auto max-h-none overflow-visible my-auto flex flex-col"
+            className="relative w-full max-w-4xl min-w-0 bg-[#141414] border border-[#262626] text-[#FCFAED] z-10 shadow-2xl h-auto max-h-none overflow-visible my-4 sm:my-8 lg:my-10 flex flex-col"
           >
             {/* Top Sticky Header Bar */}
             <div className="sticky top-0 z-30 flex items-center justify-between border-b border-[#262626] bg-[#0D0D0D]/95 backdrop-blur-md px-4 sm:px-6 py-3 shrink-0">
@@ -98,7 +98,7 @@ export const EventDetailModal: React.FC<EventDetailModalProps> = ({
                 className="w-full h-full object-cover grayscale contrast-125"
               />
               <div className="absolute top-2 right-2 bg-[#FF0022] text-white px-3 py-1 font-mono-tech text-xs font-bold uppercase tracking-wider">
-                ENTRY: {event.entryFee}
+                ENTRY: {event.id === 'intellipaper' ? '₹500 / TEAM (OR ₹150 / PERSON)' : event.category === 'NON-TECHNICAL' ? '₹50 PER PERSON' : event.entryFee}
               </div>
             </div>
 
@@ -120,6 +120,37 @@ export const EventDetailModal: React.FC<EventDetailModalProps> = ({
                 <span className="font-bold text-[#FCFAED] block text-sm sm:text-base">{event.date}</span>
               </div>
             </div>
+
+            {/* Registration Fee Block */}
+            {event.id === 'intellipaper' ? (
+              <div className="bg-[#0D0D0D] border border-[#FF0022]/40 p-3.5 sm:p-4 font-mono-tech space-y-2.5">
+                <div className="flex items-center gap-2 text-xs text-[#FF0022] font-bold uppercase tracking-wider">
+                  <Ticket className="w-4 h-4 text-[#FF0022]" />
+                  <span>REGISTRATION FEE</span>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+                  <div className="bg-[#141414] p-3 border border-[#262626]">
+                    <span className="text-[10px] text-[#888888] block uppercase font-bold">TEAM REGISTRATION</span>
+                    <span className="text-base sm:text-lg font-bold text-[#FCFAED] block mt-0.5">₹500 / TEAM</span>
+                  </div>
+                  <div className="bg-[#141414] p-3 border border-[#262626]">
+                    <span className="text-[10px] text-[#888888] block uppercase font-bold">INDIVIDUAL REGISTRATION</span>
+                    <span className="text-base sm:text-lg font-bold text-[#FCFAED] block mt-0.5">₹150 / PERSON</span>
+                    <span className="text-[10px] text-[#888888] block mt-1">Individual participation permitted</span>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div className="bg-[#0D0D0D] border border-[#262626] p-3.5 sm:p-4 font-mono-tech flex items-center justify-between flex-wrap gap-2">
+                <div className="flex items-center gap-2 text-xs text-[#FF0022] font-bold uppercase tracking-wider">
+                  <Ticket className="w-4 h-4 text-[#FF0022]" />
+                  <span>{event.category === 'NON-TECHNICAL' ? 'REGISTRATION FEE' : 'ENTRY FEE'}</span>
+                </div>
+                <span className="text-base sm:text-lg font-bold text-[#FCFAED] uppercase">
+                  {event.category === 'NON-TECHNICAL' ? '₹50 PER PERSON' : event.entryFee}
+                </span>
+              </div>
+            )}
 
             {/* 3. About the Event */}
             <div className="space-y-2">
@@ -302,46 +333,71 @@ export const EventDetailModal: React.FC<EventDetailModalProps> = ({
               </div>
             )}
 
-            {/* 13. Prizes */}
-            <div className="border-t border-[#262626] pt-5 space-y-3">
-              <div className="flex items-center gap-2 font-mono-tech text-xs sm:text-sm text-[#FF0022] font-bold tracking-wider">
-                <Award className="w-4 h-4 shrink-0" />
-                <span>PRIZE POOL</span>
-              </div>
-              <div className={`grid grid-cols-1 ${event.prizes.third ? 'sm:grid-cols-3' : 'sm:grid-cols-2'} gap-3 font-mono-tech`}>
-                <div className="bg-[#0D0D0D] border border-[#FF0022]/60 p-3.5 relative overflow-hidden group">
-                  <div className="flex items-center justify-between mb-1">
-                    <span className="text-[11px] text-[#FCFAED] uppercase font-bold tracking-wider">🥇 FIRST PRIZE</span>
-                    <span className="text-[10px] text-[#FF0022] font-bold">WINNER</span>
-                  </div>
-                  <span className="text-base sm:text-xl font-bold text-[#FCFAED] block mt-1 tracking-tight">
-                    {event.prizes.first}
-                  </span>
+            {/* 13. Prizes / Winner Rewards */}
+            {event.prizes && event.prizes.first ? (
+              <div className="border-t border-[#262626] pt-5 space-y-3">
+                <div className="flex items-center gap-2 font-mono-tech text-xs sm:text-sm text-[#FF0022] font-bold tracking-wider">
+                  <Award className="w-4 h-4 shrink-0" />
+                  <span>CASH PRIZES & AWARDS</span>
                 </div>
-
-                <div className="bg-[#0D0D0D] border border-[#262626] p-3.5 relative overflow-hidden group hover:border-[#404040]">
-                  <div className="flex items-center justify-between mb-1">
-                    <span className="text-[11px] text-[#FCFAED] uppercase font-bold tracking-wider">🥈 SECOND PRIZE</span>
-                    <span className="text-[10px] text-[#888888] font-bold">RUNNER-UP</span>
-                  </div>
-                  <span className="text-base sm:text-xl font-bold text-[#FCFAED] block mt-1 tracking-tight">
-                    {event.prizes.second}
-                  </span>
-                </div>
-
-                {event.prizes.third && (
-                  <div className="bg-[#0D0D0D] border border-[#262626] p-3.5 relative overflow-hidden group">
+                <div className={`grid grid-cols-1 ${event.prizes.third ? 'sm:grid-cols-3' : 'sm:grid-cols-2'} gap-3 font-mono-tech`}>
+                  <div className="bg-[#0D0D0D] border border-[#FF0022]/60 p-3.5 relative overflow-hidden group">
                     <div className="flex items-center justify-between mb-1">
-                      <span className="text-[11px] text-[#FCFAED] uppercase font-bold tracking-wider">🥉 THIRD PRIZE</span>
-                      <span className="text-[10px] text-[#888888] font-bold">SPECIAL</span>
+                      <span className="text-[11px] text-[#FCFAED] uppercase font-bold tracking-wider">🥇 FIRST PRIZE</span>
+                      <span className="text-[10px] text-[#FF0022] font-bold">WINNER</span>
                     </div>
-                    <span className="text-base sm:text-xl font-bold text-[#FCFAED] block mt-1 tracking-tight">
-                      {event.prizes.third}
+                    <span className="text-xl sm:text-2xl font-bold text-[#FCFAED] block mt-1 tracking-tight">
+                      {event.prizes.first}
                     </span>
                   </div>
-                )}
+
+                  <div className="bg-[#0D0D0D] border border-[#262626] p-3.5 relative overflow-hidden group hover:border-[#404040]">
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-[11px] text-[#FCFAED] uppercase font-bold tracking-wider">🥈 SECOND PRIZE</span>
+                      <span className="text-[10px] text-[#888888] font-bold">RUNNER-UP</span>
+                    </div>
+                    <span className="text-xl sm:text-2xl font-bold text-[#FCFAED] block mt-1 tracking-tight">
+                      {event.prizes.second}
+                    </span>
+                  </div>
+
+                  {event.prizes.third && (
+                    <div className="bg-[#0D0D0D] border border-[#262626] p-3.5 relative overflow-hidden group">
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="text-[11px] text-[#FCFAED] uppercase font-bold tracking-wider">🥉 THIRD PRIZE</span>
+                        <span className="text-[10px] text-[#888888] font-bold">SPECIAL</span>
+                      </div>
+                      <span className="text-xl sm:text-2xl font-bold text-[#FCFAED] block mt-1 tracking-tight">
+                        {event.prizes.third}
+                      </span>
+                    </div>
+                  )}
+                </div>
               </div>
-            </div>
+            ) : (
+              <div className="border-t border-[#262626] pt-5 space-y-3">
+                <div className="flex items-center gap-2 font-mono-tech text-xs sm:text-sm text-[#FF3D00] font-bold tracking-wider">
+                  <Trophy className="w-4 h-4 shrink-0 text-[#FF3D00]" />
+                  <span>WINNER REWARDS</span>
+                </div>
+                <div className="bg-[#0D0D0D] border border-[#FF3D00]/50 p-4 sm:p-5 relative overflow-hidden font-mono-tech">
+                  <div className="flex items-start sm:items-center gap-3.5">
+                    <span className="text-3xl shrink-0">🏆</span>
+                    <div>
+                      <span className="text-xs text-[#FF3D00] font-bold uppercase tracking-wider block">
+                        WINNER REWARDS
+                      </span>
+                      <span className="text-lg sm:text-xl font-display font-bold text-[#FCFAED] block mt-0.5">
+                        Mementos for Winners
+                      </span>
+                      <p className="text-xs text-[#888888] mt-1 font-body">
+                        The reward is a memento/trophy-style recognition awarded to the winners of this non-technical discipline.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
 
             {/* 14. Coordinator Information */}
             <div className="border-t border-[#262626] pt-6">
@@ -358,9 +414,9 @@ export const EventDetailModal: React.FC<EventDetailModalProps> = ({
                 {(event.coordinators || (event.coordinator ? [event.coordinator] : [])).map((coord, idx) => (
                   <div
                     key={idx}
-                    className="bg-[#0D0D0D] p-3.5 sm:p-4 border border-[#262626] hover:border-[#FF0022]/60 transition-colors flex flex-col justify-between"
+                    className="bg-[#0D0D0D] p-3.5 sm:p-4 border border-[#262626] hover:border-[#FF0022]/60 transition-colors flex flex-col justify-between min-w-0"
                   >
-                    <div>
+                    <div className="min-w-0">
                       <span className="text-[10px] font-mono-tech text-[#888888] uppercase block">
                         COORDINATOR 0{idx + 1}
                       </span>
@@ -369,13 +425,13 @@ export const EventDetailModal: React.FC<EventDetailModalProps> = ({
                       </span>
                     </div>
 
-                    <div className="mt-3 pt-2.5 border-t border-[#1C1C1C]">
+                    <div className="mt-3 pt-2.5 border-t border-[#1C1C1C] min-w-0">
                       <a
                         href={`tel:${coord.phone.replace(/\s+/g, '')}`}
-                        className="inline-flex items-center gap-2 text-xs font-mono-tech text-[#FCFAED] hover:text-[#FF0022] transition-colors py-1 min-h-[38px]"
+                        className="inline-flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs font-mono-tech text-[#FCFAED] hover:text-[#FF0022] transition-colors py-1 min-h-[38px] max-w-full"
                       >
                         <Phone className="w-3.5 h-3.5 text-[#FF0022] shrink-0" />
-                        <span className="tracking-wide font-semibold">{coord.phone}</span>
+                        <span className="tracking-tight sm:tracking-wide font-semibold truncate sm:overflow-visible">{coord.phone}</span>
                       </a>
                     </div>
                   </div>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useScrollVelocity } from '../hooks/useScrollVelocity';
 
@@ -25,11 +25,9 @@ export const MarqueeTicker: React.FC<MarqueeTickerProps> = ({
   theme = 'dark',
 }) => {
   const velocity = useScrollVelocity();
-  const [isFinePointer, setIsFinePointer] = useState(false);
-
-  useEffect(() => {
-    setIsFinePointer(window.matchMedia('(pointer: fine)').matches);
-  }, []);
+  const [isFinePointer] = useState<boolean>(() =>
+    typeof window !== 'undefined' ? window.matchMedia('(pointer: fine)').matches : false
+  );
 
   // Safe subtle skew only on fine pointer devices, never causing horizontal overflow
   const skewX = isFinePointer ? Math.max(-5, Math.min(5, velocity * 0.2)) : 0;

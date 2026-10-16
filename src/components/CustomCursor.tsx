@@ -6,16 +6,22 @@ export type CursorMode = 'default' | 'hover' | 'view' | 'open' | 'drag';
 export const CustomCursor: React.FC = () => {
   const [mode, setMode] = useState<CursorMode>('default');
   const [isVisible, setIsVisible] = useState(false);
-  const [hasFinePointer, setHasFinePointer] = useState(false);
+  const [hasFinePointer, setHasFinePointer] = useState<boolean>(() =>
+    typeof window !== 'undefined' ? window.matchMedia('(pointer: fine)').matches : false
+  );
 
   // Smooth spring physics for cursor position
   const cursorX = useSpring(0, { stiffness: 450, damping: 30 });
   const cursorY = useSpring(0, { stiffness: 450, damping: 30 });
 
   useEffect(() => {
-    // Strictly fine pointer (mouse / trackpad with precision cursor)
     const mediaQuery = window.matchMedia('(pointer: fine)');
-    setHasFinePointer(mediaQuery.matches);
+
+    const updatePointer = () => {
+      setHasFinePointer(mediaQuery.matches);
+    };
+
+    mediaQuery.addEventListener('change', updatePointer);
 
     if (!mediaQuery.matches) return;
 

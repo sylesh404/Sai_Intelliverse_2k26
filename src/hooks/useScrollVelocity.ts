@@ -3,10 +3,11 @@ import { useState, useEffect, useRef } from 'react';
 export function useScrollVelocity() {
   const [velocity, setVelocity] = useState(0);
   const lastScrollY = useRef(0);
-  const lastTime = useRef(performance.now());
+  const lastTime = useRef(0);
   const velocityRef = useRef(0);
 
   useEffect(() => {
+    lastTime.current = performance.now();
     let animId: number;
 
     const handleScroll = () => {

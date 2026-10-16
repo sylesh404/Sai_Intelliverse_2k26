@@ -15,9 +15,6 @@ export function useCountdown(targetDateISO: string): CountdownTime {
   });
 
   useEffect(() => {
-    // Immediate calculation on mount
-    setTimeLeft(calculateTimeRemaining(targetDateISO));
-
     // Update every second
     const interval = setInterval(() => {
       setTimeLeft(calculateTimeRemaining(targetDateISO));

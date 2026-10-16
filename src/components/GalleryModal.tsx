@@ -16,13 +16,33 @@ export const GalleryModal: React.FC<GalleryModalProps> = ({
   onClose,
   onSelect,
 }) => {
+  const currentIndex = item ? items.findIndex((i) => i.id === item.id) : -1;
+
+  const handleNext = () => {
+    if (currentIndex === -1) return;
+    const nextIdx = (currentIndex + 1) % items.length;
+    onSelect(items[nextIdx]);
+  };
+
+  const handlePrev = () => {
+    if (currentIndex === -1) return;
+    const prevIdx = (currentIndex - 1 + items.length) % items.length;
+    onSelect(items[prevIdx]);
+  };
+
   useEffect(() => {
     if (!item) return;
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
-      if (e.key === 'ArrowRight') handleNext();
-      if (e.key === 'ArrowLeft') handlePrev();
+      if (e.key === 'ArrowRight' && currentIndex !== -1) {
+        const nextIdx = (currentIndex + 1) % items.length;
+        onSelect(items[nextIdx]);
+      }
+      if (e.key === 'ArrowLeft' && currentIndex !== -1) {
+        const prevIdx = (currentIndex - 1 + items.length) % items.length;
+        onSelect(items[prevIdx]);
+      }
     };
 
     document.body.style.overflow = 'hidden';
@@ -32,21 +52,9 @@ export const GalleryModal: React.FC<GalleryModalProps> = ({
       document.body.style.overflow = 'unset';
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [item]);
+  }, [item, currentIndex, items, onClose, onSelect]);
 
   if (!item) return null;
-
-  const currentIndex = items.findIndex((i) => i.id === item.id);
-
-  const handleNext = () => {
-    const nextIdx = (currentIndex + 1) % items.length;
-    onSelect(items[nextIdx]);
-  };
-
-  const handlePrev = () => {
-    const prevIdx = (currentIndex - 1 + items.length) % items.length;
-    onSelect(items[prevIdx]);
-  };
 
   return (
     <AnimatePresence>

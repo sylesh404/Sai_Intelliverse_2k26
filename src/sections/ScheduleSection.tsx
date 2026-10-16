@@ -49,14 +49,14 @@ export const ScheduleSection: React.FC = () => {
         </div>
 
         {/* Timeline Container with guaranteed safe padding */}
-        <div className="relative pl-7 sm:pl-10 md:pl-28">
+        <div className="relative pl-8 sm:pl-10 md:pl-20">
           {/* Background Track Line */}
-          <div className="absolute left-2.5 sm:left-4 md:left-12 top-2 bottom-2 w-[2px] bg-[#262626]" />
+          <div className="absolute left-3 sm:left-4 md:left-8 top-2 bottom-2 w-[2px] bg-[#262626]" />
 
           {/* Scroll-Linked Progress Line */}
           <motion.div
             style={{ scaleY }}
-            className="absolute left-2.5 sm:left-4 md:left-12 top-2 bottom-2 w-[2px] bg-[#FF0022] origin-top shadow-[0_0_8px_rgba(255,0,34,0.6)]"
+            className="absolute left-3 sm:left-4 md:left-8 top-2 bottom-2 w-[2px] bg-[#FF0022] origin-top shadow-[0_0_8px_rgba(255,0,34,0.6)]"
           />
 
           {/* Schedule Timeline Items */}
@@ -68,15 +68,15 @@ export const ScheduleSection: React.FC = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.35, delay: idx * 0.05 }}
-                className="relative group"
+                className="relative group min-w-0"
               >
                 {/* Node Marker centered on the line */}
-                <div className="absolute left-[-23px] sm:left-[-32px] md:left-[-56px] top-4 w-4 h-4 rounded-full bg-[#0D0D0D] border-2 border-[#565656] group-hover:border-[#FF0022] flex items-center justify-center transition-colors">
+                <div className="absolute -left-[27px] sm:-left-[31px] md:-left-[55px] top-4 w-4 h-4 rounded-full bg-[#0D0D0D] border-2 border-[#565656] group-hover:border-[#FF0022] flex items-center justify-center transition-colors shrink-0">
                   <div className={`w-1.5 h-1.5 rounded-full ${item.isHighlight ? 'bg-[#FF0022]' : 'bg-[#565656] group-hover:bg-[#FF0022]'}`} />
                 </div>
 
                 {/* Editorial Content Card with natural height */}
-                <div className="bg-[#141414] border border-[#262626] hover:border-[#FF0022] p-4 sm:p-6 transition-colors relative overflow-hidden">
+                <div className="bg-[#141414] border border-[#262626] hover:border-[#FF0022] p-4 sm:p-6 transition-colors relative overflow-hidden min-w-0">
                   {item.isHighlight && (
                     <div className="inline-block mb-2 bg-[#FF0022] text-white px-2 py-0.5 font-mono-tech text-[9px] font-bold uppercase tracking-wider">
                       KEY EVENT
@@ -85,7 +85,7 @@ export const ScheduleSection: React.FC = () => {
 
                   <div className="grid grid-cols-1 md:grid-cols-12 gap-3 sm:gap-4 items-start">
                     {/* Time & Category */}
-                    <div className="md:col-span-4 space-y-1">
+                    <div className="md:col-span-4 min-w-0 space-y-1">
                       <div className="flex items-center gap-1.5 font-mono-tech text-xs text-[#FF0022] font-bold">
                         <Clock className="w-3.5 h-3.5 shrink-0" />
                         <span>{item.time}</span>
@@ -96,11 +96,11 @@ export const ScheduleSection: React.FC = () => {
                     </div>
 
                     {/* Title & Description */}
-                    <div className="md:col-span-8 space-y-1.5">
-                      <h3 className="text-lg sm:text-2xl font-display font-extrabold text-[#FCFAED] group-hover:text-white transition-colors leading-tight">
+                    <div className="md:col-span-8 min-w-0 space-y-1.5">
+                      <h3 className="text-base sm:text-xl lg:text-2xl font-display font-extrabold text-[#FCFAED] group-hover:text-white transition-colors leading-tight break-words">
                         {item.title}
                       </h3>
-                      <p className="font-body text-xs sm:text-sm text-[#FCFAED]/75 leading-relaxed">
+                      <p className="font-body text-xs sm:text-sm text-[#FCFAED]/75 leading-relaxed break-words">
                         {item.description}
                       </p>
                       {item.venue && (

@@ -28,7 +28,7 @@ export const TransitionAboutEvents: React.FC = () => {
 
       // 1. Label ABOUT drifts left
       tl.to(labelAboutRef.current, {
-        x: -120,
+        x: () => (window.innerWidth < 640 ? -50 : -120),
         opacity: 0,
         duration: 0.3,
         ease: "power2.out",

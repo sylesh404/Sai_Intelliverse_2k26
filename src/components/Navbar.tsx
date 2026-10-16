@@ -12,6 +12,16 @@ interface NavbarProps {
 export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister, onGoHome }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>('');
+
+  const navLinks = [
+    { label: "ABOUT", href: "#about", code: "01", id: "about" },
+    { label: "VISION", href: "#vision-mission", code: "02", id: "vision-mission" },
+    { label: "EVENTS", href: "#events", code: "03", id: "events" },
+    { label: "SCHEDULE", href: "#schedule", code: "04", id: "schedule" },
+    { label: "FACULTY", href: "#team", code: "05", id: "team" },
+    { label: "GALLERY", href: "#gallery", code: "06", id: "gallery" },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,6 +30,39 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister, onGoHome }) => {
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Active section tracking via IntersectionObserver
+  useEffect(() => {
+    const sectionIds = ['about', 'vision-mission', 'events', 'schedule', 'team', 'gallery'];
+    const observers: IntersectionObserver[] = [];
+
+    const observerCallback: IntersectionObserverCallback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    };
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '-30% 0px -40% 0px',
+      threshold: 0,
+    };
+
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) {
+        const obs = new IntersectionObserver(observerCallback, observerOptions);
+        obs.observe(el);
+        observers.push(obs);
+      }
+    });
+
+    return () => {
+      observers.forEach((obs) => obs.disconnect());
+    };
   }, []);
 
   // Lock body scroll when mobile menu is open
@@ -33,15 +76,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister, onGoHome }) => {
       document.body.style.overflow = 'unset';
     };
   }, [mobileMenuOpen]);
-
-  const navLinks = [
-    { label: "DEPT", href: "#department", code: "00" },
-    { label: "ABOUT", href: "#about", code: "01" },
-    { label: "EVENTS", href: "#events", code: "02" },
-    { label: "SCHEDULE", href: "#schedule", code: "03" },
-    { label: "FACULTY", href: "#team", code: "04" },
-    { label: "GALLERY", href: "#gallery", code: "05" },
-  ];
 
   const handleLinkClick = (href: string) => {
     setMobileMenuOpen(false);
@@ -63,10 +97,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister, onGoHome }) => {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-200 ${
+        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
           isScrolled
-            ? 'py-2.5 sm:py-3 bg-[#0D0D0D]/95 backdrop-blur-md border-b border-[#262626]'
-            : 'py-4 sm:py-6 bg-gradient-to-b from-[#0D0D0D]/90 to-transparent'
+            ? 'py-2.5 sm:py-3 bg-[#0D0D0D]/95 backdrop-blur-md border-b border-[#262626] shadow-2xl'
+            : 'py-4 sm:py-6 bg-gradient-to-b from-[#0D0D0D]/95 to-transparent'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 flex items-center justify-between">
@@ -77,38 +111,57 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister, onGoHome }) => {
             className="flex items-center gap-2.5 sm:gap-3 group no-underline cursor-pointer"
             aria-label="SAI INTELLIVERSE 3.0 Home"
           >
-            <div className="w-8 h-8 bg-[#FF0022] flex items-center justify-center font-display font-black text-white text-sm clip-diagonal-right group-hover:bg-[#FF3D00] transition-colors">
+            <div className="w-7 h-7 sm:w-8 sm:h-8 bg-[#FF0022] flex items-center justify-center font-display font-black text-white text-xs sm:text-sm clip-diagonal-right group-hover:bg-[#FF3D00] transition-colors shadow-md shrink-0">
               3.0
             </div>
-            <div className="flex flex-col">
-              <span className="font-display font-extrabold text-base sm:text-lg tracking-tight text-[#FCFAED] group-hover:text-white transition-colors leading-tight">
+            <div className="flex flex-col min-w-0">
+              <span className="font-display font-extrabold text-xs min-[360px]:text-sm sm:text-lg tracking-tight text-[#FCFAED] group-hover:text-white transition-colors leading-tight truncate">
                 {symposiumConfig.name}
               </span>
-              <span className="font-mono-tech text-[9px] tracking-widest text-[#FF0022]">
+              <span className="font-mono-tech text-[8px] sm:text-[9px] tracking-widest text-[#FF0022] font-semibold truncate">
                 {symposiumConfig.edition}
               </span>
             </div>
           </a>
 
-          {/* Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center gap-5 lg:gap-8 font-mono-tech text-xs tracking-wider">
-            {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleLinkClick(link.href);
-                }}
-                className="relative text-[#FCFAED]/80 hover:text-white transition-colors py-1 group"
-              >
-                <span className="text-[#FF0022] text-[10px] mr-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                  {link.code}
-                </span>
-                <span>{link.label}</span>
-                <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-[#FF0022] transition-all duration-200 group-hover:w-full" />
-              </a>
-            ))}
+          {/* Desktop Navigation Links with Active Indicator */}
+          <nav className="hidden md:flex items-center gap-3 sm:gap-4 lg:gap-6 xl:gap-8 font-mono-tech text-[11px] lg:text-xs tracking-wider shrink-0">
+            {navLinks.map((link) => {
+              const isActive = activeSection === link.id;
+              return (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleLinkClick(link.href);
+                  }}
+                  className={`relative py-1.5 transition-colors group ${
+                    isActive ? 'text-white font-bold' : 'text-[#FCFAED]/75 hover:text-white'
+                  }`}
+                >
+                  <span
+                    className={`text-[10px] mr-1.5 font-bold transition-opacity ${
+                      isActive ? 'text-[#FF0022] opacity-100' : 'text-[#FF0022] opacity-0 group-hover:opacity-100'
+                    }`}
+                  >
+                    {link.code}
+                  </span>
+                  <span>{link.label}</span>
+
+                  {/* Active / Hover Animated Underline Indicator */}
+                  {isActive ? (
+                    <motion.span
+                      layoutId="navActiveIndicator"
+                      className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#FF0022] shadow-[0_0_8px_rgba(255,0,34,0.7)]"
+                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                    />
+                  ) : (
+                    <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-[#FF0022] transition-all duration-200 group-hover:w-full" />
+                  )}
+                </a>
+              );
+            })}
           </nav>
 
           {/* Desktop CTA Action */}
@@ -126,8 +179,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister, onGoHome }) => {
             />
           </div>
 
-          {/* Mobile Actions: Register + Menu Button (48px touch targets) */}
-          <div className="flex md:hidden items-center gap-2">
+          {/* Mobile Actions: Register + Menu Button (Accessible touch targets) */}
+          <div className="flex md:hidden items-center gap-1.5 sm:gap-2 shrink-0">
             <MagneticButton
               size="sm"
               variant="primary"
@@ -137,18 +190,16 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister, onGoHome }) => {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => onOpenRegister()}
-              className="!px-3 !py-1.5 text-xs"
+              className="!px-2.5 !py-1 text-[11px] sm:text-xs"
             />
-            <motion.button
+            <button
               type="button"
-              whileTap={{ scale: 0.92 }}
-              transition={{ type: "spring", stiffness: 450, damping: 25 }}
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
-              className="min-h-[44px] min-w-[44px] flex items-center justify-center border border-[#333333] hover:border-[#FF0022] bg-[#141414] text-[#FCFAED] active:text-[#FF0022] cursor-pointer"
+              className="min-h-[44px] min-w-[44px] flex items-center justify-center border border-[#333333] hover:border-[#FF0022] bg-[#141414] text-[#FCFAED] active:text-[#FF0022] active:bg-[#1a1a1a] transition-colors cursor-pointer"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </motion.button>
+            </button>
           </div>
         </div>
       </header>
@@ -166,14 +217,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister, onGoHome }) => {
             {/* Header row in mobile menu */}
             <div className="flex items-center justify-between border-b border-[#262626] pb-3 text-xs font-mono-tech text-[#565656]">
               <span>NAVIGATION DIRECTORY</span>
-              <motion.button
-                whileTap={{ scale: 0.92 }}
+              <button
+                type="button"
                 onClick={() => setMobileMenuOpen(false)}
-                className="min-h-[44px] px-3 text-[#FF0022] font-bold uppercase flex items-center gap-1 cursor-pointer hover:text-white transition-colors"
+                className="min-h-[44px] px-3 text-[#FF0022] font-bold uppercase flex items-center gap-1 cursor-pointer hover:text-white active:text-[#FF3D00] transition-colors"
               >
                 <span>CLOSE</span>
                 <X className="w-4 h-4" />
-              </motion.button>
+              </button>
             </div>
 
             {/* Vertically stacked links with min-h-[48px] */}

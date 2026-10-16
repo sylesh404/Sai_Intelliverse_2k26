@@ -44,21 +44,19 @@ export const MagneticButton: React.FC<MagneticButtonProps> = ({
   'aria-label': ariaLabel,
 }) => {
   const buttonRef = useRef<HTMLDivElement>(null);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [contentOffset, setContentOffset] = useState({ x: 0, y: 0 });
   const [mousePos, setMousePos] = useState({ x: 50, y: 50 });
   const [isHovered, setIsHovered] = useState(false);
-  const [isFinePointer, setIsFinePointer] = useState(false);
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const [isFinePointer, setIsFinePointer] = useState<boolean>(() =>
+    typeof window !== 'undefined' ? window.matchMedia('(pointer: fine)').matches : false
+  );
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState<boolean>(() =>
+    typeof window !== 'undefined' ? window.matchMedia('(prefers-reduced-motion: reduce)').matches : false
+  );
   const [impacts, setImpacts] = useState<ClickImpact[]>([]);
 
-  // Check hardware capabilities: pointer: fine & prefers-reduced-motion
   useEffect(() => {
     const fineQuery = window.matchMedia('(pointer: fine)');
     const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-
-    setIsFinePointer(fineQuery.matches);
-    setPrefersReducedMotion(motionQuery.matches);
 
     const updateCapabilities = () => {
       setIsFinePointer(fineQuery.matches);
@@ -74,34 +72,15 @@ export const MagneticButton: React.FC<MagneticButtonProps> = ({
     };
   }, []);
 
-  // Magnetic displacement calculation (desktop only, bounded safely)
+  // Stationary cursor illumination tracking without moving button position
   const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
     if (!buttonRef.current || !isFinePointer || prefersReducedMotion) return;
 
     const rect = buttonRef.current.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-
-    const deltaX = e.clientX - centerX;
-    const deltaY = e.clientY - centerY;
-
-    // Relative mouse position percentage inside button for highlight tracking
     const posX = Math.max(0, Math.min(100, ((e.clientX - rect.left) / rect.width) * 100));
     const posY = Math.max(0, Math.min(100, ((e.clientY - rect.top) / rect.height) * 100));
     setMousePos({ x: posX, y: posY });
-
-    // Strength depends on level (Level 1: 0.15, Level 2: 0.22, Level 3: 0.3)
-    const strengthMultiplier = level === 1 ? 0.15 : level === 3 ? 0.28 : 0.22;
-    const maxMoveX = level === 1 ? 5 : level === 3 ? 10 : 8;
-    const maxMoveY = level === 1 ? 4 : level === 3 ? 8 : 6;
-
-    const boundedX = Math.max(-maxMoveX, Math.min(maxMoveX, deltaX * strengthMultiplier));
-    const boundedY = Math.max(-maxMoveY, Math.min(maxMoveY, deltaY * strengthMultiplier));
-
-    setPosition({ x: boundedX, y: boundedY });
-    // Text/content shifts an extra subtle 2-3px for internal physical parallax
-    setContentOffset({ x: boundedX * 0.45, y: boundedY * 0.45 });
-  }, [isFinePointer, prefersReducedMotion, level]);
+  }, [isFinePointer, prefersReducedMotion]);
 
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -109,15 +88,12 @@ export const MagneticButton: React.FC<MagneticButtonProps> = ({
 
   const handleMouseLeave = () => {
     setIsHovered(false);
-    setPosition({ x: 0, y: 0 });
-    setContentOffset({ x: 0, y: 0 });
   };
 
-  // Tactile click handler + Comic Impact Burst for Level 3 CTAs
+  // Tactile stationary click flash without layout shifts or displacement
   const handleClick = (e: React.MouseEvent<HTMLElement>) => {
     if (disabled) return;
 
-    // Trigger subtle comic impact burst on Level 2 & 3 buttons
     if (level >= 2 && !prefersReducedMotion && buttonRef.current) {
       const rect = buttonRef.current.getBoundingClientRect();
       const clickX = e.clientX - rect.left;
@@ -142,10 +118,14 @@ export const MagneticButton: React.FC<MagneticButtonProps> = ({
   };
 
   const variantStyles = {
-    primary: "bg-[#FF0022] hover:bg-[#FF3D00] text-white border border-[#FF0022] active:bg-[#D9001D]",
-    secondary: "bg-[#141414] hover:bg-[#1f1f1f] text-[#FCFAED] border border-[#333333] hover:border-[#FF0022] active:bg-[#0D0D0D]",
-    outline: "bg-transparent text-[#FCFAED] border border-[#565656] hover:border-[#FF0022] hover:text-white active:bg-white/5",
-    ivory: "bg-[#FCFAED] text-[#0D0D0D] border border-[#FCFAED] hover:bg-white font-semibold active:bg-[#FCFAED]/90",
+    primary:
+      "bg-[#FF0022] hover:bg-[#FF3D00] text-white border border-[#FF0022] hover:border-[#FF3D00] hover:shadow-[0_0_24px_rgba(255,61,0,0.45)]",
+    secondary:
+      "bg-[#141414] hover:bg-[#1a1a1a] text-[#FCFAED] border border-[#333333] hover:border-[#FF3D00] hover:shadow-[0_0_20px_rgba(255,61,0,0.3)]",
+    outline:
+      "bg-transparent text-[#FCFAED] border border-[#565656] hover:border-[#FF3D00] hover:text-white hover:shadow-[0_0_20px_rgba(255,61,0,0.3)]",
+    ivory:
+      "bg-[#FCFAED] text-[#0D0D0D] border border-[#FCFAED] hover:bg-white font-semibold hover:shadow-[0_0_20px_rgba(252,250,237,0.35)]",
   };
 
   const sizeStyles = {
@@ -155,36 +135,36 @@ export const MagneticButton: React.FC<MagneticButtonProps> = ({
   };
 
   const buttonContent = (
-    <motion.div
+    <div
       ref={buttonRef}
-      style={{
-        x: isFinePointer && !prefersReducedMotion ? position.x : 0,
-        y: isFinePointer && !prefersReducedMotion ? position.y : 0,
-      }}
-      whileTap={{ scale: 0.96, y: 1.5 }}
-      transition={{ type: "spring", stiffness: 450, damping: 26 }}
       onMouseMove={handleMouseMove}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className={`relative inline-flex items-center justify-center gap-2.5 font-mono-tech tracking-wider uppercase select-none transition-colors duration-200 overflow-hidden group cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF0022] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0D0D0D] ${variantStyles[variant]} ${sizeStyles[size]} ${className}`}
+      className={`relative inline-flex items-center justify-center gap-2.5 font-mono-tech tracking-wider uppercase select-none transition-all duration-300 overflow-hidden group cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF3D00] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0D0D0D] ${variantStyles[variant]} ${sizeStyles[size]} ${className}`}
     >
       {/* 1. Corner Architectural Notch */}
       <span className="absolute top-0 right-0 w-2.5 h-2.5 bg-[#0D0D0D] clip-diagonal-left pointer-events-none z-20" />
 
-      {/* 2. Cursor-Position Aware Highlight (Desktop Only, matches existing color palette) */}
+      {/* 2. Directional Orange Reveal Fill (for outline & secondary) */}
+      {(variant === 'outline' || variant === 'secondary') && (
+        <span className="absolute inset-0 bg-gradient-to-r from-[#FF0022] to-[#FF3D00] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-0" />
+      )}
+
+      {/* 3. Cursor-Position Aware Highlight (Stationary, subtle surface lighting) */}
       {isFinePointer && !prefersReducedMotion && (
         <div
           className="absolute inset-0 pointer-events-none transition-opacity duration-300 z-1"
           style={{
             opacity: isHovered ? 1 : 0,
-            background: variant === 'primary'
-              ? `radial-gradient(circle 80px at ${mousePos.x}% ${mousePos.y}%, rgba(255, 255, 255, 0.28), transparent 70%)`
-              : `radial-gradient(circle 80px at ${mousePos.x}% ${mousePos.y}%, rgba(255, 0, 34, 0.22), transparent 70%)`,
+            background:
+              variant === 'primary'
+                ? `radial-gradient(circle 90px at ${mousePos.x}% ${mousePos.y}%, rgba(255, 255, 255, 0.28), transparent 70%)`
+                : `radial-gradient(circle 90px at ${mousePos.x}% ${mousePos.y}%, rgba(255, 61, 0, 0.25), transparent 70%)`,
           }}
         />
       )}
 
-      {/* 3. Hand-Drawn Comic Border Sweep on Hover (Level 2 & 3) */}
+      {/* 4. Animated Border Sweep on Hover (Level 2 & 3, stationary border drawing) */}
       {level >= 2 && !prefersReducedMotion && (
         <svg className="absolute inset-0 w-full h-full pointer-events-none z-15 overflow-visible">
           <rect
@@ -193,71 +173,56 @@ export const MagneticButton: React.FC<MagneticButtonProps> = ({
             width="calc(100% - 2px)"
             height="calc(100% - 2px)"
             fill="none"
-            stroke={variant === 'primary' ? '#FFFFFF' : '#FF0022'}
+            stroke={variant === 'primary' ? '#FFFFFF' : '#FF3D00'}
             strokeWidth="1.5"
             strokeDasharray="360"
             strokeDashoffset={isHovered ? 0 : 360}
-            className="transition-all duration-400 ease-out opacity-75"
+            className="transition-all duration-500 ease-out opacity-85"
           />
         </svg>
       )}
 
-      {/* 4. Button Internal Content with Parallax Micro-Shift */}
-      <motion.div
-        style={{
-          x: isFinePointer && !prefersReducedMotion ? contentOffset.x : 0,
-          y: isFinePointer && !prefersReducedMotion ? contentOffset.y : 0,
-        }}
-        transition={{ type: "spring", stiffness: 500, damping: 30 }}
-        className="relative z-10 flex items-center gap-2"
-      >
+      {/* 5. Button Internal Content (Stationary text & icon, smooth color illumination) */}
+      <div className="relative z-10 flex items-center gap-2">
         {children ? (
           children
         ) : (
           <>
-            <span className="inline-block transition-transform duration-200">
+            <span className="relative inline-block transition-colors duration-200">
               {isHovered && hoverText ? hoverText : defaultText}
+              {/* Subtle underline illumination */}
+              <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-current transition-all duration-300 group-hover:w-full opacity-80" />
             </span>
 
-            {/* Direction-Aware Arrow Animation */}
-            <div className="relative w-4 h-4 overflow-hidden flex items-center justify-center shrink-0">
-              <motion.span
-                animate={isHovered && !prefersReducedMotion ? { x: [0, 16, -16, 0] } : { x: 0 }}
-                transition={{ duration: 0.32, ease: [0.25, 1, 0.5, 1] }}
-                className="inline-flex items-center"
-              >
-                <ArrowRight className="w-4 h-4 text-current" />
-              </motion.span>
+            {/* Stationary Icon with Subtle Glow */}
+            <div className="relative w-4 h-4 flex items-center justify-center shrink-0">
+              <ArrowRight className="w-4 h-4 text-current transition-colors duration-200" />
             </div>
           </>
         )}
-      </motion.div>
+      </div>
 
-      {/* 5. Comic Tactile Impact Burst on Click */}
+      {/* 6. Stationary Click Flash Indicator */}
       <AnimatePresence>
         {impacts.map((impact) => (
           <motion.div
             key={impact.id}
-            initial={{ scale: 0, opacity: 0.9 }}
-            animate={{ scale: 1.8, opacity: 0 }}
+            initial={{ opacity: 0.8 }}
+            animate={{ opacity: 0 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.32, ease: "easeOut" }}
+            transition={{ duration: 0.35, ease: "easeOut" }}
             style={{
-              left: impact.x - 20,
-              top: impact.y - 20,
+              left: impact.x - 30,
+              top: impact.y - 30,
             }}
-            className="absolute pointer-events-none z-30 w-10 h-10 flex items-center justify-center"
-          >
-            <div className="w-8 h-8 rounded-full border border-[#FCFAED] bg-[#FF3D00]/20" />
-            <div className="absolute w-12 h-[1.5px] bg-[#FF0022] rotate-45" />
-            <div className="absolute w-12 h-[1.5px] bg-[#FF0022] -rotate-45" />
-          </motion.div>
+            className="absolute pointer-events-none z-30 w-16 h-16 rounded-full bg-white/20 blur-sm"
+          />
         ))}
       </AnimatePresence>
 
-      {/* 6. Subtle Bottom Baseline Accent */}
-      <span className="absolute bottom-0 left-0 w-full h-[2px] bg-white/40 opacity-0 group-hover:opacity-100 transition-opacity z-10" />
-    </motion.div>
+      {/* 7. Subtle Bottom Baseline Accent */}
+      <span className="absolute bottom-0 left-0 w-full h-[2px] bg-white/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
+    </div>
   );
 
   if (href) {

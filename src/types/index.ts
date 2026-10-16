@@ -35,11 +35,16 @@ export interface EventItem {
   closingLine?: string;
   registrationLink?: string;
   entryFee: string;
-  prizes: {
+  entryFeeOptions?: {
+    team?: string;
+    individual?: string;
+  };
+  prizes?: {
     first: string;
     second: string;
     third?: string;
   };
+  winnerRewards?: string;
   venue: string;
   date: string;
   time: string;

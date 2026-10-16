@@ -10,7 +10,7 @@ interface RegistrationCTAProps {
 
 export const RegistrationCTA: React.FC<RegistrationCTAProps> = ({ onOpenRegister }) => {
   return (
-    <section className="relative py-20 sm:py-32 px-4 sm:px-6 lg:px-12 bg-[#0D0D0D] border-b border-[#262626] overflow-hidden">
+    <section className="relative py-14 sm:py-20 px-4 sm:px-6 lg:px-12 bg-[#0D0D0D] border-b border-[#262626] overflow-hidden">
       {/* Decorative gradient (safe background) */}
       <div className="absolute inset-y-0 right-0 w-full lg:w-1/2 bg-gradient-to-l from-[#FF0022]/10 to-transparent pointer-events-none" />
 
@@ -25,7 +25,7 @@ export const RegistrationCTA: React.FC<RegistrationCTAProps> = ({ onOpenRegister
           transition={{ duration: 0.35 }}
           className="flex items-center gap-3 font-mono-tech text-xs text-[#FF0022] uppercase tracking-widest mb-6"
         >
-          <span className="font-bold">09</span>
+          <span className="font-bold">06</span>
           <span>───────────────</span>
           <span>FINAL ADMISSION CALL</span>
         </motion.div>
@@ -36,9 +36,9 @@ export const RegistrationCTA: React.FC<RegistrationCTAProps> = ({ onOpenRegister
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-30px" }}
             transition={{ duration: 0.45 }}
-            className="lg:col-span-8 space-y-5"
+            className="lg:col-span-8 min-w-0 space-y-5"
           >
-            <h2 className="font-display font-black tracking-tighter text-[#FCFAED] uppercase leading-[0.9] text-[clamp(2.5rem,8vw,6.5rem)]">
+            <h2 className="font-display font-black tracking-tighter text-[#FCFAED] uppercase leading-[0.92] text-[clamp(2.2rem,6vw,5.2rem)] break-words">
               READY<br />
               TO<br />
               <span className="text-[#FF0022]">COMPETE?</span>
@@ -72,7 +72,7 @@ export const RegistrationCTA: React.FC<RegistrationCTAProps> = ({ onOpenRegister
                 className="w-full sm:w-auto min-h-[48px]"
               >
                 <span>OFFICIAL GOOGLE FORM</span>
-                <ArrowUpRight className="w-4 h-4 text-[#FF0022] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                <ArrowUpRight className="w-4 h-4 text-[#FF0022] transition-colors" />
               </MagneticButton>
             </div>
           </motion.div>
@@ -83,7 +83,7 @@ export const RegistrationCTA: React.FC<RegistrationCTAProps> = ({ onOpenRegister
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-30px" }}
             transition={{ duration: 0.45, delay: 0.1 }}
-            className="lg:col-span-4 bg-[#141414] border border-[#262626] p-5 sm:p-6 space-y-3"
+            className="lg:col-span-4 min-w-0 bg-[#141414] border border-[#262626] p-4 sm:p-6 space-y-3"
           >
             <div className="flex items-center gap-2 font-mono-tech text-xs text-[#FF0022] font-bold">
               <Terminal className="w-4 h-4" />

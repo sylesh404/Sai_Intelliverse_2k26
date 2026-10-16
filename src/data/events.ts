@@ -53,7 +53,11 @@ export const eventsData: EventItem[] = [
       "Technical issues caused by a participant's file or device may not result in additional presentation time.",
       "Participants must maintain professional language and conduct."
     ],
-    entryFee: "₹150 / Team",
+    entryFee: "₹500 / Team",
+    entryFeeOptions: {
+      team: "₹500 / Team",
+      individual: "₹150 / Person — Individual Registration",
+    },
     prizes: {
       first: "₹1,500",
       second: "₹700",
@@ -120,7 +124,7 @@ export const eventsData: EventItem[] = [
       "Prohibited tools or external assistance will result in disqualification.",
       "The organizers' decision will be final and binding."
     ],
-    entryFee: "₹150 / Team",
+    entryFee: "₹400 / Team",
     prizes: {
       first: "₹1,000",
       second: "₹500",
@@ -196,7 +200,7 @@ export const eventsData: EventItem[] = [
       "Teams must be able to explain their use of AI.",
       "The organizers' decision will be final and binding."
     ],
-    entryFee: "₹150 / Team",
+    entryFee: "₹400 / Team",
     prizes: {
       first: "₹1,000",
       second: "₹500",
@@ -272,7 +276,7 @@ export const eventsData: EventItem[] = [
       "All tasks must be completed and submitted within the given time. Late submissions may not be considered."
     ],
     closingLine: "Come prepared to think fast. Prompt smart. Create something unexpected.",
-    entryFee: "₹150 / Team",
+    entryFee: "₹400 / Team",
     prizes: {
       first: "₹1,000",
       second: "₹500",
@@ -334,11 +338,8 @@ export const eventsData: EventItem[] = [
       "The highest valid bidder wins each auctioned item.",
       "No item exchanges or returns are allowed after purchase."
     ],
-    entryFee: "₹150 / Team",
-    prizes: {
-      first: "₹1,000",
-      second: "₹500",
-    },
+    entryFee: "₹50 / Person",
+    winnerRewards: "Mementos for Winners",
     venue: "Seminar Hall",
     date: "NOVEMBER 6, 2026",
     time: "10:30 AM — 01:00 PM",
@@ -355,40 +356,60 @@ export const eventsData: EventItem[] = [
     featured: true,
   },
   {
-    id: "debate-battle",
+    id: "meme-oji-showdown",
     code: "06",
-    title: "DEBATE BATTLE",
-    subtitle: "DIALECTIC COMBAT & ORATORY",
-    tagline: "Clash minds, articulate vision, and defend intellectual ground.",
+    title: "THE MEME-OJI SHOWDOWN",
+    subtitle: "EMOJI CIPHER & MEME GENERATION",
+    tagline: "Decode the Emojis. Rule the Meme Feed.",
     category: "NON-TECHNICAL",
-    shortDescription: "Debate Battle brings together persuasive orators to clash minds on thought-provoking motions. Event details will be announced by the organizers.",
-    fullDescription: "Debate Battle brings together persuasive orators to clash minds on thought-provoking motions. Event details will be announced by the organizers.",
-    teamSize: "To Be Announced",
+    shortDescription: "A high-energy, non-technical battle of wit, pop culture, and humor where teams decipher cryptic emoji puzzles and craft hilarious memes on the spot.",
+    fullDescription: "The Meme-oji Showdown is a high-energy, non-technical competition where quick thinking, pop-culture awareness, and visual humor collide. Teams compete to decipher cryptic emoji puzzles, solve trending pop-culture riddles, and unleash their creativity in live meme-making showdowns.",
+    teamSize: "2–3 Members per Team",
     teamFormat: [
-      "Event details will be announced by the organizers."
+      "Teams must consist of 2–3 participants.",
+      "Open to all students with a valid college ID card."
     ],
-    importantNotes: [
-      "Event details will be announced by the organizers."
+    rounds: [
+      {
+        title: "ROUND 1 — EMOJI DECODER",
+        duration: "20 Minutes",
+        description: "A rapid visual deciphering challenge.",
+        points: [
+          "Teams must decode movies, tech concepts, songs, and viral internet references shown exclusively as emoji sequences.",
+          "Top-scoring teams with fastest accurate answers advance to Round 2."
+        ]
+      },
+      {
+        title: "ROUND 2 — THE MEME FORGE",
+        duration: "30 Minutes",
+        description: "Live prompt-driven meme creation battle.",
+        points: [
+          "Finalist teams receive spontaneous situational prompts and classic meme templates.",
+          "Teams craft original, witty memes evaluated on humor, relevance, and punchiness."
+        ]
+      }
     ],
     rules: [
-      "Event details will be announced by the organizers."
+      "Each team must consist of 2–3 members.",
+      "All content must remain strictly appropriate for a college symposium (no vulgarity, hate speech, or harassment).",
+      "Memes must be original and created during the allotted contest time.",
+      "The decisions of the judges and event coordinators will be final and binding."
     ],
-    entryFee: "₹150 / Team",
-    prizes: {
-      first: "₹1,000",
-      second: "₹500",
-    },
+    entryFee: "₹50 / Person",
+    winnerRewards: "Mementos for Winners",
     venue: "Seminar Hall",
     date: "NOVEMBER 6, 2026",
     time: "11:30 AM — 02:30 PM",
     coordinators: [
-      { name: "Ananya M.", phone: "+91 94443 77889" },
+      { name: "NavyaShree", phone: "+91 9620334361" },
+      { name: "Pramodh Savadatti", phone: "+91 8660738830" },
+      { name: "Rithik", phone: "+91 9080093224" },
     ],
     coordinator: {
-      name: "Ananya M.",
-      phone: "+91 94443 77889",
+      name: "NavyaShree",
+      phone: "+91 9620334361",
     },
-    image: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?q=80&w=1200&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1516251193007-45ef944ab0c6?q=80&w=1200&auto=format&fit=crop",
     featured: true,
   },
   {
@@ -452,11 +473,8 @@ export const eventsData: EventItem[] = [
       "No arguments, slow-motion replays, or appeals will be entertained."
     ],
     closingLine: "THE TRUTH WILL GET YOU DISQUALIFIED.",
-    entryFee: "₹150 / Team",
-    prizes: {
-      first: "₹1,000",
-      second: "₹500",
-    },
+    entryFee: "₹50 / Person",
+    winnerRewards: "Mementos for Winners",
     venue: "Seminar Hall",
     date: "NOVEMBER 6, 2026",
     time: "01:30 PM — 03:30 PM",
@@ -513,11 +531,8 @@ export const eventsData: EventItem[] = [
       "Only the top 3 overall squads will receive awards based on cumulative points.",
       "Strict adherence to competitive fair play. Emulators, hacks, or third-party modifications are strictly prohibited."
     ],
-    entryFee: "₹150 / Team",
-    prizes: {
-      first: "₹1,000",
-      second: "₹500",
-    },
+    entryFee: "₹50 / Person",
+    winnerRewards: "Mementos for Winners",
     venue: "Seminar Hall",
     date: "NOVEMBER 6, 2026",
     time: "02:00 PM — 04:30 PM",

@@ -155,7 +155,7 @@ export const Footer: React.FC = () => {
         <div className="border-t border-[#262626] pt-8 sm:pt-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
             {/* Faculty Co-ordinators */}
-            <div className="lg:col-span-5 bg-[#141414] border border-[#262626] p-4 sm:p-5 relative overflow-hidden">
+            <div className="lg:col-span-5 bg-[#141414] border border-[#262626] p-4 sm:p-5 relative overflow-hidden min-w-0">
               <div className="absolute top-0 right-0 w-6 h-6 bg-[#FF0022]/10 clip-diagonal-left" />
               <div className="flex items-center gap-2 text-xs font-bold text-[#FCFAED] uppercase mb-3.5 tracking-wider border-b border-[#262626] pb-2.5">
                 <UserCheck className="w-4 h-4 text-[#FF0022]" />
@@ -163,11 +163,11 @@ export const Footer: React.FC = () => {
               </div>
               <div className="space-y-2.5 font-mono-tech">
                 {facultyCoordinators.map((fac, idx) => (
-                  <div key={idx} className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-xs bg-[#0D0D0D] p-2.5 border border-[#222222]">
-                    <span className="font-bold text-[#FCFAED]">{idx + 1}. {fac.name}</span>
+                  <div key={idx} className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-xs bg-[#0D0D0D] p-2.5 border border-[#222222] min-w-0">
+                    <span className="font-bold text-[#FCFAED] truncate">{idx + 1}. {fac.name}</span>
                     <a
                       href={`tel:${fac.tel}`}
-                      className="inline-flex items-center gap-1.5 text-[#FCFAED]/80 hover:text-[#FF0022] transition-colors py-0.5"
+                      className="inline-flex items-center gap-1.5 text-[#FCFAED]/80 hover:text-[#FF0022] transition-colors py-0.5 shrink-0"
                     >
                       <Phone className="w-3 h-3 text-[#FF0022]" />
                       <span>{fac.phone}</span>
@@ -178,7 +178,7 @@ export const Footer: React.FC = () => {
             </div>
 
             {/* Student Co-ordinators */}
-            <div className="lg:col-span-7 bg-[#141414] border border-[#262626] p-4 sm:p-5 relative overflow-hidden">
+            <div className="lg:col-span-7 bg-[#141414] border border-[#262626] p-4 sm:p-5 relative overflow-hidden min-w-0">
               <div className="absolute top-0 right-0 w-6 h-6 bg-[#FF0022]/10 clip-diagonal-left" />
               <div className="flex items-center gap-2 text-xs font-bold text-[#FCFAED] uppercase mb-3.5 tracking-wider border-b border-[#262626] pb-2.5">
                 <Users className="w-4 h-4 text-[#FF0022]" />
@@ -186,11 +186,11 @@ export const Footer: React.FC = () => {
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 font-mono-tech">
                 {studentCoordinators.map((stu, idx) => (
-                  <div key={idx} className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-xs bg-[#0D0D0D] p-2.5 border border-[#222222]">
-                    <span className="font-bold text-[#FCFAED]">{idx + 1}. {stu.name}</span>
+                  <div key={idx} className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-xs bg-[#0D0D0D] p-2.5 border border-[#222222] min-w-0">
+                    <span className="font-bold text-[#FCFAED] truncate">{idx + 1}. {stu.name}</span>
                     <a
                       href={`tel:${stu.tel}`}
-                      className="inline-flex items-center gap-1.5 text-[#FCFAED]/80 hover:text-[#FF0022] transition-colors py-0.5"
+                      className="inline-flex items-center gap-1.5 text-[#FCFAED]/80 hover:text-[#FF0022] transition-colors py-0.5 shrink-0"
                     >
                       <Phone className="w-3 h-3 text-[#FF0022]" />
                       <span>{stu.phone}</span>
