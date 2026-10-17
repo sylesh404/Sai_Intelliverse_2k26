@@ -86,11 +86,10 @@ const EventCard: React.FC<EventCardProps> = ({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onClick={onSelect}
-      className={`group relative bg-[#131313] border p-4 sm:p-6 lg:p-7 flex flex-col justify-between cursor-pointer transition-colors duration-300 overflow-hidden min-w-0 ${
-        isTechnical
-          ? 'border-[#242424] hover:border-[#FF0022] hover:shadow-[0_0_28px_rgba(255,0,34,0.22)]'
-          : 'border-[#242424] hover:border-[#FF3D00] hover:shadow-[0_0_28px_rgba(255,61,0,0.24)]'
-      }`}
+      className={`group relative bg-[#131313] border p-4 sm:p-6 lg:p-7 flex flex-col justify-between cursor-pointer transition-colors duration-300 overflow-hidden min-w-0 ${isTechnical
+        ? 'border-[#242424] hover:border-[#FF0022] hover:shadow-[0_0_28px_rgba(255,0,34,0.22)]'
+        : 'border-[#242424] hover:border-[#FF3D00] hover:shadow-[0_0_28px_rgba(255,61,0,0.24)]'
+        }`}
     >
       {/* ========================================================================= */}
       {/* 1. LAYERED BACKGROUND & STATIONARY CURSOR SPOTLIGHT                       */}
@@ -239,31 +238,14 @@ const EventCard: React.FC<EventCardProps> = ({
         <div
           className="group/fee mb-3 p-2.5 bg-[#0D0D0D]/90 border border-[#202020] group-hover/fee:border-[#FF3D00]/50 group-hover:border-[#282828] transition-colors duration-200 font-mono-tech text-[10px] sm:text-xs"
         >
-          {event.id === 'intellipaper' ? (
-            <div className="space-y-0.5">
-              <span className="text-[#888888] group-hover/fee:text-[#AAAAAA] uppercase block text-[9px] font-semibold tracking-wider transition-colors">
-                REGISTRATION FEE:
-              </span>
-              <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-[10px] sm:text-xs">
-                <span className="font-bold text-[#FCFAED] group-hover/fee:text-white transition-colors">
-                  ₹500 / TEAM
-                </span>
-                <span className="text-[#555555]">OR</span>
-                <span className="font-bold text-[#FCFAED] group-hover/fee:text-white transition-colors">
-                  ₹150 / PERSON
-                </span>
-              </div>
-            </div>
-          ) : (
-            <div className="flex items-center justify-between gap-2 text-[#888888]">
-              <span className="text-[#888888] group-hover/fee:text-[#AAAAAA] uppercase text-[9px] sm:text-[10px] font-semibold tracking-wider transition-colors">
-                ENTRY FEE:
-              </span>
-              <span className="font-bold text-[#FCFAED] group-hover/fee:text-white uppercase transition-colors">
-                {event.entryFee}
-              </span>
-            </div>
-          )}
+          <div className="flex items-center justify-between gap-2 text-[#888888]">
+            <span className="text-[#888888] group-hover/fee:text-[#AAAAAA] uppercase text-[9px] sm:text-[10px] font-semibold tracking-wider transition-colors">
+              ENTRY FEE:
+            </span>
+            <span className="font-bold text-[#FCFAED] group-hover/fee:text-white uppercase transition-colors">
+              {event.entryFee}
+            </span>
+          </div>
         </div>
       </div>
 
@@ -272,20 +254,23 @@ const EventCard: React.FC<EventCardProps> = ({
       {/* ========================================================================= */}
       <div className="pt-3 border-t border-[#202020] group-hover:border-[#2A2A2A] flex flex-col min-[380px]:flex-row min-[380px]:items-center justify-between gap-2.5 text-[9px] sm:text-xs font-mono-tech relative z-10 transition-colors">
         {/* Prize / Winner Reward Display */}
-        {isTechnical ? (
+        {event.prizes?.first ? (
           <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[#FCFAED] min-w-0">
             <div className="flex items-center gap-1.5">
-              <Trophy className="w-3.5 h-3.5 text-[#FF0022] shrink-0" />
+              <Trophy
+                className="w-3.5 h-3.5 shrink-0"
+                style={{ color: accentColor }}
+              />
               <span className="text-[#888888] text-[9px] sm:text-[10px]">1ST:</span>
               <span className="font-bold text-[#FCFAED] group-hover:text-white transition-colors">
-                {event.prizes?.first}
+                {event.prizes.first}
               </span>
             </div>
             {event.prizes?.second && (
               <div className="flex items-center gap-1.5">
                 <span className="text-[#888888] text-[9px] sm:text-[10px]">2ND:</span>
                 <span className="font-bold text-[#FCFAED] group-hover:text-white transition-colors">
-                  {event.prizes?.second}
+                  {event.prizes.second}
                 </span>
               </div>
             )}
@@ -294,7 +279,7 @@ const EventCard: React.FC<EventCardProps> = ({
           <div className="flex items-center gap-1.5 text-[#FCFAED] min-w-0">
             <Trophy className="w-3.5 h-3.5 text-[#FF3D00] shrink-0" />
             <span className="font-bold text-[#FCFAED] group-hover:text-white truncate transition-colors">
-              Mementos for Winners
+              {event.winnerRewards || 'Mementos for Winners'}
             </span>
           </div>
         )}

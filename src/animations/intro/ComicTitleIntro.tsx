@@ -508,7 +508,7 @@ export const ComicTitleIntro: React.FC<ComicTitleIntroProps> = ({ onComplete }) 
         className="absolute inset-0 z-30 flex items-center justify-center pointer-events-none px-4 opacity-0 max-w-full"
       >
         <h1
-          className="font-display font-black uppercase tracking-tight text-[clamp(2rem,8.2vw,7.2rem)] text-[#FCFAED] comic-print-offset select-none text-center inline-block"
+          className="font-display font-black uppercase tracking-tight text-[clamp(1.75rem,8vw,7rem)] text-[#FCFAED] comic-print-offset select-none text-center inline-block"
           style={{ whiteSpace: 'nowrap' }}
         >
           INTELLIVERSE
@@ -523,7 +523,7 @@ export const ComicTitleIntro: React.FC<ComicTitleIntroProps> = ({ onComplete }) 
         <div className="relative text-center">
           <div className="absolute inset-0 bg-[#0D0D0D] -rotate-3 scale-110 pointer-events-none" />
           <h1
-            className="relative z-10 font-display font-black text-white text-[clamp(2rem,8.5vw,7.5rem)] uppercase tracking-tight leading-none inline-block"
+            className="relative z-10 font-display font-black text-white text-[clamp(1.75rem,8vw,7.2rem)] uppercase tracking-tight leading-none inline-block"
             style={{ whiteSpace: 'nowrap' }}
           >
             INTELLIVERSE
@@ -550,7 +550,7 @@ export const ComicTitleIntro: React.FC<ComicTitleIntroProps> = ({ onComplete }) 
 
         {/* INTELLIVERSE: Guaranteed single line, never wraps */}
         <h1
-          className="font-display font-black tracking-tight text-[#FCFAED] uppercase leading-none select-none text-[clamp(2rem,9.5vw,7.8rem)] comic-ink-glow inline-block"
+          className="font-display font-black tracking-tight text-[#FCFAED] uppercase leading-none select-none text-[clamp(1.75rem,8.2vw,7.5rem)] comic-ink-glow inline-block"
           style={{ whiteSpace: 'nowrap' }}
         >
           INTELLIVERSE

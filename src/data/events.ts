@@ -53,11 +53,7 @@ export const eventsData: EventItem[] = [
       "Technical issues caused by a participant's file or device may not result in additional presentation time.",
       "Participants must maintain professional language and conduct."
     ],
-    entryFee: "₹500 / Team",
-    entryFeeOptions: {
-      team: "₹500 / Team",
-      individual: "₹150 / Person — Individual Registration",
-    },
+    entryFee: "₹150 / Person",
     prizes: {
       first: "₹1,500",
       second: "₹700",
@@ -87,9 +83,10 @@ export const eventsData: EventItem[] = [
     category: "TECHNICAL",
     shortDescription: "A fast-paced UI/UX recreation challenge testing observation, creativity, and design skills under pressure using only Canva or Figma.",
     fullDescription: "A fast-paced UI/UX recreation challenge that tests observation, creativity, design skills, and the ability to work under pressure. Participants receive a limited amount of time to observe a UI/UX reference and recreate it using only Canva or Figma.",
-    teamSize: "3 Members per Team",
+    teamSize: "2-3 Members per Team",
     teamFormat: [
-      "3 members per team (mandatory)."
+      "2-3 members per team.",
+      "A laptop with good processing speed and a stable, high-speed internet connection is recommended."
     ],
     rounds: [
       {
@@ -114,7 +111,7 @@ export const eventsData: EventItem[] = [
       }
     ],
     rules: [
-      "Each team must consist of exactly 3 members.",
+      "Each team must consist of exactly 2-3 members.",
       "Mobile phones are not allowed during the event.",
       "AI tools such as ChatGPT, Gemini, Claude, Copilot, and AI design or generation tools are prohibited.",
       "Only Canva and Figma are permitted for digital design.",
@@ -124,7 +121,7 @@ export const eventsData: EventItem[] = [
       "Prohibited tools or external assistance will result in disqualification.",
       "The organizers' decision will be final and binding."
     ],
-    entryFee: "₹400 / Team",
+    entryFee: "₹50 / Person",
     prizes: {
       first: "₹1,000",
       second: "₹500",
@@ -154,9 +151,10 @@ export const eventsData: EventItem[] = [
     category: "TECHNICAL",
     shortDescription: "A fast-paced AI-powered marketing challenge where teams turn a fictional or unusual product into a complete marketing campaign within 60 minutes.",
     fullDescription: "A fast-paced AI-powered marketing challenge where teams turn a fictional or unusual product into a complete marketing campaign. Test creativity, branding, strategy, and AI skills by developing a campaign within 60 minutes.",
-    teamSize: "3 Members per Team",
+    teamSize: "2-3 Members per Team",
     teamFormat: [
-      "3 members per team."
+      "2-3 members per team.",
+      "A laptop with good processing speed and a stable, high-speed internet connection is recommended."
     ],
     rounds: [
       {
@@ -187,7 +185,7 @@ export const eventsData: EventItem[] = [
       }
     ],
     rules: [
-      "Each team must consist of exactly 3 members.",
+      "Each team must consist of exactly 2-3 members.",
       "Only free AI tools and permitted free design/video tools may be used.",
       "ChatGPT, Gemini, Claude, Copilot, Canva AI, and other AI tools are permitted.",
       "Canva, Figma, CapCut, Adobe Express, and similar free tools may be used.",
@@ -200,7 +198,7 @@ export const eventsData: EventItem[] = [
       "Teams must be able to explain their use of AI.",
       "The organizers' decision will be final and binding."
     ],
-    entryFee: "₹400 / Team",
+    entryFee: "₹50 / Person",
     prizes: {
       first: "₹1,000",
       second: "₹500",
@@ -230,9 +228,9 @@ export const eventsData: EventItem[] = [
     category: "TECHNICAL",
     shortDescription: "A fast-paced AI challenge competing through two creative rounds testing observation, memory, AI prompting, and visual problem-solving.",
     fullDescription: "PROMPT RUSH is a fast-paced AI challenge where teams compete through two creative rounds testing observation, memory, AI prompting, problem-solving, creativity, and adaptability. Participants must use AI tools strategically, make quick decisions, and transform ideas into compelling visual solutions within a limited time.",
-    teamSize: "1–3 Members per Team",
+    teamSize: "2–3 Members per Team",
     teamFormat: [
-      "Each team must have 1–3 members.",
+      "Each team must have 2–3 members.",
       "One laptop per team is mandatory.",
       "A laptop with good processing speed and a stable, high-speed internet connection is recommended."
     ],
@@ -276,7 +274,7 @@ export const eventsData: EventItem[] = [
       "All tasks must be completed and submitted within the given time. Late submissions may not be considered."
     ],
     closingLine: "Come prepared to think fast. Prompt smart. Create something unexpected.",
-    entryFee: "₹400 / Team",
+    entryFee: "₹50 / Person",
     prizes: {
       first: "₹1,000",
       second: "₹500",
@@ -310,9 +308,9 @@ export const eventsData: EventItem[] = [
     category: "NON-TECHNICAL",
     shortDescription: "A strategy-driven auction competition where teams compete to build the strongest virtual team or collection of assets within a fixed budget.",
     fullDescription: "Auction Battle is a strategy-driven auction competition where teams compete to build the strongest virtual team or collection of assets within a fixed budget. Participants must bid intelligently, manage resources, evaluate risk, and make strategic decisions to outperform their competitors.",
-    teamSize: "4 Participants per Team",
+    teamSize: "2-3 Participants per Team",
     teamFormat: [
-      "4 participants per team."
+      "2-3 participants per team."
     ],
     rounds: [
       {
@@ -333,7 +331,7 @@ export const eventsData: EventItem[] = [
       "Note: The virtual wallet value of 10,000 points is an illustrative example, not a confirmed fixed budget. The exact amount will be confirmed by organizers on the day of the event."
     ],
     rules: [
-      "Each team must consist of 4 participants.",
+      "Each team must consist of 2-3 participants.",
       "Teams must manage their budgets strategically.",
       "The highest valid bidder wins each auctioned item.",
       "No item exchanges or returns are allowed after purchase."
@@ -347,6 +345,7 @@ export const eventsData: EventItem[] = [
       { name: "Anshuman Sharma", phone: "+91 8854963575" },
       { name: "Vishwanath", phone: "+91 7259201773" },
       { name: "Indraprakash", phone: "+91 7349503350" },
+      { name: "Hemanth", phone: "+91 9663950621" },
     ],
     coordinator: {
       name: "Anshuman Sharma",
@@ -404,6 +403,7 @@ export const eventsData: EventItem[] = [
       { name: "NavyaShree", phone: "+91 9620334361" },
       { name: "Pramodh Savadatti", phone: "+91 8660738830" },
       { name: "Rithik", phone: "+91 9080093224" },
+      { name: "Ajay", phone: "+91 9480458001" },
     ],
     coordinator: {
       name: "NavyaShree",
@@ -421,9 +421,9 @@ export const eventsData: EventItem[] = [
     category: "NON-TECHNICAL",
     shortDescription: "A high-energy, non-technical comedy game show where intellect is a liability and absurdity is rewarded. Quick wit and deadpan delivery win.",
     fullDescription: "Wrong Answers Only is a high-energy, non-technical comedy game show where intellect is a liability and absurdity is rewarded. Teams compete to demonstrate quick wit, straight-faced delivery, and creative imagination. The golden rule is simple: THE TRUTH WILL GET YOU DISQUALIFIED.",
-    teamSize: "3 Members per Team",
+    teamSize: "2-3 Members per Team",
     teamFormat: [
-      "Exactly 3 members per team.",
+      "Exactly 2-3 members per team.",
       "No substitutions are allowed once the event begins."
     ],
     rounds: [
@@ -532,7 +532,10 @@ export const eventsData: EventItem[] = [
       "Strict adherence to competitive fair play. Emulators, hacks, or third-party modifications are strictly prohibited."
     ],
     entryFee: "₹50 / Person",
-    winnerRewards: "Mementos for Winners",
+    prizes: {
+      first: "₹1,000",
+      second: "₹500",
+    },
     venue: "Seminar Hall",
     date: "NOVEMBER 6, 2026",
     time: "02:00 PM — 04:30 PM",

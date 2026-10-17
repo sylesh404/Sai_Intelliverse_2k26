@@ -102,7 +102,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenRegister }) => {
           {/* ==================================================== */}
           {/* 1. PRIMARY FOCUS: SAI INTELLIVERSE 3.0 TITLE LOCKUP */}
           {/* ==================================================== */}
-          <div className="relative py-1 sm:py-2">
+          <div className="relative w-full max-w-full overflow-visible py-1 sm:py-2">
             <IntelliverseTitleLockup align="responsive" />
           </div>
 

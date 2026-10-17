@@ -14,42 +14,74 @@ export const IntelliverseTitleLockup: React.FC<IntelliverseTitleLockupProps> = (
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLHeadingElement>(null);
+  const measureRef = useRef<HTMLSpanElement>(null);
   const [scale, setScale] = useState<number>(1);
+  const [unscaledWidth, setUnscaledWidth] = useState<number>(0);
   const [prefersReducedMotion] = useState<boolean>(() => {
     if (typeof window === 'undefined') return false;
     return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   });
 
   // Dynamic responsive font-scaling safeguard:
-  // Ensures "INTELLIVERSE" ALWAYS fits on ONE SINGLE LINE on every device (320px to 1920px)
+  // Ensures "INTELLIVERSE" ALWAYS fits on ONE SINGLE LINE on every device (320px to 1920px+)
+  // with zero clipping on either side.
   useEffect(() => {
-    const handleResize = () => {
-      if (!containerRef.current || !textRef.current) return;
+    let animationFrameId: number;
+
+    const measureAndScale = () => {
+      if (!containerRef.current || !measureRef.current) return;
 
       const containerWidth = containerRef.current.clientWidth;
-      const textWidth = textRef.current.scrollWidth;
+      // Measure natural unscaled width from the invisible probe
+      const naturalWidth = measureRef.current.getBoundingClientRect().width;
 
-      // Safe buffer margin
-      const targetWidth = Math.max(containerWidth - 20, 200);
+      if (naturalWidth > 0) {
+        setUnscaledWidth(naturalWidth);
+      }
 
-      if (textWidth > targetWidth && textWidth > 0) {
-        const calculatedScale = Math.min(1, targetWidth / textWidth);
+      // Safe buffer margin (12px) to guarantee zero horizontal clipping
+      const safeWidth = Math.max(containerWidth - 12, 100);
+
+      if (naturalWidth > safeWidth && naturalWidth > 0 && safeWidth > 0) {
+        const calculatedScale = Math.min(1, safeWidth / naturalWidth);
         setScale(calculatedScale);
       } else {
         setScale(1);
       }
     };
 
+    const handleResize = () => {
+      cancelAnimationFrame(animationFrameId);
+      animationFrameId = requestAnimationFrame(measureAndScale);
+    };
+
+    // 1. Initial measurement
     handleResize();
 
-    const resizeObserver = new ResizeObserver(handleResize);
+    // 2. Critical: Recalculate as soon as custom webfonts (Syne 800) are fully loaded
+    if (typeof document !== 'undefined' && document.fonts) {
+      document.fonts.ready.then(() => {
+        handleResize();
+      });
+    }
+
+    // 3. Observe both container size and font/text metrics via ResizeObserver
+    const resizeObserver = new ResizeObserver(() => {
+      handleResize();
+    });
+
     if (containerRef.current) {
       resizeObserver.observe(containerRef.current);
     }
+    if (measureRef.current) {
+      resizeObserver.observe(measureRef.current);
+    }
+
     window.addEventListener('resize', handleResize, { passive: true });
     window.addEventListener('orientationchange', handleResize, { passive: true });
 
     return () => {
+      cancelAnimationFrame(animationFrameId);
       resizeObserver.disconnect();
       window.removeEventListener('resize', handleResize);
       window.removeEventListener('orientationchange', handleResize);
@@ -68,11 +100,28 @@ export const IntelliverseTitleLockup: React.FC<IntelliverseTitleLockupProps> = (
     responsive: 'justify-center lg:justify-start',
   }[align];
 
+  const typographyClasses =
+    variant === 'compact'
+      ? 'text-[clamp(1.5rem,6vw,3.5rem)]'
+      : 'text-[clamp(1.75rem,8.2vw,3.2rem)] sm:text-[clamp(2.8rem,7.5vw,4.5rem)] lg:text-[clamp(3.2rem,5.2vw,4.8rem)] xl:text-[clamp(3.8rem,5.6vw,5.8rem)] 2xl:text-[clamp(4.4rem,6vw,6.8rem)]';
+
   return (
     <div
       ref={containerRef}
-      className={`relative w-full flex flex-col select-none ${alignmentClasses} ${className}`}
+      className={`relative w-full flex flex-col select-none overflow-visible ${alignmentClasses} ${className}`}
     >
+      {/* Hidden measurement probe to reliably determine true natural font width */}
+      <span
+        ref={measureRef}
+        aria-hidden="true"
+        className={`font-display font-black uppercase tracking-tight pointer-events-none invisible absolute left-0 top-0 opacity-0 select-none whitespace-nowrap leading-[0.9] sm:leading-[0.92] ${typographyClasses}`}
+        style={{
+          letterSpacing: '-0.025em',
+        }}
+      >
+        INTELLIVERSE
+      </span>
+
       {/* ================================================================= */}
       {/* 1. EYEBROW: SAI (Revealed with animated line-drawing)             */}
       {/* ================================================================= */}
@@ -126,9 +175,9 @@ export const IntelliverseTitleLockup: React.FC<IntelliverseTitleLockupProps> = (
 
       {/* ================================================================= */}
       {/* 2. THE HERO TITLE: INTELLIVERSE (Dominant foreground centerpiece) */}
-      {/* Refined vertical clip-path reveal with no layout shift            */}
+      {/* Refined vertical clip-path reveal with zero side clipping         */}
       {/* ================================================================= */}
-      <div className={`w-full max-w-full flex items-center ${flexAlignClasses} overflow-hidden my-0.5 sm:my-1 px-0 z-10`}>
+      <div className={`w-full max-w-full flex items-center ${flexAlignClasses} overflow-visible my-0.5 sm:my-1 px-0 z-10`}>
         <motion.div
           initial={
             prefersReducedMotion
@@ -153,20 +202,23 @@ export const IntelliverseTitleLockup: React.FC<IntelliverseTitleLockupProps> = (
             y: { duration: 0.85, delay: 0.25, ease: [0.16, 1, 0.3, 1] },
             filter: { duration: 1.1, delay: 1.1, ease: "easeInOut" },
           }}
-          className="inline-block transform-gpu"
+          className="inline-block transform-gpu overflow-visible"
+          style={
+            scale < 1 && unscaledWidth > 0
+              ? {
+                  width: Math.ceil(unscaledWidth * scale) + 2,
+                }
+              : undefined
+          }
         >
           <h1
             ref={textRef}
-            className={`font-display font-black uppercase text-[#FCFAED] tracking-tight leading-[0.9] sm:leading-[0.92] transition-transform duration-100 ${
-              variant === 'compact'
-                ? 'text-[clamp(1.75rem,7vw,4rem)]'
-                : 'text-[clamp(2.1rem,9vw,3.8rem)] sm:text-[clamp(3.4rem,8.4vw,5.5rem)] lg:text-[clamp(4.2rem,6.8vw,6.8rem)] xl:text-[clamp(4.8rem,7vw,7.8rem)]'
-            }`}
+            className={`font-display font-black uppercase text-[#FCFAED] tracking-tight leading-[0.9] sm:leading-[0.92] transition-transform duration-100 ${typographyClasses}`}
             style={{
               whiteSpace: 'nowrap',
               display: 'inline-block',
               transform: scale < 1 ? `scale(${scale})` : undefined,
-              transformOrigin: align === 'responsive' ? 'left center' : 'center center',
+              transformOrigin: 'left center',
               textShadow: '0 4px 35px rgba(0,0,0,0.95), 0 0 45px rgba(255,0,34,0.22)',
               letterSpacing: '-0.025em',
             }}

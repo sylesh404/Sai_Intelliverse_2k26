@@ -98,7 +98,7 @@ export const EventDetailModal: React.FC<EventDetailModalProps> = ({
                 className="w-full h-full object-cover grayscale contrast-125"
               />
               <div className="absolute top-2 right-2 bg-[#FF0022] text-white px-3 py-1 font-mono-tech text-xs font-bold uppercase tracking-wider">
-                ENTRY: {event.id === 'intellipaper' ? '₹500 / TEAM (OR ₹150 / PERSON)' : event.category === 'NON-TECHNICAL' ? '₹50 PER PERSON' : event.entryFee}
+                ENTRY: {event.category === 'NON-TECHNICAL' ? '₹50 PER PERSON' : event.entryFee}
               </div>
             </div>
 
@@ -122,35 +122,15 @@ export const EventDetailModal: React.FC<EventDetailModalProps> = ({
             </div>
 
             {/* Registration Fee Block */}
-            {event.id === 'intellipaper' ? (
-              <div className="bg-[#0D0D0D] border border-[#FF0022]/40 p-3.5 sm:p-4 font-mono-tech space-y-2.5">
-                <div className="flex items-center gap-2 text-xs text-[#FF0022] font-bold uppercase tracking-wider">
-                  <Ticket className="w-4 h-4 text-[#FF0022]" />
-                  <span>REGISTRATION FEE</span>
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
-                  <div className="bg-[#141414] p-3 border border-[#262626]">
-                    <span className="text-[10px] text-[#888888] block uppercase font-bold">TEAM REGISTRATION</span>
-                    <span className="text-base sm:text-lg font-bold text-[#FCFAED] block mt-0.5">₹500 / TEAM</span>
-                  </div>
-                  <div className="bg-[#141414] p-3 border border-[#262626]">
-                    <span className="text-[10px] text-[#888888] block uppercase font-bold">INDIVIDUAL REGISTRATION</span>
-                    <span className="text-base sm:text-lg font-bold text-[#FCFAED] block mt-0.5">₹150 / PERSON</span>
-                    <span className="text-[10px] text-[#888888] block mt-1">Individual participation permitted</span>
-                  </div>
-                </div>
+            <div className="bg-[#0D0D0D] border border-[#262626] p-3.5 sm:p-4 font-mono-tech flex items-center justify-between flex-wrap gap-2">
+              <div className="flex items-center gap-2 text-xs text-[#FF0022] font-bold uppercase tracking-wider">
+                <Ticket className="w-4 h-4 text-[#FF0022]" />
+                <span>{event.category === 'NON-TECHNICAL' ? 'REGISTRATION FEE' : 'ENTRY FEE'}</span>
               </div>
-            ) : (
-              <div className="bg-[#0D0D0D] border border-[#262626] p-3.5 sm:p-4 font-mono-tech flex items-center justify-between flex-wrap gap-2">
-                <div className="flex items-center gap-2 text-xs text-[#FF0022] font-bold uppercase tracking-wider">
-                  <Ticket className="w-4 h-4 text-[#FF0022]" />
-                  <span>{event.category === 'NON-TECHNICAL' ? 'REGISTRATION FEE' : 'ENTRY FEE'}</span>
-                </div>
-                <span className="text-base sm:text-lg font-bold text-[#FCFAED] uppercase">
-                  {event.category === 'NON-TECHNICAL' ? '₹50 PER PERSON' : event.entryFee}
-                </span>
-              </div>
-            )}
+              <span className="text-base sm:text-lg font-bold text-[#FCFAED] uppercase">
+                {event.category === 'NON-TECHNICAL' ? '₹50 PER PERSON' : event.entryFee}
+              </span>
+            </div>
 
             {/* 3. About the Event */}
             <div className="space-y-2">
