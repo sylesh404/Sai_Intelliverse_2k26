@@ -66,7 +66,7 @@ export const TransitionDepartmentAbout: React.FC = () => {
         className="absolute inset-0 opacity-0 pointer-events-none transform-gpu"
         style={{
           backgroundImage: `
-            linear-gradient(to right, rgba(255, 0, 34, 0.15) 1px, transparent 1px),
+            linear-gradient(to right, rgba(108, 48, 130, 0.2) 1px, transparent 1px),
             linear-gradient(to bottom, rgba(252, 250, 237, 0.05) 1px, transparent 1px)
           `,
           backgroundSize: "40px 40px",
@@ -77,7 +77,7 @@ export const TransitionDepartmentAbout: React.FC = () => {
       {/* Kinetic Technical Labels Track 1 (Rightward Scroll Drift) */}
       <div
         ref={tickerTrack1Ref}
-        className="flex items-center gap-8 whitespace-nowrap font-mono-tech text-xs sm:text-sm text-[#FF0022] font-bold tracking-[0.25em] opacity-80 uppercase py-2 -translate-x-12"
+        className="flex items-center gap-8 whitespace-nowrap font-mono-tech text-xs sm:text-sm text-[#6C3082] font-bold tracking-[0.25em] opacity-80 uppercase py-2 -translate-x-12"
       >
         <span>DEPARTMENT // 01</span>
         <span className="text-[#333333]">◆</span>
@@ -98,18 +98,18 @@ export const TransitionDepartmentAbout: React.FC = () => {
         className="flex items-center gap-8 whitespace-nowrap font-mono-tech text-xs sm:text-sm text-[#FCFAED]/60 tracking-[0.2em] uppercase py-2 translate-x-12"
       >
         <span>DATA_SCIENCE_FOUNDRY</span>
-        <span className="text-[#FF0022]">///</span>
+        <span className="text-[#6C3082]">///</span>
         <span>COGNITIVE_ARCHITECTURE</span>
-        <span className="text-[#FF0022]">///</span>
+        <span className="text-[#6C3082]">///</span>
         <span>TRANSFORMATION_GRID</span>
-        <span className="text-[#FF0022]">///</span>
+        <span className="text-[#6C3082]">///</span>
         <span>DATA_SCIENCE_FOUNDRY</span>
-        <span className="text-[#FF0022]">///</span>
+        <span className="text-[#6C3082]">///</span>
         <span>COGNITIVE_ARCHITECTURE</span>
       </div>
 
       {/* Central Horizon Line */}
-      <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-[#FF0022]/40 to-transparent my-2" />
+      <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-[#6C3082]/40 to-transparent my-2" />
     </div>
   );
 };

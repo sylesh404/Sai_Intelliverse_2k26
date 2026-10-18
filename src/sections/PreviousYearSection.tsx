@@ -12,7 +12,7 @@ export const PreviousYearSection: React.FC = () => {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10 sm:mb-16 border-b border-[#262626] pb-6 sm:pb-8">
           <div>
-            <div className="flex items-center gap-3 font-mono-tech text-xs text-[#FF0022] uppercase tracking-widest mb-2 sm:mb-3">
+            <div className="flex items-center gap-3 font-mono-tech text-xs text-[#6C3082] uppercase tracking-widest mb-2 sm:mb-3">
               <span className="font-bold">08</span>
               <span>───────────────</span>
               <span>CINEMATIC ARCHIVE</span>
@@ -23,7 +23,7 @@ export const PreviousYearSection: React.FC = () => {
           </div>
 
           <div className="font-mono-tech text-xs text-[#888888]">
-            <span className="text-[#FF0022] font-bold block">A GLIMPSE OF WHAT HAPPENED.</span>
+            <span className="text-[#6C3082] font-bold block">A GLIMPSE OF WHAT HAPPENED.</span>
             <span>A CONTINUOUS TRADITION OF TECHNICAL DISTINCTION</span>
           </div>
         </div>
@@ -37,11 +37,11 @@ export const PreviousYearSection: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-30px" }}
               transition={{ duration: 0.35, delay: idx * 0.08 }}
-              className="bg-[#141414] border border-[#262626] hover:border-[#FF0022] transition-colors p-5 sm:p-6 flex flex-col justify-between group overflow-hidden"
+              className="bg-[#141414] border border-[#262626] hover:border-[#6C3082] transition-colors p-5 sm:p-6 flex flex-col justify-between group overflow-hidden"
             >
               <div>
                 <div className="flex justify-between items-baseline mb-3 border-b border-[#262626] pb-2.5">
-                  <span className="text-4xl sm:text-5xl font-display font-black text-white group-hover:text-[#FF0022] transition-colors">
+                  <span className="text-4xl sm:text-5xl font-display font-black text-white group-hover:text-[#6C3082] transition-colors">
                     '{archive.year.slice(2)}
                   </span>
                   <span className="font-mono-tech text-xs text-[#888888] font-bold uppercase">
@@ -58,7 +58,7 @@ export const PreviousYearSection: React.FC = () => {
                   />
                 </div>
 
-                <div className="font-mono-tech text-xs text-[#FF0022] mb-1.5 font-bold">
+                <div className="font-mono-tech text-xs text-[#6C3082] mb-1.5 font-bold">
                   {archive.stats}
                 </div>
 
@@ -69,7 +69,7 @@ export const PreviousYearSection: React.FC = () => {
 
               <div className="mt-5 pt-3 border-t border-[#1F1F1F] flex justify-between items-center text-[10px] font-mono-tech text-[#565656]">
                 <span>ARCHIVE LOG RECORDED</span>
-                <span className="w-1.5 h-1.5 bg-[#FF0022]" />
+                <span className="w-1.5 h-1.5 bg-[#6C3082]" />
               </div>
             </motion.div>
           ))}

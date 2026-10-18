@@ -103,13 +103,13 @@ export const TransitionAboutEvents: React.FC = () => {
         viewBox="0 0 1000 600"
         preserveAspectRatio="xMidYMid slice"
       >
-        <g stroke="#FF0022" strokeWidth="2" strokeDasharray="30 15">
+        <g stroke="#6C3082" strokeWidth="2" strokeDasharray="30 15">
           <line x1="0" y1="0" x2="480" y2="280" />
           <line x1="1000" y1="0" x2="520" y2="280" />
           <line x1="0" y1="600" x2="480" y2="320" />
           <line x1="1000" y1="600" x2="520" y2="320" />
-          <line x1="500" y1="0" x2="500" y2="260" stroke="#FF3D00" strokeWidth="3" />
-          <line x1="500" y1="600" x2="500" y2="340" stroke="#FF3D00" strokeWidth="3" />
+          <line x1="500" y1="0" x2="500" y2="260" stroke="#823A9D" strokeWidth="3" />
+          <line x1="500" y1="600" x2="500" y2="340" stroke="#823A9D" strokeWidth="3" />
           <line x1="0" y1="300" x2="460" y2="300" stroke="#FCFAED" strokeWidth="1" />
           <line x1="1000" y1="300" x2="540" y2="300" stroke="#FCFAED" strokeWidth="1" />
         </g>
@@ -136,7 +136,7 @@ export const TransitionAboutEvents: React.FC = () => {
 
           <div
             ref={num02Ref}
-            className="absolute font-display font-black text-7xl sm:text-9xl text-[#FF0022] tracking-tighter opacity-0"
+            className="absolute font-display font-black text-7xl sm:text-9xl text-[#6C3082] tracking-tighter opacity-0"
           >
             02
           </div>

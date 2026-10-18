@@ -78,7 +78,7 @@ export const TransitionPrizesGallery: React.FC = () => {
         ref={labelRef}
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 w-full mb-4 flex items-center justify-between font-mono-tech text-[10px] sm:text-xs text-[#888888] opacity-0"
       >
-        <span className="text-[#FF0022]">VISUAL_MEMORY_STREAM // ARCHIVE LOADING</span>
+        <span className="text-[#6C3082]">VISUAL_MEMORY_STREAM // ARCHIVE LOADING</span>
         <span>CHAPTER_05 ➔ GALLERY ARENA</span>
       </div>
 
@@ -104,7 +104,7 @@ export const TransitionPrizesGallery: React.FC = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-[#0D0D0D] via-transparent to-transparent" />
 
             <div className="relative z-10 flex justify-between items-center text-[9px] font-mono-tech">
-              <span className="bg-[#FF0022] text-white px-1.5 py-0.5 font-bold">
+              <span className="bg-[#6C3082] text-white px-1.5 py-0.5 font-bold">
                 {frame.tag}
               </span>
               <span className="text-[#FCFAED]">0{idx + 1}</span>

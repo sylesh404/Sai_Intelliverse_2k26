@@ -62,19 +62,19 @@ export const TransitionCTAFooter: React.FC = () => {
       {/* Downward traveling red technical guide line */}
       <div
         ref={redStemRef}
-        className="w-[2px] h-full bg-gradient-to-b from-[#FF0022] to-[#FF3D00] shadow-[0_0_10px_rgba(255,0,34,0.6)]"
+        className="w-[2px] h-full bg-gradient-to-b from-[#6C3082] to-[#823A9D] shadow-[0_0_10px_rgba(108,48,130,0.6)]"
       />
 
       {/* Central Terminal Anchor Node */}
       <div
         ref={nodeRef}
-        className="w-3 h-3 rounded-full bg-[#FF0022] -mb-1.5 z-10 scale-0"
+        className="w-3 h-3 rounded-full bg-[#6C3082] -mb-1.5 z-10 scale-0"
       />
 
       {/* Spreading Footer Divider */}
       <div
         ref={dividerLineRef}
-        className="w-full h-[1px] bg-gradient-to-r from-transparent via-[#FF0022] to-transparent scale-x-0"
+        className="w-full h-[1px] bg-gradient-to-r from-transparent via-[#6C3082] to-transparent scale-x-0"
       />
     </div>
   );

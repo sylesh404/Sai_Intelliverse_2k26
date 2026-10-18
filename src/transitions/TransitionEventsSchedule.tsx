@@ -75,21 +75,21 @@ export const TransitionEventsSchedule: React.FC = () => {
       {/* Horizontal Line from Events */}
       <div
         ref={horizontalLineRef}
-        className="h-[2px] bg-gradient-to-r from-[#FF0022] via-[#FF3D00] to-[#FF0022] transition-all"
+        className="h-[2px] bg-gradient-to-r from-[#6C3082] via-[#823A9D] to-[#6C3082] transition-all"
       />
 
       {/* Central Connector Node */}
       <div
         ref={pulseNodeRef}
-        className="w-4 h-4 rounded-full border-2 border-[#FF0022] bg-[#0D0D0D] flex items-center justify-center -my-2 z-10 opacity-0"
+        className="w-4 h-4 rounded-full border-2 border-[#6C3082] bg-[#0D0D0D] flex items-center justify-center -my-2 z-10 opacity-0"
       >
-        <span className="w-1.5 h-1.5 bg-[#FF0022] rounded-full animate-ping" />
+        <span className="w-1.5 h-1.5 bg-[#6C3082] rounded-full animate-ping" />
       </div>
 
       {/* Vertical Timeline Guide extending downward */}
       <div
         ref={verticalLineRef}
-        className="w-[2px] h-32 sm:h-48 bg-gradient-to-b from-[#FF0022] to-[#FF3D00] opacity-90 shadow-[0_0_12px_rgba(255,0,34,0.6)]"
+        className="w-[2px] h-32 sm:h-48 bg-gradient-to-b from-[#6C3082] to-[#823A9D] opacity-90 shadow-[0_0_12px_rgba(108,48,130,0.6)]"
       />
 
       {/* Technical Morph Label */}
@@ -97,7 +97,7 @@ export const TransitionEventsSchedule: React.FC = () => {
         ref={labelRef}
         className="mt-3 font-mono-tech text-[10px] sm:text-xs text-[#888888] tracking-widest uppercase flex items-center gap-2 opacity-0"
       >
-        <span className="text-[#FF0022]">EVENT_CONNECTION_LINE</span>
+        <span className="text-[#6C3082]">EVENT_CONNECTION_LINE</span>
         <span>➔</span>
         <span className="text-[#FCFAED]">SCHEDULE_TIMELINE</span>
       </div>

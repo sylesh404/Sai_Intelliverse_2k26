@@ -119,13 +119,13 @@ export const MagneticButton: React.FC<MagneticButtonProps> = ({
 
   const variantStyles = {
     primary:
-      "bg-[#FF0022] hover:bg-[#FF3D00] text-white border border-[#FF0022] hover:border-[#FF3D00] hover:shadow-[0_0_24px_rgba(255,61,0,0.45)]",
+      "bg-[#8B35AD] hover:bg-[#A855F7] active:bg-[#6C3082] text-white border border-[#C084FC]/60 hover:border-[#E9D5FF] shadow-[0_0_20px_rgba(139,53,173,0.4)] hover:shadow-[0_0_30px_rgba(168,85,247,0.6)]",
     secondary:
-      "bg-[#141414] hover:bg-[#1a1a1a] text-[#FCFAED] border border-[#333333] hover:border-[#FF3D00] hover:shadow-[0_0_20px_rgba(255,61,0,0.3)]",
+      "bg-[#151019] hover:bg-[#1f1626] text-[#FCFAED] border border-[#8B35AD] hover:border-[#C084FC] hover:text-white shadow-[0_0_15px_rgba(139,53,173,0.25)] hover:shadow-[0_0_25px_rgba(168,85,247,0.45)]",
     outline:
-      "bg-transparent text-[#FCFAED] border border-[#565656] hover:border-[#FF3D00] hover:text-white hover:shadow-[0_0_20px_rgba(255,61,0,0.3)]",
+      "bg-transparent text-[#FCFAED] border border-[#8B35AD] hover:border-[#C084FC] hover:text-white hover:bg-[#8B35AD]/20 shadow-none hover:shadow-[0_0_20px_rgba(168,85,247,0.35)]",
     ivory:
-      "bg-[#FCFAED] text-[#0D0D0D] border border-[#FCFAED] hover:bg-white font-semibold hover:shadow-[0_0_20px_rgba(252,250,237,0.35)]",
+      "bg-[#FCFAED] text-[#0D0D0D] border border-[#FCFAED] hover:bg-white font-semibold hover:shadow-[0_0_25px_rgba(252,250,237,0.45)]",
   };
 
   const sizeStyles = {
@@ -134,20 +134,28 @@ export const MagneticButton: React.FC<MagneticButtonProps> = ({
     lg: "min-h-[48px] sm:min-h-[56px] px-6 sm:px-8 py-3.5 sm:py-4 text-xs sm:text-base font-bold",
   };
 
+  // Subtle magnetic offset calculation for desktop
+  const magneticX = isHovered && isFinePointer && !prefersReducedMotion ? (mousePos.x - 50) * 0.16 : 0;
+  const magneticY = isHovered && isFinePointer && !prefersReducedMotion ? (mousePos.y - 50) * 0.16 : 0;
+
   const buttonContent = (
     <div
       ref={buttonRef}
       onMouseMove={handleMouseMove}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className={`relative inline-flex items-center justify-center gap-2.5 font-mono-tech tracking-wider uppercase select-none transition-all duration-300 overflow-hidden group cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF3D00] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0D0D0D] ${variantStyles[variant]} ${sizeStyles[size]} ${className}`}
+      style={{
+        transform: `translate3d(${magneticX}px, ${magneticY}px, 0)`,
+        transition: isHovered ? 'transform 0.15s ease-out' : 'transform 0.3s ease-out',
+      }}
+      className={`relative inline-flex items-center justify-center gap-2.5 font-mono-tech tracking-wider uppercase select-none transition-all duration-300 overflow-hidden group cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A855F7] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0D0D0D] ${variantStyles[variant]} ${sizeStyles[size]} ${className}`}
     >
       {/* 1. Corner Architectural Notch */}
       <span className="absolute top-0 right-0 w-2.5 h-2.5 bg-[#0D0D0D] clip-diagonal-left pointer-events-none z-20" />
 
-      {/* 2. Directional Orange Reveal Fill (for outline & secondary) */}
+      {/* 2. Directional Purple Reveal Fill (for outline & secondary) */}
       {(variant === 'outline' || variant === 'secondary') && (
-        <span className="absolute inset-0 bg-gradient-to-r from-[#FF0022] to-[#FF3D00] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-0" />
+        <span className="absolute inset-0 bg-gradient-to-r from-[#8B35AD]/80 to-[#A855F7]/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-0" />
       )}
 
       {/* 3. Cursor-Position Aware Highlight (Stationary, subtle surface lighting) */}
@@ -158,8 +166,8 @@ export const MagneticButton: React.FC<MagneticButtonProps> = ({
             opacity: isHovered ? 1 : 0,
             background:
               variant === 'primary'
-                ? `radial-gradient(circle 90px at ${mousePos.x}% ${mousePos.y}%, rgba(255, 255, 255, 0.28), transparent 70%)`
-                : `radial-gradient(circle 90px at ${mousePos.x}% ${mousePos.y}%, rgba(255, 61, 0, 0.25), transparent 70%)`,
+                ? `radial-gradient(circle 90px at ${mousePos.x}% ${mousePos.y}%, rgba(255, 255, 255, 0.32), transparent 70%)`
+                : `radial-gradient(circle 90px at ${mousePos.x}% ${mousePos.y}%, rgba(168, 85, 247, 0.4), transparent 70%)`,
           }}
         />
       )}
@@ -173,29 +181,29 @@ export const MagneticButton: React.FC<MagneticButtonProps> = ({
             width="calc(100% - 2px)"
             height="calc(100% - 2px)"
             fill="none"
-            stroke={variant === 'primary' ? '#FFFFFF' : '#FF3D00'}
+            stroke={variant === 'primary' ? '#FFFFFF' : '#C084FC'}
             strokeWidth="1.5"
             strokeDasharray="360"
             strokeDashoffset={isHovered ? 0 : 360}
-            className="transition-all duration-500 ease-out opacity-85"
+            className="transition-all duration-500 ease-out opacity-90"
           />
         </svg>
       )}
 
-      {/* 5. Button Internal Content (Stationary text & icon, smooth color illumination) */}
+      {/* 5. Button Internal Content (Stationary text & animated icon) */}
       <div className="relative z-10 flex items-center gap-2">
         {children ? (
           children
         ) : (
           <>
-            <span className="relative inline-block transition-colors duration-200">
+            <span className="relative inline-block transition-colors duration-200 font-bold tracking-wide">
               {isHovered && hoverText ? hoverText : defaultText}
               {/* Subtle underline illumination */}
-              <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-current transition-all duration-300 group-hover:w-full opacity-80" />
+              <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-gradient-to-r from-[#FCFAED] to-[#C084FC] transition-all duration-300 group-hover:w-full opacity-90" />
             </span>
 
-            {/* Stationary Icon with Subtle Glow */}
-            <div className="relative w-4 h-4 flex items-center justify-center shrink-0">
+            {/* Coordinated Arrow Icon with Slide Animation */}
+            <div className="relative w-4 h-4 flex items-center justify-center shrink-0 transform transition-transform duration-250 ease-out group-hover:translate-x-1.5">
               <ArrowRight className="w-4 h-4 text-current transition-colors duration-200" />
             </div>
           </>

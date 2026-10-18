@@ -57,9 +57,17 @@ const EventCard: React.FC<EventCardProps> = ({
     onLeave();
   };
 
-  // Cohesive black-and-orange theme accents
-  const accentColor = isTechnical ? '#FF0022' : '#FF3D00';
-  const secondaryColor = isTechnical ? '#FF3D00' : '#FF6B00';
+  // Vibrant purple theme accents
+  const accentColor = isTechnical ? '#8B35AD' : '#A855F7';
+  const secondaryColor = isTechnical ? '#A855F7' : '#C084FC';
+
+  // Desktop subtle perspective tilt
+  const tiltX = isFinePointer && isHovered && !prefersReducedMotion && cardRef.current
+    ? ((mousePos.y / Math.max(cardRef.current.clientHeight, 1)) - 0.5) * -8
+    : 0;
+  const tiltY = isFinePointer && isHovered && !prefersReducedMotion && cardRef.current
+    ? ((mousePos.x / Math.max(cardRef.current.clientWidth, 1)) - 0.5) * 8
+    : 0;
 
   // Smooth scroll entrance (stationary once revealed)
   const isEven = idx % 2 === 0;
@@ -86,9 +94,17 @@ const EventCard: React.FC<EventCardProps> = ({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onClick={onSelect}
-      className={`group relative bg-[#131313] border p-4 sm:p-6 lg:p-7 flex flex-col justify-between cursor-pointer transition-colors duration-300 overflow-hidden min-w-0 ${isTechnical
-        ? 'border-[#242424] hover:border-[#FF0022] hover:shadow-[0_0_28px_rgba(255,0,34,0.22)]'
-        : 'border-[#242424] hover:border-[#FF3D00] hover:shadow-[0_0_28px_rgba(255,61,0,0.24)]'
+      style={{
+        transform: isFinePointer && !prefersReducedMotion
+          ? `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`
+          : undefined,
+        transition: isHovered
+          ? 'transform 0.12s ease-out, border-color 0.3s ease, box-shadow 0.3s ease'
+          : 'transform 0.4s ease-out, border-color 0.3s ease, box-shadow 0.3s ease',
+      }}
+      className={`group relative bg-[#19131D] border p-4 sm:p-6 lg:p-7 flex flex-col justify-between cursor-pointer overflow-hidden min-w-0 ${isTechnical
+        ? 'border-[#2E1F3B] hover:border-[#C084FC] hover:shadow-[0_0_32px_rgba(139,53,173,0.35)]'
+        : 'border-[#2E1F3B] hover:border-[#C084FC] hover:shadow-[0_0_32px_rgba(168,85,247,0.4)]'
         }`}
     >
       {/* ========================================================================= */}
@@ -96,7 +112,7 @@ const EventCard: React.FC<EventCardProps> = ({
       {/* ========================================================================= */}
       {/* Subtle fine technical grid backdrop */}
       <div
-        className="absolute inset-0 opacity-[0.03] group-hover:opacity-[0.06] transition-opacity duration-500 pointer-events-none z-0"
+        className="absolute inset-0 opacity-[0.04] group-hover:opacity-[0.09] transition-opacity duration-500 pointer-events-none z-0"
         style={{
           backgroundImage: `radial-gradient(circle at 1px 1px, ${accentColor} 1px, transparent 0)`,
           backgroundSize: '24px 24px',
@@ -109,8 +125,8 @@ const EventCard: React.FC<EventCardProps> = ({
         className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0"
         style={{
           background: isFinePointer
-            ? `radial-gradient(340px circle at ${mousePos.x}px ${mousePos.y}px, ${accentColor}18, transparent 70%)`
-            : `radial-gradient(circle at 50% 50%, ${accentColor}14, transparent 70%)`,
+            ? `radial-gradient(340px circle at ${mousePos.x}px ${mousePos.y}px, ${accentColor}25, transparent 70%)`
+            : `radial-gradient(circle at 50% 50%, ${accentColor}18, transparent 70%)`,
         }}
         aria-hidden="true"
       />
@@ -228,7 +244,7 @@ const EventCard: React.FC<EventCardProps> = ({
         </div>
 
         {/* Short Description */}
-        <p className="font-body text-xs sm:text-[13px] lg:text-sm text-[#888888] group-hover:text-[#FCFAED]/95 leading-relaxed mb-4 transition-colors line-clamp-3 sm:line-clamp-none break-words">
+        <p className="font-body text-xs sm:text-[13px] lg:text-sm text-[#B8AFC0] group-hover:text-[#FCFAED] leading-relaxed mb-4 transition-colors line-clamp-3 sm:line-clamp-none break-words">
           {event.shortDescription}
         </p>
 
@@ -236,10 +252,10 @@ const EventCard: React.FC<EventCardProps> = ({
         {/* 5. INTERACTIVE REGISTRATION FEE CONTAINER (STATIONARY)                    */}
         {/* ========================================================================= */}
         <div
-          className="group/fee mb-3 p-2.5 bg-[#0D0D0D]/90 border border-[#202020] group-hover/fee:border-[#FF3D00]/50 group-hover:border-[#282828] transition-colors duration-200 font-mono-tech text-[10px] sm:text-xs"
+          className="group/fee mb-3 p-2.5 bg-[#151019] border border-[#2E1F3B] group-hover/fee:border-[#A855F7]/70 group-hover:border-[#3D264E] transition-colors duration-200 font-mono-tech text-[10px] sm:text-xs"
         >
-          <div className="flex items-center justify-between gap-2 text-[#888888]">
-            <span className="text-[#888888] group-hover/fee:text-[#AAAAAA] uppercase text-[9px] sm:text-[10px] font-semibold tracking-wider transition-colors">
+          <div className="flex items-center justify-between gap-2 text-[#B8AFC0]">
+            <span className="text-[#B8AFC0] group-hover/fee:text-[#FCFAED] uppercase text-[9px] sm:text-[10px] font-semibold tracking-wider transition-colors">
               ENTRY FEE:
             </span>
             <span className="font-bold text-[#FCFAED] group-hover/fee:text-white uppercase transition-colors">
@@ -250,9 +266,9 @@ const EventCard: React.FC<EventCardProps> = ({
       </div>
 
       {/* ========================================================================= */}
-      {/* 6. BOTTOM META & ACTION (STATIONARY WITH ORANGE GLOW HOVER)               */}
+      {/* 6. BOTTOM META & ACTION (STATIONARY WITH PURPLE GLOW HOVER)               */}
       {/* ========================================================================= */}
-      <div className="pt-3 border-t border-[#202020] group-hover:border-[#2A2A2A] flex flex-col min-[380px]:flex-row min-[380px]:items-center justify-between gap-2.5 text-[9px] sm:text-xs font-mono-tech relative z-10 transition-colors">
+      <div className="pt-3 border-t border-[#2E1F3B] group-hover:border-[#3D264E] flex flex-col min-[380px]:flex-row min-[380px]:items-center justify-between gap-2.5 text-[9px] sm:text-xs font-mono-tech relative z-10 transition-colors">
         {/* Prize / Winner Reward Display */}
         {event.prizes?.first ? (
           <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[#FCFAED] min-w-0">
@@ -261,14 +277,14 @@ const EventCard: React.FC<EventCardProps> = ({
                 className="w-3.5 h-3.5 shrink-0"
                 style={{ color: accentColor }}
               />
-              <span className="text-[#888888] text-[9px] sm:text-[10px]">1ST:</span>
+              <span className="text-[#B8AFC0] text-[9px] sm:text-[10px]">1ST:</span>
               <span className="font-bold text-[#FCFAED] group-hover:text-white transition-colors">
                 {event.prizes.first}
               </span>
             </div>
             {event.prizes?.second && (
               <div className="flex items-center gap-1.5">
-                <span className="text-[#888888] text-[9px] sm:text-[10px]">2ND:</span>
+                <span className="text-[#B8AFC0] text-[9px] sm:text-[10px]">2ND:</span>
                 <span className="font-bold text-[#FCFAED] group-hover:text-white transition-colors">
                   {event.prizes.second}
                 </span>
@@ -277,20 +293,20 @@ const EventCard: React.FC<EventCardProps> = ({
           </div>
         ) : (
           <div className="flex items-center gap-1.5 text-[#FCFAED] min-w-0">
-            <Trophy className="w-3.5 h-3.5 text-[#FF3D00] shrink-0" />
+            <Trophy className="w-3.5 h-3.5 text-[#A855F7] shrink-0" />
             <span className="font-bold text-[#FCFAED] group-hover:text-white truncate transition-colors">
               {event.winnerRewards || 'Mementos for Winners'}
             </span>
           </div>
         )}
 
-        {/* Stationary View Button with Orange Glow Illumination */}
+        {/* Stationary View Button with Luminous Purple Glow Hover */}
         <div
-          className="relative inline-flex items-center justify-center gap-1.5 px-3 py-1.5 bg-[#0D0D0D] border text-[#FCFAED] transition-all duration-300 font-bold shrink-0 shadow-sm group-hover:shadow-[0_0_16px_rgba(255,61,0,0.4)] self-start min-[380px]:self-auto"
+          className="relative inline-flex items-center justify-center gap-1.5 px-3 py-1.5 bg-[#151019] border text-[#FCFAED] transition-all duration-300 font-bold shrink-0 shadow-sm group-hover:shadow-[0_0_18px_rgba(168,85,247,0.5)] self-start min-[380px]:self-auto"
           style={{
-            borderColor: isHovered ? secondaryColor : `${secondaryColor}88`,
+            borderColor: isHovered ? '#C084FC' : `${secondaryColor}99`,
             color: isHovered ? '#FFFFFF' : secondaryColor,
-            backgroundColor: isHovered ? secondaryColor : '#0D0D0D',
+            backgroundColor: isHovered ? accentColor : '#151019',
           }}
         >
           <span className="text-[10px] sm:text-[11px] tracking-wide">VIEW</span>
@@ -353,22 +369,22 @@ export const EventsSection: React.FC<EventsSectionProps> = ({ onSelectEvent }) =
             x: previewX,
             y: previewY,
           }}
-          className="fixed pointer-events-none z-40 w-64 sm:w-72 h-44 bg-[#141414] border-2 border-[#FF3D00] overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.9),0_0_25px_rgba(255,61,0,0.35)] hidden lg:block"
+          className="fixed pointer-events-none z-40 w-64 sm:w-72 h-44 bg-[#141414] border-2 border-[#823A9D] overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.9),0_0_25px_rgba(108,48,130,0.35)] hidden lg:block"
         >
           <img
             src={hoveredEvent.image}
             alt={hoveredEvent.title}
             className="w-full h-full object-cover"
           />
-          <div className="absolute bottom-0 inset-x-0 bg-[#0D0D0D]/95 px-3 py-1.5 font-mono-tech text-[10px] text-[#FCFAED] border-t border-[#FF3D00] flex justify-between items-center">
+          <div className="absolute bottom-0 inset-x-0 bg-[#0D0D0D]/95 px-3 py-1.5 font-mono-tech text-[10px] text-[#FCFAED] border-t border-[#823A9D] flex justify-between items-center">
             {hoveredEvent.prizes?.first ? (
               <>
-                <span className="text-[#FF0022] font-bold">TOP PRIZE:</span>
+                <span className="text-[#6C3082] font-bold">TOP PRIZE:</span>
                 <span>{hoveredEvent.prizes.first.split('+')[0]}</span>
               </>
             ) : (
               <>
-                <span className="text-[#FF3D00] font-bold">REWARDS:</span>
+                <span className="text-[#823A9D] font-bold">REWARDS:</span>
                 <span>Mementos for Winners</span>
               </>
             )}
@@ -382,10 +398,10 @@ export const EventsSection: React.FC<EventsSectionProps> = ({ onSelectEvent }) =
         {/* ============================================================== */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12 sm:mb-16 border-b border-[#262626] pb-6 sm:pb-8">
           <div>
-            <div className="flex items-center gap-3 font-mono-tech text-xs text-[#FF0022] uppercase tracking-widest mb-2 sm:mb-3">
+            <div className="flex items-center gap-3 font-mono-tech text-xs text-[#6C3082] uppercase tracking-widest mb-2 sm:mb-3">
               <span className="font-bold">02</span>
               <span>───────────────</span>
-              <span className="text-[#FF3D00] flex items-center gap-1.5">
+              <span className="text-[#823A9D] flex items-center gap-1.5">
                 <Sparkles className="w-3.5 h-3.5 animate-pulse" />
                 COMPETITIVE DISCIPLINES
               </span>
@@ -396,7 +412,7 @@ export const EventsSection: React.FC<EventsSectionProps> = ({ onSelectEvent }) =
           </div>
 
           <div className="font-mono-tech text-xs text-[#888888] max-w-sm">
-            <span className="text-[#FF3D00] font-bold block mb-1">
+            <span className="text-[#823A9D] font-bold block mb-1">
               [8 CORE COMPETITIONS // 2x2 GRIDS]
             </span>
             <p className="leading-relaxed">
@@ -409,16 +425,16 @@ export const EventsSection: React.FC<EventsSectionProps> = ({ onSelectEvent }) =
         {/* 1. TECHNICAL EVENTS BLOCK (2 EVENTS PER ROW ON DESKTOP & MOBILE) */}
         {/* ============================================================== */}
         <div className="mb-14 sm:mb-20">
-          {/* Category Header with Animated Orange/Red Line */}
-          <div className="flex items-center justify-between mb-5 sm:mb-8 border-b-2 border-[#FF0022] pb-3.5">
+          {/* Category Header with Animated Purple Line */}
+          <div className="flex items-center justify-between mb-5 sm:mb-8 border-b-2 border-[#6C3082] pb-3.5">
             <div className="flex items-center gap-2.5 sm:gap-3">
-              <span className="w-2.5 sm:w-3 h-2.5 sm:h-3 bg-[#FF0022] clip-diagonal-right shadow-[0_0_8px_#FF0022]" />
+              <span className="w-2.5 sm:w-3 h-2.5 sm:h-3 bg-[#6C3082] clip-diagonal-right shadow-[0_0_8px_#6C3082]" />
               <h3 className="font-display font-black text-xl sm:text-3xl lg:text-4xl text-[#FCFAED] tracking-tight uppercase">
-                TECHNICAL <span className="text-[#FF0022] drop-shadow-[0_0_15px_rgba(255,0,34,0.3)]">EVENTS</span>
+                TECHNICAL <span className="text-[#6C3082] drop-shadow-[0_0_15px_rgba(108,48,130,0.35)]">EVENTS</span>
               </h3>
             </div>
             <div className="flex items-center gap-2 font-mono-tech text-[10px] sm:text-xs text-[#888888] uppercase tracking-widest bg-[#141414] px-2.5 py-1 border border-[#262626]">
-              <span className="w-1.5 h-1.5 bg-[#FF0022] rounded-full animate-ping" />
+              <span className="w-1.5 h-1.5 bg-[#6C3082] rounded-full animate-ping" />
               <span>// 04 DISCIPLINES</span>
             </div>
           </div>
@@ -444,19 +460,19 @@ export const EventsSection: React.FC<EventsSectionProps> = ({ onSelectEvent }) =
         {/* IN-SECTION TRANSITION: TECHNICAL ➔ NON-TECHNICAL DIVIDER        */}
         {/* ============================================================== */}
         <div className="relative my-10 sm:my-16 py-4 flex flex-col items-center justify-center select-none pointer-events-none">
-          {/* Sweeping center accent lines with orange gradient glow */}
+          {/* Sweeping center accent lines with purple gradient glow */}
           <div className="w-full flex items-center justify-center gap-3">
-            <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-[#FF3D00]/50 to-[#FF3D00]" />
-            <div className="px-3.5 py-1.5 bg-[#141414] border border-[#FF3D00] flex items-center gap-2 font-mono-tech text-[9px] sm:text-xs text-[#FCFAED] shadow-[0_0_15px_rgba(255,61,0,0.25)]">
-              <Zap className="w-3.5 h-3.5 text-[#FF3D00] animate-pulse" />
-              <span className="tracking-[0.2em] uppercase font-bold text-[#FF3D00]">
+            <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-[#823A9D]/50 to-[#823A9D]" />
+            <div className="px-3.5 py-1.5 bg-[#141414] border border-[#823A9D] flex items-center gap-2 font-mono-tech text-[9px] sm:text-xs text-[#FCFAED] shadow-[0_0_15px_rgba(108,48,130,0.25)]">
+              <Zap className="w-3.5 h-3.5 text-[#823A9D] animate-pulse" />
+              <span className="tracking-[0.2em] uppercase font-bold text-[#823A9D]">
                 DISCIPLINE_SHIFT
               </span>
               <span className="hidden sm:inline text-[#888888]">
                 // EXPANDING TO STRATEGY &amp; CREATIVITY
               </span>
             </div>
-            <div className="h-[1px] flex-1 bg-gradient-to-l from-transparent via-[#FF3D00]/50 to-[#FF3D00]" />
+            <div className="h-[1px] flex-1 bg-gradient-to-l from-transparent via-[#823A9D]/50 to-[#823A9D]" />
           </div>
         </div>
 
@@ -464,16 +480,16 @@ export const EventsSection: React.FC<EventsSectionProps> = ({ onSelectEvent }) =
         {/* 2. NON-TECHNICAL EVENTS BLOCK (2 PER ROW ON DESKTOP & MOBILE)  */}
         {/* ============================================================== */}
         <div>
-          {/* Category Header with Animated Orange Accent */}
-          <div className="flex items-center justify-between mb-5 sm:mb-8 border-b-2 border-[#FF3D00] pb-3.5">
+          {/* Category Header with Animated Purple Accent */}
+          <div className="flex items-center justify-between mb-5 sm:mb-8 border-b-2 border-[#823A9D] pb-3.5">
             <div className="flex items-center gap-2.5 sm:gap-3">
-              <span className="w-2.5 sm:w-3 h-2.5 sm:h-3 bg-[#FF3D00] clip-diagonal-right shadow-[0_0_8px_#FF3D00]" />
+              <span className="w-2.5 sm:w-3 h-2.5 sm:h-3 bg-[#823A9D] clip-diagonal-right shadow-[0_0_8px_#823A9D]" />
               <h3 className="font-display font-black text-xl sm:text-3xl lg:text-4xl text-[#FCFAED] tracking-tight uppercase">
-                NON-TECHNICAL <span className="text-[#FF3D00] drop-shadow-[0_0_15px_rgba(255,61,0,0.35)]">EVENTS</span>
+                NON-TECHNICAL <span className="text-[#823A9D] drop-shadow-[0_0_15px_rgba(130,58,157,0.35)]">EVENTS</span>
               </h3>
             </div>
             <div className="flex items-center gap-2 font-mono-tech text-[10px] sm:text-xs text-[#888888] uppercase tracking-widest bg-[#141414] px-2.5 py-1 border border-[#262626]">
-              <span className="w-1.5 h-1.5 bg-[#FF3D00] rounded-full animate-ping" />
+              <span className="w-1.5 h-1.5 bg-[#823A9D] rounded-full animate-ping" />
               <span>// 04 DISCIPLINES</span>
             </div>
           </div>

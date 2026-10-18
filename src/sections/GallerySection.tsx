@@ -41,14 +41,14 @@ const DesktopCinematicCard: React.FC<DesktopCardProps> = ({
         ease: [0.16, 1, 0.3, 1],
       }}
       onClick={onSelect}
-      className={`group relative bg-[#141414] border transition-colors duration-300 cursor-pointer overflow-hidden flex flex-col justify-between shadow-lg ${isActive
-          ? 'border-[#FF0022] shadow-[0_0_25px_rgba(255,0,34,0.22)] ring-1 ring-[#FF0022]/50'
-          : 'border-[#262626] hover:border-[#FF0022]/80 hover:shadow-[0_0_20px_rgba(255,0,34,0.18)]'
+      className={`group relative bg-[#19131D] border transition-colors duration-300 cursor-pointer overflow-hidden flex flex-col justify-between shadow-lg ${isActive
+          ? 'border-[#A855F7] shadow-[0_0_28px_rgba(168,85,247,0.35)] ring-1 ring-[#C084FC]/60'
+          : 'border-[#2E1F3B] hover:border-[#C084FC] hover:shadow-[0_0_24px_rgba(168,85,247,0.25)]'
         }`}
     >
       <div className="w-full h-full flex flex-col justify-between">
         {/* Top Accent Scanline on Hover */}
-        <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#FF0022] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20 pointer-events-none" />
+        <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#C084FC] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20 pointer-events-none" />
 
         {/* Image Frame */}
         <div className="relative aspect-[4/3] w-full overflow-hidden bg-black">
@@ -63,31 +63,31 @@ const DesktopCinematicCard: React.FC<DesktopCardProps> = ({
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/20 pointer-events-none" />
 
           {/* Technical Corner Badge */}
-          <div className="absolute top-2.5 left-2.5 bg-[#0D0D0D]/90 backdrop-blur-xs border border-[#262626] group-hover:border-[#FF0022]/60 px-2.5 py-0.5 font-mono-tech text-[10px] text-[#FCFAED] uppercase tracking-wider flex items-center gap-1.5 transition-colors z-10">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#FF0022] animate-pulse" />
+          <div className="absolute top-2.5 left-2.5 bg-[#151019]/90 backdrop-blur-xs border border-[#3D264E] group-hover:border-[#A855F7] px-2.5 py-0.5 font-mono-tech text-[10px] text-[#FCFAED] uppercase tracking-wider flex items-center gap-1.5 transition-colors z-10">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#A855F7] animate-pulse shadow-[0_0_6px_#A855F7]" />
             <span>{padIndex} // ARCHIVE</span>
           </div>
 
           {/* Expand Icon */}
-          <div className="absolute top-2.5 right-2.5 p-1.5 bg-[#0D0D0D]/90 backdrop-blur-xs text-white border border-[#262626] group-hover:border-[#FF0022] group-hover:text-[#FF0022] transition-all z-10">
+          <div className="absolute top-2.5 right-2.5 p-1.5 bg-[#151019]/90 backdrop-blur-xs text-white border border-[#3D264E] group-hover:border-[#C084FC] group-hover:text-[#C084FC] transition-all z-10">
             <Maximize2 className="w-3.5 h-3.5" />
           </div>
 
           {/* Diagonal Corner Accent */}
-          <div className="absolute bottom-0 right-0 w-4 h-4 bg-[#FF0022]/20 clip-diagonal-left group-hover:bg-[#FF0022] transition-colors z-10" />
+          <div className="absolute bottom-0 right-0 w-4 h-4 bg-[#A855F7]/25 clip-diagonal-left group-hover:bg-[#A855F7] transition-colors z-10 shadow-[0_0_8px_#A855F7]" />
         </div>
 
         {/* Metadata Details Bar */}
-        <div className="p-3.5 sm:p-4 bg-[#0D0D0D] border-t border-[#262626] flex items-center justify-between z-10 gap-2">
+        <div className="p-3.5 sm:p-4 bg-[#19131D] border-t border-[#2E1F3B] flex items-center justify-between z-10 gap-2">
           <div className="min-w-0 flex-1">
-            <h3 className="text-sm font-display font-black text-white group-hover:text-[#FF0022] transition-colors uppercase tracking-wider truncate">
+            <h3 className="text-sm font-display font-black text-white group-hover:text-[#C084FC] transition-colors uppercase tracking-wider truncate">
               {item.title}
             </h3>
-            <p className="font-mono-tech text-[10px] text-[#777777] uppercase tracking-widest mt-0.5 truncate">
+            <p className="font-mono-tech text-[10px] text-[#B8AFC0] uppercase tracking-widest mt-0.5 truncate">
               SYMPOSIUM CHRONICLE
             </p>
           </div>
-          <span className="font-mono-tech text-[10px] text-[#888888] group-hover:text-[#FCFAED] border border-[#222222] px-2 py-0.5 transition-colors shrink-0">
+          <span className="font-mono-tech text-[10px] text-[#B8AFC0] group-hover:text-[#FCFAED] border border-[#3D264E] px-2 py-0.5 transition-colors shrink-0">
             {padIndex} / 08
           </span>
         </div>
@@ -254,9 +254,9 @@ const MobileStackedGallery: React.FC<MobileStackedGalleryProps> = ({
                   onExpand(item);
                 }
               }}
-              className={`absolute top-0 w-full bg-[#141414] border rounded-xs overflow-hidden select-none cursor-grab active:cursor-grabbing ${isActive
-                  ? 'border-[#FF0022]/80 shadow-[0_16px_36px_rgba(0,0,0,0.9),0_0_24px_rgba(255,0,34,0.18)]'
-                  : 'border-[#262626] shadow-[0_12px_28px_rgba(0,0,0,0.7)]'
+              className={`absolute top-0 w-full bg-[#19131D] border rounded-xs overflow-hidden select-none cursor-grab active:cursor-grabbing ${isActive
+                  ? 'border-[#A855F7] shadow-[0_16px_36px_rgba(0,0,0,0.95),0_0_28px_rgba(168,85,247,0.4)] ring-1 ring-[#C084FC]/50'
+                  : 'border-[#2E1F3B] shadow-[0_12px_28px_rgba(0,0,0,0.7)]'
                 }`}
             >
               {/* Photo Area */}
@@ -273,19 +273,19 @@ const MobileStackedGallery: React.FC<MobileStackedGalleryProps> = ({
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30 pointer-events-none" />
 
                 {/* Position Index Badge */}
-                <div className="absolute top-2.5 left-2.5 bg-[#0D0D0D]/90 backdrop-blur-xs border border-[#262626] px-2 py-0.5 font-mono-tech text-[10px] text-[#FCFAED] uppercase tracking-wider flex items-center gap-1.5">
-                  <span className={`w-1.5 h-1.5 rounded-full ${isActive ? 'bg-[#FF0022] animate-pulse' : 'bg-[#666666]'}`} />
+                <div className="absolute top-2.5 left-2.5 bg-[#151019]/90 backdrop-blur-xs border border-[#3D264E] px-2 py-0.5 font-mono-tech text-[10px] text-[#FCFAED] uppercase tracking-wider flex items-center gap-1.5">
+                  <span className={`w-1.5 h-1.5 rounded-full ${isActive ? 'bg-[#A855F7] animate-pulse shadow-[0_0_6px_#A855F7]' : 'bg-[#666666]'}`} />
                   <span>{padIdx} // ARCHIVE</span>
                 </div>
 
                 {/* Lightbox / Expand Badge */}
-                <div className="absolute top-2.5 right-2.5 p-1.5 bg-[#0D0D0D]/90 backdrop-blur-xs text-white border border-[#262626]">
-                  <Maximize2 className="w-3.5 h-3.5 text-[#FF0022]" />
+                <div className="absolute top-2.5 right-2.5 p-1.5 bg-[#151019]/90 backdrop-blur-xs text-white border border-[#3D264E]">
+                  <Maximize2 className="w-3.5 h-3.5 text-[#C084FC]" />
                 </div>
 
                 {/* Swipe Direction Indicators (Active Card Only) */}
                 {isActive && (
-                  <div className="absolute bottom-2 inset-x-3 flex justify-between items-center pointer-events-none text-[9px] font-mono-tech text-[#888888]/80 uppercase tracking-widest">
+                  <div className="absolute bottom-2 inset-x-3 flex justify-between items-center pointer-events-none text-[9px] font-mono-tech text-[#C084FC]/80 uppercase tracking-widest font-semibold">
                     <span>❮ SWIPE PREV</span>
                     <span>SWIPE NEXT ❯</span>
                   </div>
@@ -302,7 +302,7 @@ const MobileStackedGallery: React.FC<MobileStackedGalleryProps> = ({
                     SYMPOSIUM ARCHIVE
                   </p>
                 </div>
-                <span className="font-mono-tech text-[10px] text-[#FF0022] font-bold border border-[#222222] px-2 py-0.5">
+                <span className="font-mono-tech text-[10px] text-[#6C3082] font-bold border border-[#222222] px-2 py-0.5">
                   {padIdx} / 08
                 </span>
               </div>
@@ -318,15 +318,15 @@ const MobileStackedGallery: React.FC<MobileStackedGalleryProps> = ({
           <button
             onClick={onPrev}
             aria-label="Previous memory"
-            className="flex-1 py-2.5 px-3 bg-[#141414] border border-[#262626] hover:border-[#FF0022] active:bg-[#FF0022]/10 text-white hover:text-[#FF0022] font-mono-tech text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all cursor-pointer min-h-[44px]"
+            className="flex-1 py-2.5 px-3 bg-[#141414] border border-[#262626] hover:border-[#6C3082] active:bg-[#6C3082]/10 text-white hover:text-[#6C3082] font-mono-tech text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all cursor-pointer min-h-[44px]"
           >
-            <ChevronLeft className="w-4 h-4 text-[#FF0022]" />
+            <ChevronLeft className="w-4 h-4 text-[#6C3082]" />
             <span>PREV</span>
           </button>
 
           {/* Central Counter Display */}
           <div className="px-3.5 py-2 bg-[#0D0D0D] border border-[#262626] font-mono-tech text-xs tracking-widest flex items-center gap-1.5 min-h-[44px]">
-            <span className="text-[#FF0022] font-black">{String(activeIndex + 1).padStart(2, '0')}</span>
+            <span className="text-[#6C3082] font-black">{String(activeIndex + 1).padStart(2, '0')}</span>
             <span className="text-[#444444]">/</span>
             <span className="text-[#888888]">08</span>
           </div>
@@ -334,10 +334,10 @@ const MobileStackedGallery: React.FC<MobileStackedGalleryProps> = ({
           <button
             onClick={onNext}
             aria-label="Next memory"
-            className="flex-1 py-2.5 px-3 bg-[#141414] border border-[#262626] hover:border-[#FF0022] active:bg-[#FF0022]/10 text-white hover:text-[#FF0022] font-mono-tech text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all cursor-pointer min-h-[44px]"
+            className="flex-1 py-2.5 px-3 bg-[#141414] border border-[#262626] hover:border-[#6C3082] active:bg-[#6C3082]/10 text-white hover:text-[#6C3082] font-mono-tech text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all cursor-pointer min-h-[44px]"
           >
             <span>NEXT</span>
-            <ChevronRight className="w-4 h-4 text-[#FF0022]" />
+            <ChevronRight className="w-4 h-4 text-[#6C3082]" />
           </button>
         </div>
 
@@ -349,7 +349,7 @@ const MobileStackedGallery: React.FC<MobileStackedGalleryProps> = ({
               onClick={() => onSelectCard(i)}
               aria-label={`Jump to memory ${i + 1}`}
               className={`transition-all cursor-pointer ${i === activeIndex
-                  ? 'w-6 h-1.5 bg-[#FF0022] rounded-xs shadow-[0_0_8px_rgba(255,0,34,0.6)]'
+                  ? 'w-6 h-1.5 bg-[#6C3082] rounded-xs shadow-[0_0_8px_rgba(108,48,130,0.6)]'
                   : 'w-2 h-1.5 bg-[#262626] hover:bg-[#444444] rounded-xs'
                 }`}
             />
@@ -421,7 +421,7 @@ export const GallerySection: React.FC<GallerySectionProps> = ({ onSelectItem }) 
       id="gallery"
       className="relative py-16 sm:py-24 px-3 sm:px-6 lg:px-12 bg-[#0D0D0D] border-b border-[#262626] overflow-hidden memory-gallery"
     >
-      {/* Subtle Cinematic Gallery Background Enhancement (Halftone Grid & Red Accent Haze) */}
+      {/* Subtle Cinematic Gallery Background Enhancement (Halftone Grid & Purple Accent Haze) */}
       <div className="absolute inset-0 pointer-events-none opacity-25">
         <div
           className="w-full h-full"
@@ -431,13 +431,13 @@ export const GallerySection: React.FC<GallerySectionProps> = ({ onSelectItem }) 
           }}
         />
       </div>
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] bg-[#FF0022]/[0.03] rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] bg-[#6C3082]/[0.03] rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10 sm:mb-14 border-b border-[#262626] pb-6 sm:pb-8">
           <div>
-            <div className="flex items-center gap-3 font-mono-tech text-xs text-[#FF0022] uppercase tracking-widest mb-2 sm:mb-3">
+            <div className="flex items-center gap-3 font-mono-tech text-xs text-[#6C3082] uppercase tracking-widest mb-2 sm:mb-3">
               <span className="font-bold">05</span>
               <span>───────────────</span>
               <span>SYMPOSIUM ARCHIVE</span>
@@ -450,7 +450,7 @@ export const GallerySection: React.FC<GallerySectionProps> = ({ onSelectItem }) 
           {/* Desktop View Navigation Bar */}
           <div className="hidden lg:flex items-center gap-4">
             <div className="font-mono-tech text-xs text-[#888888] flex items-center gap-2">
-              <Layers className="w-3.5 h-3.5 text-[#FF0022]" />
+              <Layers className="w-3.5 h-3.5 text-[#6C3082]" />
               <span>CLICK TO EXPAND HIGH-RES LIGHTBOX</span>
             </div>
 
@@ -458,7 +458,7 @@ export const GallerySection: React.FC<GallerySectionProps> = ({ onSelectItem }) 
               <button
                 onClick={handlePrev}
                 aria-label="Previous memory"
-                className="p-1.5 hover:bg-[#262626] hover:text-[#FF0022] text-white transition-colors cursor-pointer"
+                className="p-1.5 hover:bg-[#262626] hover:text-[#6C3082] text-white transition-colors cursor-pointer"
               >
                 <ChevronLeft className="w-4 h-4" />
               </button>
@@ -468,7 +468,7 @@ export const GallerySection: React.FC<GallerySectionProps> = ({ onSelectItem }) 
               <button
                 onClick={handleNext}
                 aria-label="Next memory"
-                className="p-1.5 hover:bg-[#262626] hover:text-[#FF0022] text-white transition-colors cursor-pointer"
+                className="p-1.5 hover:bg-[#262626] hover:text-[#6C3082] text-white transition-colors cursor-pointer"
               >
                 <ChevronRight className="w-4 h-4" />
               </button>
@@ -478,7 +478,7 @@ export const GallerySection: React.FC<GallerySectionProps> = ({ onSelectItem }) 
           {/* Mobile Header Subtitle */}
           <div className="block lg:hidden font-mono-tech text-xs text-[#888888]">
             <div className="flex items-center gap-2">
-              <Sparkles className="w-3.5 h-3.5 text-[#FF0022]" />
+              <Sparkles className="w-3.5 h-3.5 text-[#6C3082]" />
               <span>STACKED PHOTO ARCHIVE // SWIPE TO EXPLORE</span>
             </div>
           </div>

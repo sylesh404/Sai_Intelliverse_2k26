@@ -81,7 +81,7 @@ export const IntroSequence: React.FC<IntroSequenceProps> = ({ onComplete }) => {
         <div className="absolute top-4 right-4 sm:top-6 sm:right-6 z-50">
           <button
             onClick={handleSkip}
-            className="flex items-center gap-2 min-h-[44px] px-3.5 py-2 bg-[#1A1A1A] border border-[#333333] hover:border-[#FF0022] text-xs font-mono-tech uppercase tracking-widest text-[#FCFAED] transition-all hover:bg-[#FF0022] hover:text-white cursor-pointer active:scale-95"
+            className="flex items-center gap-2 min-h-[44px] px-3.5 py-2 bg-[#1A1A1A] border border-[#333333] hover:border-[#6C3082] text-xs font-mono-tech uppercase tracking-widest text-[#FCFAED] transition-all hover:bg-[#6C3082] hover:text-white cursor-pointer active:scale-95"
             aria-label="Skip Introduction Sequence"
           >
             <span>SKIP INTRO</span>
@@ -108,7 +108,7 @@ export const IntroSequence: React.FC<IntroSequenceProps> = ({ onComplete }) => {
             y1="0"
             x2="15%"
             y2="100%"
-            stroke="#FF0022"
+            stroke="#6C3082"
             strokeWidth="1"
             initial={{ pathLength: 0 }}
             animate={{ pathLength: 1 }}
@@ -134,7 +134,7 @@ export const IntroSequence: React.FC<IntroSequenceProps> = ({ onComplete }) => {
               initial={{ x: "-100%", skewX: -20 }}
               animate={{ x: "200%", skewX: -20 }}
               transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-              className="absolute inset-y-0 w-1/2 bg-[#FF0022] opacity-70 pointer-events-none z-10"
+              className="absolute inset-y-0 w-1/2 bg-[#6C3082] opacity-70 pointer-events-none z-10"
             />
           )}
         </AnimatePresence>
@@ -146,12 +146,12 @@ export const IntroSequence: React.FC<IntroSequenceProps> = ({ onComplete }) => {
             animate={{ opacity: 1, y: 0 }}
             className="flex items-center gap-2 text-[#FCFAED]"
           >
-            <span className="w-2 h-2 bg-[#FF0022] rounded-full animate-ping" />
-            <Terminal className="w-3.5 h-3.5 text-[#FF0022]" />
+            <span className="w-2 h-2 bg-[#6C3082] rounded-full animate-ping" />
+            <Terminal className="w-3.5 h-3.5 text-[#6C3082]" />
             <span>SYSTEM // 001 — READY</span>
           </motion.div>
 
-          <div className="text-[#FF0022] font-bold text-right pr-28 sm:pr-0">
+          <div className="text-[#6C3082] font-bold text-right pr-28 sm:pr-0">
             STATUS: ACTIVE
           </div>
         </div>
@@ -168,7 +168,7 @@ export const IntroSequence: React.FC<IntroSequenceProps> = ({ onComplete }) => {
               '{cycleYear}
             </span>
             <div className="absolute inset-0 flex items-center justify-center">
-              <span className="text-base sm:text-2xl font-mono-tech font-bold text-[#FF0022] tracking-widest bg-[#0D0D0D]/95 px-3 py-1 border border-[#FF0022]/40">
+              <span className="text-base sm:text-2xl font-mono-tech font-bold text-[#6C3082] tracking-widest bg-[#0D0D0D]/95 px-3 py-1 border border-[#6C3082]/40">
                 {symposiumConfig.edition}
               </span>
             </div>
@@ -204,7 +204,7 @@ export const IntroSequence: React.FC<IntroSequenceProps> = ({ onComplete }) => {
             transition={{ duration: 0.4 }}
             className="max-w-xl px-2 text-center"
           >
-            <p className="text-[10px] sm:text-xs font-mono-tech tracking-wider text-[#FF0022] uppercase mb-1">
+            <p className="text-[10px] sm:text-xs font-mono-tech tracking-wider text-[#6C3082] uppercase mb-1">
               {symposiumConfig.department}
             </p>
             <p className="text-xs sm:text-sm font-bold text-[#FCFAED]">
@@ -222,7 +222,7 @@ export const IntroSequence: React.FC<IntroSequenceProps> = ({ onComplete }) => {
             <span>SYSTEM / {symposiumConfig.year}</span>
           </div>
           <div className="flex items-center gap-1.5 text-[#FCFAED]">
-            <span className="w-1.5 h-1.5 bg-[#FF0022]" />
+            <span className="w-1.5 h-1.5 bg-[#6C3082]" />
             <span>ONLINE</span>
           </div>
         </div>

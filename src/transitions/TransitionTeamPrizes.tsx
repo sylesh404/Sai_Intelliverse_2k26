@@ -99,14 +99,14 @@ export const TransitionTeamPrizes: React.FC = () => {
       >
         <span className="text-[#888888]">WHO</span>
         <span className="text-[#FCFAED]">MAKES</span>
-        <span className="text-[#FF0022]">IT</span>
+        <span className="text-[#6C3082]">IT</span>
         <span className="text-[#FCFAED]">HAPPEN?</span>
       </div>
 
       {/* 2. Kinetic Number 03 Expanding */}
       <div
         ref={num03Ref}
-        className="absolute font-display font-black text-8xl sm:text-[12rem] text-[#FF0022] opacity-0 tracking-tighter"
+        className="absolute font-display font-black text-8xl sm:text-[12rem] text-[#6C3082] opacity-0 tracking-tighter"
       >
         03
       </div>
@@ -114,7 +114,7 @@ export const TransitionTeamPrizes: React.FC = () => {
       {/* 3. Horizontal Red Mask Bar */}
       <div
         ref={maskBarRef}
-        className="absolute w-full h-[3px] bg-gradient-to-r from-transparent via-[#FF0022] to-transparent scale-x-0"
+        className="absolute w-full h-[3px] bg-gradient-to-r from-transparent via-[#6C3082] to-transparent scale-x-0"
       />
 
       {/* 4. Target Destination Title: PRIZES */}
@@ -122,13 +122,13 @@ export const TransitionTeamPrizes: React.FC = () => {
         ref={prizeRevealRef}
         className="absolute flex flex-col items-center justify-center text-center opacity-0"
       >
-        <span className="font-mono-tech text-[10px] sm:text-xs text-[#FF0022] tracking-[0.3em] uppercase mb-1 font-bold">
+        <span className="font-mono-tech text-[10px] sm:text-xs text-[#6C3082] tracking-[0.3em] uppercase mb-1 font-bold">
           // CHAPTER_05 // BOUNTY ACCELERATION
         </span>
         <h2 className="font-display font-black text-3xl sm:text-6xl md:text-7xl text-[#FCFAED] uppercase tracking-wider">
           PRIZES & RECOGNITION
         </h2>
-        <span className="font-mono-tech text-xs sm:text-sm text-[#FF3D00] tracking-widest mt-2 uppercase font-bold">
+        <span className="font-mono-tech text-xs sm:text-sm text-[#823A9D] tracking-widest mt-2 uppercase font-bold">
           ₹1,50,000+ CASH POOL
         </span>
       </div>

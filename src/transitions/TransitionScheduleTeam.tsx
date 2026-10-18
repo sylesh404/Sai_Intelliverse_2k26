@@ -87,11 +87,11 @@ export const TransitionScheduleTeam: React.FC = () => {
         <div className="ml-2.5 sm:ml-4 md:ml-12 flex flex-col items-center">
           <div
             ref={verticalStemRef}
-            className="w-[2px] h-20 sm:h-28 bg-[#FF0022] shadow-[0_0_10px_rgba(255,0,34,0.6)]"
+            className="w-[2px] h-20 sm:h-28 bg-[#6C3082] shadow-[0_0_10px_rgba(108,48,130,0.6)]"
           />
           <div
             ref={cornerArcRef}
-            className="w-3 h-3 rounded-full border border-[#FF0022] bg-[#FF3D00] shadow-[0_0_8px_#FF0022] -mt-1 opacity-0"
+            className="w-3 h-3 rounded-full border border-[#6C3082] bg-[#823A9D] shadow-[0_0_8px_#6C3082] -mt-1 opacity-0"
           />
         </div>
       </div>
@@ -100,19 +100,19 @@ export const TransitionScheduleTeam: React.FC = () => {
       <div className="w-full relative my-auto">
         <div
           ref={horizontalBarRef}
-          className="h-[2px] bg-gradient-to-r from-[#FF0022] via-[#FF3D00] to-transparent w-0"
+          className="h-[2px] bg-gradient-to-r from-[#6C3082] via-[#823A9D] to-transparent w-0"
         />
 
         {/* Boundary Graphic Block */}
         <div
           ref={boundaryBlockRef}
-          className="mt-3 p-3 sm:p-4 bg-[#141414] border-l-4 border-[#FF0022] border-y border-r border-[#262626] opacity-0 flex flex-wrap items-center justify-between gap-2"
+          className="mt-3 p-3 sm:p-4 bg-[#141414] border-l-4 border-[#6C3082] border-y border-r border-[#262626] opacity-0 flex flex-wrap items-center justify-between gap-2"
         >
           <div
             ref={labelRef}
             className="font-mono-tech text-[10px] sm:text-xs text-[#FCFAED] tracking-[0.2em] uppercase font-bold flex items-center gap-2"
           >
-            <span className="text-[#FF0022]">TIMELINE_AXIS</span>
+            <span className="text-[#6C3082]">TIMELINE_AXIS</span>
             <span>➔</span>
             <span>ORGANIZING COMMITTEE // STRUCTURAL BOUNDARY</span>
           </div>

@@ -15,11 +15,11 @@ export const AboutSection: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-30px" }}
           transition={{ duration: 0.35 }}
-          className="flex items-center gap-3 font-mono-tech text-xs text-[#FF0022] uppercase tracking-widest mb-8 sm:mb-10"
+          className="flex items-center gap-3 font-mono-tech text-xs text-[#A855F7] uppercase tracking-widest mb-8 sm:mb-10 font-bold"
         >
-          <span className="font-bold">01</span>
-          <span>───────────────</span>
-          <span>ABOUT THE EXPERIENCE</span>
+          <span className="text-[#C084FC]">01</span>
+          <span className="text-[#8B35AD]/40">───────────────</span>
+          <span className="text-[#E9D5FF] tracking-wider">ABOUT THE EXPERIENCE</span>
         </motion.div>
 
         {/* Editorial Layout: Large Statement vs Narrative */}
@@ -33,11 +33,11 @@ export const AboutSection: React.FC = () => {
           >
             <h2 className="font-display font-black tracking-tight text-[#FCFAED] uppercase leading-[0.96] text-[clamp(2rem,6.5vw,3.5rem)] lg:text-[clamp(2.2rem,3.5vw,3.8rem)] xl:text-[clamp(2.6rem,3.8vw,4.4rem)] break-words">
               ONE DEPARTMENT.<br />
-              <span className="text-[#FF0022]">ONE STAGE.</span><br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#A855F7] via-[#C084FC] to-[#E9D5FF]">ONE STAGE.</span><br />
               COUNTLESS IDEAS.
             </h2>
 
-            <div className="w-20 h-1 bg-[#FF0022]" />
+            <div className="w-20 h-1 bg-gradient-to-r from-[#8B35AD] via-[#A855F7] to-[#C084FC] rounded-full shadow-[0_0_12px_rgba(168,85,247,0.6)]" />
           </motion.div>
 
           <motion.div
@@ -45,13 +45,13 @@ export const AboutSection: React.FC = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-30px" }}
             transition={{ duration: 0.45, delay: 0.1 }}
-            className="lg:col-span-6 min-w-0 space-y-5 font-body text-sm sm:text-base text-[#FCFAED]/85 leading-relaxed"
+            className="lg:col-span-6 min-w-0 space-y-5 font-body text-sm sm:text-base text-[#FCFAED]/90 leading-relaxed"
           >
             <p>
               SAI INTELLIVERSE 3.0 is the annual technical symposium organized by the Department of Artificial Intelligence and Machine Learning at Sri Sairam College of Engineering. It brings together curious minds, creative thinkers, and aspiring innovators to explore emerging technologies, exchange ideas, and showcase their skills through engaging technical and non-technical events. More than a symposium, it is a platform for collaboration, experimentation, and innovation.
             </p>
 
-            <blockquote className="font-mono-tech text-xs sm:text-sm text-[#FCFAED]/90 border-l-2 border-[#FF0022] pl-4 py-2.5 italic bg-[#141414]/60">
+            <blockquote className="font-mono-tech text-xs sm:text-sm text-[#FCFAED]/95 border-l-2 border-[#A855F7] pl-4 py-2.5 italic bg-[#19131D]/90 shadow-inner">
               &ldquo;An idea is only the beginning. Innovation happens when curiosity, creativity, and collaboration come together.&rdquo;
             </blockquote>
           </motion.div>
@@ -66,13 +66,13 @@ export const AboutSection: React.FC = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-20px" }}
             transition={{ duration: 0.35 }}
-            className="flex items-center gap-3 font-mono-tech text-xs text-[#FF0022] uppercase tracking-widest mb-6 sm:mb-8"
+            className="flex items-center gap-3 font-mono-tech text-xs text-[#A855F7] uppercase tracking-widest mb-6 sm:mb-8"
           >
-            <span className="font-bold">01.1</span>
-            <span>//</span>
+            <span className="font-bold text-[#C084FC]">01.1</span>
+            <span className="text-[#8B35AD]/50">//</span>
             <span className="font-bold text-[#FCFAED]">SYMPOSIUM PILLARS</span>
             <span className="hidden sm:inline text-[#333333]">───────────────</span>
-            <span className="hidden sm:inline text-[10px] text-[#888888]">FOUR CORE ARENAS</span>
+            <span className="hidden sm:inline text-[10px] text-[#B8AFC0]">FOUR CORE ARENAS</span>
           </motion.div>
 
           {/* Feature highlights: 1 col on mobile, 2 col on tablet, 4 col on desktop */}
@@ -91,16 +91,16 @@ export const AboutSection: React.FC = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-20px" }}
                   transition={{ duration: 0.3, delay: idx * 0.05 }}
-                  className="flex flex-col justify-between text-[#FCFAED] bg-[#141414] p-4 border border-[#262626] hover:border-[#FF0022] transition-all group relative overflow-hidden shadow-sm"
+                  className="flex flex-col justify-between text-[#FCFAED] bg-[#19131D] p-4 border border-[#2E1F3B] hover:border-[#A855F7] hover:shadow-[0_0_20px_rgba(168,85,247,0.18)] transition-all group relative overflow-hidden shadow-sm"
                 >
-                  <div className="absolute top-0 right-0 w-6 h-6 bg-[#FF0022]/10 clip-diagonal-left group-hover:bg-[#FF0022] transition-colors" />
+                  <div className="absolute top-0 right-0 w-6 h-6 bg-[#A855F7]/15 clip-diagonal-left group-hover:bg-[#A855F7] transition-colors" />
 
                   <div className="flex items-center gap-2.5 mb-2">
-                    <Icon className="w-4 h-4 text-[#FF0022] shrink-0" />
-                    <span className="font-bold tracking-wide">{item.label}</span>
+                    <Icon className="w-4 h-4 text-[#A855F7] group-hover:text-[#C084FC] transition-colors shrink-0" />
+                    <span className="font-bold tracking-wide text-white group-hover:text-[#E9D5FF] transition-colors">{item.label}</span>
                   </div>
 
-                  <p className="text-[11px] text-[#888888] font-body mt-1 leading-relaxed">
+                  <p className="text-[11px] text-[#B8AFC0] font-body mt-1 leading-relaxed">
                     {item.desc}
                   </p>
                 </motion.div>

@@ -380,7 +380,7 @@ export const ComicTitleIntro: React.FC<ComicTitleIntroProps> = ({ onComplete }) 
         <path
           d="M150,480 Q450,510 750,470 T950,490"
           fill="none"
-          stroke="#FF0022"
+          stroke="#6C3082"
           strokeWidth="4"
           strokeDasharray="400"
           className="comic-draw-stroke"
@@ -396,14 +396,14 @@ export const ComicTitleIntro: React.FC<ComicTitleIntroProps> = ({ onComplete }) 
         <path
           d="M680,290 Q800,320 920,280"
           fill="none"
-          stroke="#FF3D00"
+          stroke="#823A9D"
           strokeWidth="3.5"
           strokeDasharray="300"
           className="comic-draw-stroke"
         />
 
         {/* Hand scribbles & registration crosses */}
-        <g className="comic-reg-mark" stroke="#FF0022" strokeWidth="2">
+        <g className="comic-reg-mark" stroke="#6C3082" strokeWidth="2">
           <line x1="80" y1="70" x2="80" y2="100" />
           <line x1="65" y1="85" x2="95" y2="85" />
           <circle cx="80" cy="85" r="8" fill="none" />
@@ -449,7 +449,7 @@ export const ComicTitleIntro: React.FC<ComicTitleIntroProps> = ({ onComplete }) 
                 y1={y1}
                 x2={x2}
                 y2={y2}
-                stroke={isRed ? "#FF0022" : "#FCFAED"}
+                stroke={isRed ? "#6C3082" : "#FCFAED"}
                 strokeWidth={ray.width}
                 strokeDasharray="300"
                 className="burst-ray"
@@ -459,7 +459,7 @@ export const ComicTitleIntro: React.FC<ComicTitleIntroProps> = ({ onComplete }) 
           {/* Inner comic impact star */}
           <polygon
             points="0,-25 7,-7 25,0 7,7 0,25 -7,7 -25,0 -7,-7"
-            fill="#FF0022"
+            fill="#6C3082"
           />
         </g>
       </svg>
@@ -470,7 +470,7 @@ export const ComicTitleIntro: React.FC<ComicTitleIntroProps> = ({ onComplete }) 
         className="absolute inset-0 z-30 flex flex-col items-center justify-center pointer-events-none px-4 opacity-0 max-w-full"
       >
         <div className="flex flex-wrap justify-center items-baseline font-display font-black tracking-tight uppercase leading-none select-none text-[clamp(2.4rem,8.5vw,7.5rem)]">
-          <div ref={fragment1Ref} className="text-[#FF0022] inline-block mr-1 sm:mr-3">
+          <div ref={fragment1Ref} className="text-[#6C3082] inline-block mr-1 sm:mr-3">
             INT
           </div>
           <div ref={fragment2Ref} className="text-[#FCFAED] inline-block mr-1 sm:mr-3">
@@ -490,7 +490,7 @@ export const ComicTitleIntro: React.FC<ComicTitleIntroProps> = ({ onComplete }) 
         <svg viewBox="0 0 1000 600" preserveAspectRatio="none" className="w-full h-full">
           <path
             d={comicBrushPaths.organicSweep}
-            fill="#FF0022"
+            fill="#6C3082"
             opacity="0.85"
           />
         </svg>
@@ -515,10 +515,10 @@ export const ComicTitleIntro: React.FC<ComicTitleIntroProps> = ({ onComplete }) 
         </h1>
       </div>
 
-      {/* SCENE 08: Signal Red Impact Shock Frame */}
+      {/* SCENE 08: Purple Impact Shock Frame */}
       <div
         ref={impactFlashRef}
-        className="absolute inset-0 z-40 bg-[#FF0022] flex items-center justify-center p-6 opacity-0"
+        className="absolute inset-0 z-40 bg-[#6C3082] flex items-center justify-center p-6 opacity-0"
       >
         <div className="relative text-center">
           <div className="absolute inset-0 bg-[#0D0D0D] -rotate-3 scale-110 pointer-events-none" />
@@ -529,7 +529,7 @@ export const ComicTitleIntro: React.FC<ComicTitleIntroProps> = ({ onComplete }) 
             INTELLIVERSE
           </h1>
           <div className="relative z-10 block mt-3">
-            <span className="font-mono-tech text-xs sm:text-base font-bold text-[#FF0022] tracking-widest bg-[#FCFAED] px-3 py-1 inline-block">
+            <span className="font-mono-tech text-xs sm:text-base font-bold text-[#6C3082] tracking-widest bg-[#FCFAED] px-3 py-1 inline-block">
               SAI INTELLIVERSE 3.0 // IMPACT
             </span>
           </div>
@@ -542,10 +542,10 @@ export const ComicTitleIntro: React.FC<ComicTitleIntroProps> = ({ onComplete }) 
         className="relative z-30 flex flex-col items-center justify-center text-center px-4 max-w-5xl opacity-0"
       >
         {/* SAI */}
-        <div className="inline-flex items-center gap-2 font-mono-tech text-xs sm:text-base text-[#FF0022] uppercase tracking-[0.35em] font-black mb-1 final-lock-sub">
-          <Zap className="w-3.5 h-3.5 text-[#FF0022] fill-current" />
+        <div className="inline-flex items-center gap-2 font-mono-tech text-xs sm:text-base text-[#6C3082] uppercase tracking-[0.35em] font-black mb-1 final-lock-sub">
+          <Zap className="w-3.5 h-3.5 text-[#6C3082] fill-current" />
           <span>SAI</span>
-          <Zap className="w-3.5 h-3.5 text-[#FF0022] fill-current" />
+          <Zap className="w-3.5 h-3.5 text-[#6C3082] fill-current" />
         </div>
 
         {/* INTELLIVERSE: Guaranteed single line, never wraps */}
@@ -558,10 +558,10 @@ export const ComicTitleIntro: React.FC<ComicTitleIntroProps> = ({ onComplete }) 
 
         {/* 3.0 EDITION */}
         <div className="mt-2 sm:mt-3 flex items-center justify-center gap-3 final-lock-sub">
-          <span className="font-display font-black text-2xl sm:text-5xl text-[#FF0022] tracking-wider leading-none">
+          <span className="font-display font-black text-2xl sm:text-5xl text-[#6C3082] tracking-wider leading-none">
             3.0
           </span>
-          <span className="w-8 h-[2px] bg-[#FF3D00]" />
+          <span className="w-8 h-[2px] bg-[#823A9D]" />
           <span className="font-mono-tech text-[10px] sm:text-xs text-[#FCFAED]/80 uppercase tracking-widest font-semibold">
             NATIONAL LEVEL SYMPOSIUM
           </span>
@@ -569,7 +569,7 @@ export const ComicTitleIntro: React.FC<ComicTitleIntroProps> = ({ onComplete }) 
 
         {/* Subtitle & Department */}
         <div className="mt-4 sm:mt-6 space-y-1 final-lock-sub">
-          <p className="text-xs sm:text-sm font-mono-tech text-[#FF0022] tracking-wider uppercase font-bold">
+          <p className="text-xs sm:text-sm font-mono-tech text-[#6C3082] tracking-wider uppercase font-bold">
             {symposiumConfig.department}
           </p>
           <p className="text-xs sm:text-sm font-mono-tech text-[#888888] uppercase tracking-wide">
@@ -589,10 +589,10 @@ export const ComicTitleIntro: React.FC<ComicTitleIntroProps> = ({ onComplete }) 
             d="M-50,0 L1200,0 L1450,800 L-50,800 Z"
             fill="#FCFAED"
           />
-          {/* Layer 2: Signal Red inner slash */}
+          {/* Layer 2: Eminence Purple inner slash */}
           <path
             d="M-50,0 L1050,0 L1300,800 L-50,800 Z"
-            fill="#FF0022"
+            fill="#6C3082"
           />
           {/* Layer 3: Deep Black leading edge */}
           <path

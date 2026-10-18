@@ -74,10 +74,10 @@ export const CustomCursor: React.FC = () => {
           animate={{
             scale: mode === 'default' ? 1 : mode === 'hover' ? 0.5 : 0,
             opacity: mode === 'view' || mode === 'open' ? 0 : 1,
-            backgroundColor: mode === 'hover' ? '#FF0022' : '#FFFFFF',
+            backgroundColor: mode === 'hover' ? '#A855F7' : '#FFFFFF',
           }}
           transition={{ duration: 0.15 }}
-          className="w-2.5 h-2.5 rounded-full shadow-[0_0_8px_rgba(255,0,34,0.6)]"
+          className="w-2.5 h-2.5 rounded-full shadow-[0_0_10px_rgba(168,85,247,0.8)]"
         />
       </motion.div>
 
@@ -91,10 +91,11 @@ export const CustomCursor: React.FC = () => {
         animate={{
           width: mode === 'view' || mode === 'open' ? 76 : mode === 'hover' ? 44 : 28,
           height: mode === 'view' || mode === 'open' ? 76 : mode === 'hover' ? 44 : 28,
-          backgroundColor: mode === 'view' || mode === 'open' ? '#FF0022' : 'transparent',
-          borderColor: mode === 'hover' ? '#FF0022' : 'rgba(255, 255, 255, 0.4)',
+          backgroundColor: mode === 'view' || mode === 'open' ? '#8B35AD' : 'transparent',
+          borderColor: mode === 'hover' ? '#C084FC' : 'rgba(255, 255, 255, 0.4)',
           borderWidth: mode === 'view' || mode === 'open' ? 0 : 1.5,
           borderRadius: '9999px',
+          boxShadow: mode === 'hover' ? '0 0 16px rgba(168, 85, 247, 0.4)' : (mode === 'view' || mode === 'open' ? '0 0 25px rgba(139, 53, 173, 0.6)' : 'none'),
         }}
         transition={{ type: 'spring', stiffness: 350, damping: 25 }}
       >

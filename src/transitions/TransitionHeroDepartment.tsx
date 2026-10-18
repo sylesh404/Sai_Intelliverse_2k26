@@ -105,15 +105,15 @@ export const TransitionHeroDepartment: React.FC = () => {
         className="absolute inset-0 w-full h-full opacity-0 pointer-events-none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <line x1="10%" y1="20%" x2="90%" y2="80%" stroke="#FF0022" strokeWidth="1" strokeDasharray="6 12" />
+        <line x1="10%" y1="20%" x2="90%" y2="80%" stroke="#6C3082" strokeWidth="1" strokeDasharray="6 12" />
         <line x1="5%" y1="80%" x2="95%" y2="20%" stroke="#FCFAED" strokeWidth="0.8" strokeDasharray="8 16" opacity="0.4" />
-        <line x1="0%" y1="50%" x2="100%" y2="50%" stroke="#FF3D00" strokeWidth="1.5" strokeDasharray="12 24" />
+        <line x1="0%" y1="50%" x2="100%" y2="50%" stroke="#823A9D" strokeWidth="1.5" strokeDasharray="12 24" />
       </svg>
 
-      {/* Sweeping Red Brush Stroke */}
+      {/* Sweeping Purple Brush Stroke */}
       <div
         ref={redBrushRef}
-        className="absolute top-1/2 left-0 w-[140%] h-24 sm:h-36 -translate-y-1/2 bg-gradient-to-r from-transparent via-[#FF0022] to-transparent opacity-0 pointer-events-none"
+        className="absolute top-1/2 left-0 w-[140%] h-24 sm:h-36 -translate-y-1/2 bg-gradient-to-r from-transparent via-[#6C3082] to-transparent opacity-0 pointer-events-none"
         style={{
           maskImage: "linear-gradient(to right, transparent, black 20%, black 80%, transparent)",
           WebkitMaskImage: "linear-gradient(to right, transparent, black 20%, black 80%, transparent)",
@@ -142,8 +142,8 @@ export const TransitionHeroDepartment: React.FC = () => {
         ref={deptRevealRef}
         className="absolute inset-0 flex flex-col items-center justify-center z-20 px-4 text-center opacity-0"
       >
-        <div className="border border-[#FF0022] bg-[#141414]/90 px-6 sm:px-12 py-6 sm:py-8 backdrop-blur-sm max-w-4xl mx-auto shadow-2xl">
-          <span className="font-mono-tech text-[10px] sm:text-xs text-[#FF0022] tracking-[0.3em] uppercase block mb-2 font-bold">
+        <div className="border border-[#6C3082] bg-[#141414]/90 px-6 sm:px-12 py-6 sm:py-8 backdrop-blur-sm max-w-4xl mx-auto shadow-2xl">
+          <span className="font-mono-tech text-[10px] sm:text-xs text-[#6C3082] tracking-[0.3em] uppercase block mb-2 font-bold">
             // TRANSITION_CH01 // ORIGIN NODE
           </span>
           <h3 className="font-display font-black text-lg sm:text-3xl md:text-4xl text-[#FCFAED] uppercase leading-tight tracking-wider">
@@ -158,7 +158,7 @@ export const TransitionHeroDepartment: React.FC = () => {
       {/* Telemetry Guide Marks */}
       <div className="absolute bottom-4 left-6 right-6 flex items-center justify-between font-mono-tech text-[9px] text-[#444444]">
         <span>SCROLL_VECTOR // ACTIVE</span>
-        <span className="text-[#FF0022]">CHAPTER_01 ➔ CHAPTER_02</span>
+        <span className="text-[#6C3082]">CHAPTER_01 ➔ CHAPTER_02</span>
       </div>
     </div>
   );

@@ -4,10 +4,26 @@
 
 :root {
   --bg-color: #0D0D0D;
-  --primary-red: #FF0022;
-  --secondary-red: #FF3D00;
+  --bg-secondary: #151019;
+  --bg-card: #19131D;
+  --color-primary: #6C3082;
+  --color-vibrant: #8B35AD;
+  --color-electric: #A855F7;
+  --color-lavender: #C084FC;
+  --color-lavender-light: #E9D5FF;
+  --color-primary-hover: #A855F7;
+  --color-primary-light: #C084FC;
+  --primary-purple: #6C3082;
+  --vibrant-purple: #8B35AD;
+  --electric-purple: #A855F7;
+  --bright-lavender: #C084FC;
+  --soft-lavender: #E9D5FF;
+  --deep-black: #0D0D0D;
+  --secondary-bg: #151019;
+  --card-bg: #19131D;
   --ivory: #FCFAED;
   --white: #FFFFFF;
+  --muted-text: #B8AFC0;
   --neutral-dark: #1A1A1A;
   --neutral-gray: #565656;
 }
@@ -47,7 +63,7 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 0px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #FF0022;
+  background: #6C3082;
 }
 
 /* Subtle Technical Grid Background */
@@ -70,7 +86,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .comic-halftone-pattern {
-  background-image: radial-gradient(#FF0022 1.5px, transparent 1.5px), radial-gradient(#FCFAED 1px, transparent 1px);
+  background-image: radial-gradient(#6C3082 1.5px, transparent 1.5px), radial-gradient(#FCFAED 1px, transparent 1px);
   background-size: 12px 12px;
   background-position: 0 0, 6px 6px;
 }
@@ -79,8 +95,8 @@ h1, h2, h3, h4, h5, h6 {
 .hazard-stripes {
   background: repeating-linear-gradient(
     -45deg,
-    #FF0022,
-    #FF0022 10px,
+    #6C3082,
+    #6C3082 10px,
     #0D0D0D 10px,
     #0D0D0D 20px
   );
@@ -89,8 +105,8 @@ h1, h2, h3, h4, h5, h6 {
 .hazard-stripes-muted {
   background: repeating-linear-gradient(
     -45deg,
-    rgba(255, 0, 34, 0.4),
-    rgba(255, 0, 34, 0.4) 6px,
+    rgba(108, 48, 130, 0.4),
+    rgba(108, 48, 130, 0.4) 6px,
     transparent 6px,
     transparent 12px
   );
@@ -111,6 +127,35 @@ h1, h2, h3, h4, h5, h6 {
 
 .clip-badge {
   clip-path: polygon(12px 0%, 100% 0%, calc(100% - 12px) 100%, 0% 100%);
+}
+
+/* Luminous purple utilities */
+.glow-purple-subtle {
+  box-shadow: 0 0 20px -5px rgba(168, 85, 247, 0.3);
+}
+
+.glow-purple-vibrant {
+  box-shadow: 0 0 30px -5px rgba(168, 85, 247, 0.5), 0 0 10px rgba(192, 132, 252, 0.3);
+}
+
+.border-purple-luminous {
+  border-color: rgba(168, 85, 247, 0.4);
+}
+.border-purple-luminous:hover {
+  border-color: #C084FC;
+  box-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
+}
+
+.text-gradient-purple {
+  background: linear-gradient(135deg, #FFFFFF 0%, #FCFAED 50%, #E9D5FF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-electric {
+  background: linear-gradient(135deg, #E9D5FF 0%, #C084FC 50%, #A855F7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 /* Scanline Overlay (VHS experimental) */

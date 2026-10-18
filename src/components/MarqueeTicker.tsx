@@ -33,8 +33,9 @@ export const MarqueeTicker: React.FC<MarqueeTickerProps> = ({
   const skewX = isFinePointer ? Math.max(-5, Math.min(5, velocity * 0.2)) : 0;
 
   const themeClasses = {
-    dark: "bg-[#141414] text-[#FCFAED] border-y border-[#262626]",
-    red: "bg-[#FF0022] text-white border-y border-[#FF3D00]",
+    dark: "bg-[#151019] text-[#FCFAED] border-y border-[#2E1F3B]",
+    red: "bg-[#6C3082] text-white border-y border-[#8B35AD]",
+    purple: "bg-[#6C3082] text-white border-y border-[#8B35AD]",
     ivory: "bg-[#FCFAED] text-[#0D0D0D] border-y border-[#FCFAED]",
   };
 
@@ -42,7 +43,7 @@ export const MarqueeTicker: React.FC<MarqueeTickerProps> = ({
 
   return (
     <div
-      className={`relative w-full max-w-full overflow-hidden py-3 sm:py-4 select-none ${themeClasses[theme]} ${className}`}
+      className={`relative w-full max-w-full overflow-hidden py-3 sm:py-4 select-none ${themeClasses[theme as keyof typeof themeClasses] || themeClasses.dark} ${className}`}
     >
       <div
         className="flex w-max"
@@ -65,10 +66,10 @@ export const MarqueeTicker: React.FC<MarqueeTickerProps> = ({
         >
           {repeatedItems.map((item, idx) => (
             <React.Fragment key={idx}>
-              <span className="hover:text-white transition-colors">
+              <span className="hover:text-[#C084FC] transition-colors">
                 {item}
               </span>
-              <span className="w-1.5 h-1.5 bg-[#FF0022] rounded-full inline-block shrink-0" />
+              <span className={`w-1.5 h-1.5 rounded-full inline-block shrink-0 ${theme === 'red' || (theme as string) === 'purple' ? 'bg-[#FCFAED]' : 'bg-[#A855F7] shadow-[0_0_6px_rgba(168,85,247,0.8)]'}`} />
             </React.Fragment>
           ))}
         </motion.div>

@@ -111,14 +111,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister, onGoHome }) => {
             className="flex items-center gap-2.5 sm:gap-3 group no-underline cursor-pointer"
             aria-label="SAI INTELLIVERSE 3.0 Home"
           >
-            <div className="w-7 h-7 sm:w-8 sm:h-8 bg-[#FF0022] flex items-center justify-center font-display font-black text-white text-xs sm:text-sm clip-diagonal-right group-hover:bg-[#FF3D00] transition-colors shadow-md shrink-0">
+            <div className="w-7 h-7 sm:w-8 sm:h-8 bg-gradient-to-r from-[#8B35AD] to-[#A855F7] flex items-center justify-center font-display font-black text-white text-xs sm:text-sm clip-diagonal-right group-hover:from-[#A855F7] group-hover:to-[#C084FC] transition-all shadow-[0_0_12px_rgba(168,85,247,0.5)] shrink-0">
               3.0
             </div>
             <div className="flex flex-col min-w-0">
               <span className="font-display font-extrabold text-xs min-[360px]:text-sm sm:text-lg tracking-tight text-[#FCFAED] group-hover:text-white transition-colors leading-tight truncate">
                 {symposiumConfig.name}
               </span>
-              <span className="font-mono-tech text-[8px] sm:text-[9px] tracking-widest text-[#FF0022] font-semibold truncate">
+              <span className="font-mono-tech text-[8px] sm:text-[9px] tracking-widest text-[#C084FC] font-semibold truncate">
                 {symposiumConfig.edition}
               </span>
             </div>
@@ -142,7 +142,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister, onGoHome }) => {
                 >
                   <span
                     className={`text-[10px] mr-1.5 font-bold transition-opacity ${
-                      isActive ? 'text-[#FF0022] opacity-100' : 'text-[#FF0022] opacity-0 group-hover:opacity-100'
+                      isActive ? 'text-[#C084FC] opacity-100' : 'text-[#A855F7] opacity-0 group-hover:opacity-100'
                     }`}
                   >
                     {link.code}
@@ -153,11 +153,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister, onGoHome }) => {
                   {isActive ? (
                     <motion.span
                       layoutId="navActiveIndicator"
-                      className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#FF0022] shadow-[0_0_8px_rgba(255,0,34,0.7)]"
+                      className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#8B35AD] via-[#C084FC] to-[#A855F7] shadow-[0_0_10px_rgba(168,85,247,0.8)]"
                       transition={{ type: "spring", stiffness: 380, damping: 30 }}
                     />
                   ) : (
-                    <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-[#FF0022] transition-all duration-200 group-hover:w-full" />
+                    <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-[#A855F7] transition-all duration-200 group-hover:w-full shadow-[0_0_6px_#A855F7]" />
                   )}
                 </a>
               );
@@ -196,7 +196,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister, onGoHome }) => {
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
-              className="min-h-[44px] min-w-[44px] flex items-center justify-center border border-[#333333] hover:border-[#FF0022] bg-[#141414] text-[#FCFAED] active:text-[#FF0022] active:bg-[#1a1a1a] transition-colors cursor-pointer"
+              className="min-h-[44px] min-w-[44px] flex items-center justify-center border border-[#3D264E] hover:border-[#C084FC] bg-[#19131D] text-[#FCFAED] active:text-[#C084FC] active:bg-[#251730] transition-colors cursor-pointer"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
@@ -212,15 +212,15 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister, onGoHome }) => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-50 bg-[#0D0D0D] flex flex-col justify-between p-4 sm:p-6 pt-20 sm:pt-24 overflow-y-auto md:hidden"
+            className="fixed inset-0 z-50 bg-[#0D0D0D]/98 backdrop-blur-xl flex flex-col justify-between p-4 sm:p-6 pt-20 sm:pt-24 overflow-y-auto md:hidden"
           >
             {/* Header row in mobile menu */}
-            <div className="flex items-center justify-between border-b border-[#262626] pb-3 text-xs font-mono-tech text-[#565656]">
+            <div className="flex items-center justify-between border-b border-[#2E1F3B] pb-3 text-xs font-mono-tech text-[#B8AFC0]">
               <span>NAVIGATION DIRECTORY</span>
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(false)}
-                className="min-h-[44px] px-3 text-[#FF0022] font-bold uppercase flex items-center gap-1 cursor-pointer hover:text-white active:text-[#FF3D00] transition-colors"
+                className="min-h-[44px] px-3 text-[#C084FC] font-bold uppercase flex items-center gap-1 cursor-pointer hover:text-white active:text-[#A855F7] transition-colors"
               >
                 <span>CLOSE</span>
                 <X className="w-4 h-4" />
@@ -237,17 +237,17 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister, onGoHome }) => {
                     e.preventDefault();
                     handleLinkClick(link.href);
                   }}
-                  className="min-h-[48px] flex items-center justify-between py-2 border-b border-[#1A1A1A] group active:bg-[#141414] px-2 transition-colors cursor-pointer"
+                  className="min-h-[48px] flex items-center justify-between py-2 border-b border-[#2E1F3B] group active:bg-[#19131D] px-2 transition-colors cursor-pointer"
                 >
                   <div className="flex items-baseline gap-3">
-                    <span className="font-mono-tech text-xs text-[#FF0022]">
+                    <span className="font-mono-tech text-xs text-[#A855F7]">
                       {link.code}
                     </span>
-                    <span className="font-display font-extrabold text-2xl text-[#FCFAED] group-hover:text-[#FF0022] transition-colors">
+                    <span className="font-display font-extrabold text-2xl text-[#FCFAED] group-hover:text-[#C084FC] transition-colors">
                       {link.label}
                     </span>
                   </div>
-                  <ArrowUpRight className="w-5 h-5 text-[#565656] group-hover:text-[#FF0022]" />
+                  <ArrowUpRight className="w-5 h-5 text-[#B8AFC0] group-hover:text-[#C084FC]" />
                 </a>
               ))}
             </div>

@@ -79,7 +79,7 @@ export const GalleryModal: React.FC<GalleryModalProps> = ({
           {/* Top Bar */}
           <div className="flex items-center justify-between px-4 sm:px-6 py-3 border-b border-[#262626] bg-[#0D0D0D] font-mono-tech text-xs shrink-0">
             <div className="flex items-center gap-2 sm:gap-3">
-              <span className="text-[#FF0022] font-bold">ARCHIVE // {item.year}</span>
+              <span className="text-[#6C3082] font-bold">ARCHIVE // {item.year}</span>
               <span className="text-[#565656]">|</span>
               <span className="text-[#888888]">{item.category}</span>
             </div>
@@ -92,7 +92,7 @@ export const GalleryModal: React.FC<GalleryModalProps> = ({
                 whileTap={{ scale: 0.92 }}
                 onClick={onClose}
                 aria-label="Close Preview"
-                className="min-h-[44px] min-w-[44px] flex items-center justify-center border border-[#333333] hover:border-[#FF0022] text-[#FCFAED] hover:bg-[#FF0022] hover:text-white transition-colors cursor-pointer"
+                className="min-h-[44px] min-w-[44px] flex items-center justify-center border border-[#333333] hover:border-[#6C3082] text-[#FCFAED] hover:bg-[#6C3082] hover:text-white transition-colors cursor-pointer"
               >
                 <X className="w-4 h-4" />
               </motion.button>
@@ -114,7 +114,7 @@ export const GalleryModal: React.FC<GalleryModalProps> = ({
               transition={{ type: "spring", stiffness: 450, damping: 25 }}
               onClick={handlePrev}
               aria-label="Previous Image"
-              className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 min-h-[44px] min-w-[44px] p-2.5 bg-black/70 hover:bg-[#FF0022] text-white border border-[#333333] hover:border-[#FF0022] transition-colors cursor-pointer flex items-center justify-center"
+              className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 min-h-[44px] min-w-[44px] p-2.5 bg-black/70 hover:bg-[#6C3082] text-white border border-[#333333] hover:border-[#6C3082] transition-colors cursor-pointer flex items-center justify-center"
             >
               <ChevronLeft className="w-5 h-5" />
             </motion.button>
@@ -126,7 +126,7 @@ export const GalleryModal: React.FC<GalleryModalProps> = ({
               transition={{ type: "spring", stiffness: 450, damping: 25 }}
               onClick={handleNext}
               aria-label="Next Image"
-              className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 min-h-[44px] min-w-[44px] p-2.5 bg-black/70 hover:bg-[#FF0022] text-white border border-[#333333] hover:border-[#FF0022] transition-colors cursor-pointer flex items-center justify-center"
+              className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 min-h-[44px] min-w-[44px] p-2.5 bg-black/70 hover:bg-[#6C3082] text-white border border-[#333333] hover:border-[#6C3082] transition-colors cursor-pointer flex items-center justify-center"
             >
               <ChevronRight className="w-5 h-5" />
             </motion.button>
