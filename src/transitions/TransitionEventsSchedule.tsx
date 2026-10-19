@@ -70,36 +70,36 @@ export const TransitionEventsSchedule: React.FC = () => {
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-[35svh] sm:h-[45svh] bg-[#0D0D0D] overflow-hidden flex flex-col items-center justify-center pointer-events-none select-none z-1"
+      className="relative w-full h-[35svh] sm:h-[45svh] bg-[#080A0F] overflow-hidden flex flex-col items-center justify-center pointer-events-none select-none z-1"
     >
       {/* Horizontal Line from Events */}
       <div
         ref={horizontalLineRef}
-        className="h-[2px] bg-gradient-to-r from-[#6C3082] via-[#823A9D] to-[#6C3082] transition-all"
+        className="h-[2px] bg-gradient-to-r from-[#35DDF5] via-[#7DEBFF] to-[#35DDF5] transition-all"
       />
 
       {/* Central Connector Node */}
       <div
         ref={pulseNodeRef}
-        className="w-4 h-4 rounded-full border-2 border-[#6C3082] bg-[#0D0D0D] flex items-center justify-center -my-2 z-10 opacity-0"
+        className="w-4 h-4 rounded-full border-2 border-[#4DE6FF] bg-[#080A0F] flex items-center justify-center -my-2 z-10 opacity-0"
       >
-        <span className="w-1.5 h-1.5 bg-[#6C3082] rounded-full animate-ping" />
+        <span className="w-1.5 h-1.5 bg-[#35DDF5] rounded-full animate-ping" />
       </div>
 
       {/* Vertical Timeline Guide extending downward */}
       <div
         ref={verticalLineRef}
-        className="w-[2px] h-32 sm:h-48 bg-gradient-to-b from-[#6C3082] to-[#823A9D] opacity-90 shadow-[0_0_12px_rgba(108,48,130,0.6)]"
+        className="w-[2px] h-32 sm:h-48 bg-gradient-to-b from-[#35DDF5] to-[#7DEBFF] opacity-90 shadow-[0_0_12px_rgba(53,221,245,0.6)]"
       />
 
       {/* Technical Morph Label */}
       <div
         ref={labelRef}
-        className="mt-3 font-mono-tech text-[10px] sm:text-xs text-[#888888] tracking-widest uppercase flex items-center gap-2 opacity-0"
+        className="mt-3 font-mono-tech text-[10px] sm:text-xs text-[#A9BAC8] tracking-widest uppercase flex items-center gap-2 opacity-0"
       >
-        <span className="text-[#6C3082]">EVENT_CONNECTION_LINE</span>
+        <span className="text-[#35DDF5]">EVENT_CONNECTION_LINE</span>
         <span>➔</span>
-        <span className="text-[#FCFAED]">SCHEDULE_TIMELINE</span>
+        <span className="text-[#F4FDFF]">SCHEDULE_TIMELINE</span>
       </div>
     </div>
   );

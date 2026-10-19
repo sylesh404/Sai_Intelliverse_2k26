@@ -85,7 +85,7 @@ export function App() {
   };
 
   return (
-    <div className="relative min-h-screen bg-[#0D0D0D] text-[#FCFAED] overflow-x-hidden select-auto font-body">
+    <div className="relative min-h-screen bg-[#080A0F] text-[#F4FDFF] overflow-x-hidden select-auto font-body">
       {/* 1. Custom Smooth Animated Cursor */}
       <CustomCursor />
 

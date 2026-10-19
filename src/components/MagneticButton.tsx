@@ -90,7 +90,7 @@ export const MagneticButton: React.FC<MagneticButtonProps> = ({
     setIsHovered(false);
   };
 
-  // Tactile stationary click flash without layout shifts or displacement
+  // Tactile stationary click flash without layout shifts
   const handleClick = (e: React.MouseEvent<HTMLElement>) => {
     if (disabled) return;
 
@@ -119,13 +119,13 @@ export const MagneticButton: React.FC<MagneticButtonProps> = ({
 
   const variantStyles = {
     primary:
-      "bg-[#8B35AD] hover:bg-[#A855F7] active:bg-[#6C3082] text-white border border-[#C084FC]/60 hover:border-[#E9D5FF] shadow-[0_0_20px_rgba(139,53,173,0.4)] hover:shadow-[0_0_30px_rgba(168,85,247,0.6)]",
+      "bg-[#7DEBFF] hover:bg-[#A5F3FF] active:bg-[#35DDF5] text-[#071521] font-black border border-[#4DE6FF] shadow-[0_0_20px_rgba(53,221,245,0.4)] hover:shadow-[0_0_30px_rgba(125,235,255,0.6)]",
     secondary:
-      "bg-[#151019] hover:bg-[#1f1626] text-[#FCFAED] border border-[#8B35AD] hover:border-[#C084FC] hover:text-white shadow-[0_0_15px_rgba(139,53,173,0.25)] hover:shadow-[0_0_25px_rgba(168,85,247,0.45)]",
+      "bg-[#141C26] hover:bg-[#10151D] text-[#F4FDFF] border border-[#263643] hover:border-[#4DE6FF] hover:text-[#7DEBFF] shadow-[0_0_15px_rgba(53,221,245,0.15)] hover:shadow-[0_0_25px_rgba(125,235,255,0.35)]",
     outline:
-      "bg-transparent text-[#FCFAED] border border-[#8B35AD] hover:border-[#C084FC] hover:text-white hover:bg-[#8B35AD]/20 shadow-none hover:shadow-[0_0_20px_rgba(168,85,247,0.35)]",
+      "bg-transparent text-[#F4FDFF] border border-[#4DE6FF]/70 hover:border-[#7DEBFF] hover:text-[#7DEBFF] hover:bg-[#35DDF5]/10 shadow-none hover:shadow-[0_0_20px_rgba(125,235,255,0.3)]",
     ivory:
-      "bg-[#FCFAED] text-[#0D0D0D] border border-[#FCFAED] hover:bg-white font-semibold hover:shadow-[0_0_25px_rgba(252,250,237,0.45)]",
+      "bg-[#F4FDFF] text-[#080A0F] border border-[#F4FDFF] hover:bg-white font-bold hover:shadow-[0_0_25px_rgba(165,243,255,0.45)]",
   };
 
   const sizeStyles = {
@@ -134,7 +134,7 @@ export const MagneticButton: React.FC<MagneticButtonProps> = ({
     lg: "min-h-[48px] sm:min-h-[56px] px-6 sm:px-8 py-3.5 sm:py-4 text-xs sm:text-base font-bold",
   };
 
-  // Subtle magnetic offset calculation for desktop
+  // Subtle magnetic offset calculation for desktop fine pointer
   const magneticX = isHovered && isFinePointer && !prefersReducedMotion ? (mousePos.x - 50) * 0.16 : 0;
   const magneticY = isHovered && isFinePointer && !prefersReducedMotion ? (mousePos.y - 50) * 0.16 : 0;
 
@@ -148,14 +148,14 @@ export const MagneticButton: React.FC<MagneticButtonProps> = ({
         transform: `translate3d(${magneticX}px, ${magneticY}px, 0)`,
         transition: isHovered ? 'transform 0.15s ease-out' : 'transform 0.3s ease-out',
       }}
-      className={`relative inline-flex items-center justify-center gap-2.5 font-mono-tech tracking-wider uppercase select-none transition-all duration-300 overflow-hidden group cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A855F7] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0D0D0D] ${variantStyles[variant]} ${sizeStyles[size]} ${className}`}
+      className={`relative inline-flex items-center justify-center gap-2.5 font-mono-tech tracking-wider uppercase select-none transition-all duration-300 overflow-hidden group cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#35DDF5] focus-visible:ring-offset-2 focus-visible:ring-offset-[#080A0F] ${variantStyles[variant]} ${sizeStyles[size]} ${className}`}
     >
       {/* 1. Corner Architectural Notch */}
-      <span className="absolute top-0 right-0 w-2.5 h-2.5 bg-[#0D0D0D] clip-diagonal-left pointer-events-none z-20" />
+      <span className="absolute top-0 right-0 w-2.5 h-2.5 bg-[#080A0F] clip-diagonal-left pointer-events-none z-20" />
 
-      {/* 2. Directional Purple Reveal Fill (for outline & secondary) */}
+      {/* 2. Directional Ice-Blue Reveal Fill (for outline & secondary) */}
       {(variant === 'outline' || variant === 'secondary') && (
-        <span className="absolute inset-0 bg-gradient-to-r from-[#8B35AD]/80 to-[#A855F7]/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-0" />
+        <span className="absolute inset-0 bg-gradient-to-r from-[#35DDF5]/80 to-[#7DEBFF]/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-0" />
       )}
 
       {/* 3. Cursor-Position Aware Highlight (Stationary, subtle surface lighting) */}
@@ -166,13 +166,13 @@ export const MagneticButton: React.FC<MagneticButtonProps> = ({
             opacity: isHovered ? 1 : 0,
             background:
               variant === 'primary'
-                ? `radial-gradient(circle 90px at ${mousePos.x}% ${mousePos.y}%, rgba(255, 255, 255, 0.32), transparent 70%)`
-                : `radial-gradient(circle 90px at ${mousePos.x}% ${mousePos.y}%, rgba(168, 85, 247, 0.4), transparent 70%)`,
+                ? `radial-gradient(circle 90px at ${mousePos.x}% ${mousePos.y}%, rgba(255, 255, 255, 0.45), transparent 70%)`
+                : `radial-gradient(circle 90px at ${mousePos.x}% ${mousePos.y}%, rgba(125, 235, 255, 0.35), transparent 70%)`,
           }}
         />
       )}
 
-      {/* 4. Animated Border Sweep on Hover (Level 2 & 3, stationary border drawing) */}
+      {/* 4. Animated Border Sweep on Hover */}
       {level >= 2 && !prefersReducedMotion && (
         <svg className="absolute inset-0 w-full h-full pointer-events-none z-15 overflow-visible">
           <rect
@@ -181,7 +181,7 @@ export const MagneticButton: React.FC<MagneticButtonProps> = ({
             width="calc(100% - 2px)"
             height="calc(100% - 2px)"
             fill="none"
-            stroke={variant === 'primary' ? '#FFFFFF' : '#C084FC'}
+            stroke={variant === 'primary' ? '#071521' : '#7DEBFF'}
             strokeWidth="1.5"
             strokeDasharray="360"
             strokeDashoffset={isHovered ? 0 : 360}
@@ -199,7 +199,7 @@ export const MagneticButton: React.FC<MagneticButtonProps> = ({
             <span className="relative inline-block transition-colors duration-200 font-bold tracking-wide">
               {isHovered && hoverText ? hoverText : defaultText}
               {/* Subtle underline illumination */}
-              <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-gradient-to-r from-[#FCFAED] to-[#C084FC] transition-all duration-300 group-hover:w-full opacity-90" />
+              <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-gradient-to-r from-[#F4FDFF] to-[#7DEBFF] transition-all duration-300 group-hover:w-full opacity-90" />
             </span>
 
             {/* Coordinated Arrow Icon with Slide Animation */}
@@ -223,13 +223,13 @@ export const MagneticButton: React.FC<MagneticButtonProps> = ({
               left: impact.x - 30,
               top: impact.y - 30,
             }}
-            className="absolute pointer-events-none z-30 w-16 h-16 rounded-full bg-white/20 blur-sm"
+            className="absolute pointer-events-none z-30 w-16 h-16 rounded-full bg-white/25 blur-sm"
           />
         ))}
       </AnimatePresence>
 
       {/* 7. Subtle Bottom Baseline Accent */}
-      <span className="absolute bottom-0 left-0 w-full h-[2px] bg-white/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
+      <span className="absolute bottom-0 left-0 w-full h-[2px] bg-[#7DEBFF]/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
     </div>
   );
 

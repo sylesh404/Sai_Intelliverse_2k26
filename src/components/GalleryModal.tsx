@@ -74,25 +74,25 @@ export const GalleryModal: React.FC<GalleryModalProps> = ({
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.96 }}
           transition={{ duration: 0.2 }}
-          className="relative max-w-4xl w-full max-h-[92vh] bg-[#141414] border border-[#262626] overflow-hidden flex flex-col z-10"
+          className="relative max-w-4xl w-full max-h-[92vh] bg-[#10151D] border border-[#263643] overflow-hidden flex flex-col z-10 shadow-[0_0_40px_rgba(53,221,245,0.15)]"
         >
           {/* Top Bar */}
-          <div className="flex items-center justify-between px-4 sm:px-6 py-3 border-b border-[#262626] bg-[#0D0D0D] font-mono-tech text-xs shrink-0">
+          <div className="flex items-center justify-between px-4 sm:px-6 py-3 border-b border-[#263643] bg-[#0A111C] font-mono-tech text-xs shrink-0">
             <div className="flex items-center gap-2 sm:gap-3">
-              <span className="text-[#6C3082] font-bold">ARCHIVE // {item.year}</span>
-              <span className="text-[#565656]">|</span>
-              <span className="text-[#888888]">{item.category}</span>
+              <span className="text-[#35DDF5] font-bold">ARCHIVE // {item.year}</span>
+              <span className="text-[#263643]">|</span>
+              <span className="text-[#A9BAC8]">{item.category}</span>
             </div>
 
             <div className="flex items-center gap-3">
-              <span className="text-[#565656] text-[11px]">
+              <span className="text-[#A9BAC8] text-[11px]">
                 {currentIndex + 1} / {items.length}
               </span>
               <motion.button
                 whileTap={{ scale: 0.92 }}
                 onClick={onClose}
                 aria-label="Close Preview"
-                className="min-h-[44px] min-w-[44px] flex items-center justify-center border border-[#333333] hover:border-[#6C3082] text-[#FCFAED] hover:bg-[#6C3082] hover:text-white transition-colors cursor-pointer"
+                className="min-h-[44px] min-w-[44px] flex items-center justify-center border border-[#263643] hover:border-[#4DE6FF] text-[#F4FDFF] hover:bg-[#35DDF5]/20 hover:text-[#7DEBFF] transition-colors cursor-pointer"
               >
                 <X className="w-4 h-4" />
               </motion.button>
@@ -114,7 +114,7 @@ export const GalleryModal: React.FC<GalleryModalProps> = ({
               transition={{ type: "spring", stiffness: 450, damping: 25 }}
               onClick={handlePrev}
               aria-label="Previous Image"
-              className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 min-h-[44px] min-w-[44px] p-2.5 bg-black/70 hover:bg-[#6C3082] text-white border border-[#333333] hover:border-[#6C3082] transition-colors cursor-pointer flex items-center justify-center"
+              className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 min-h-[44px] min-w-[44px] p-2.5 bg-[#080A0F]/80 hover:bg-[#35DDF5]/20 text-white border border-[#263643] hover:border-[#4DE6FF] hover:text-[#7DEBFF] transition-colors cursor-pointer flex items-center justify-center backdrop-blur-xs"
             >
               <ChevronLeft className="w-5 h-5" />
             </motion.button>
@@ -126,18 +126,18 @@ export const GalleryModal: React.FC<GalleryModalProps> = ({
               transition={{ type: "spring", stiffness: 450, damping: 25 }}
               onClick={handleNext}
               aria-label="Next Image"
-              className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 min-h-[44px] min-w-[44px] p-2.5 bg-black/70 hover:bg-[#6C3082] text-white border border-[#333333] hover:border-[#6C3082] transition-colors cursor-pointer flex items-center justify-center"
+              className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 min-h-[44px] min-w-[44px] p-2.5 bg-[#080A0F]/80 hover:bg-[#35DDF5]/20 text-white border border-[#263643] hover:border-[#4DE6FF] hover:text-[#7DEBFF] transition-colors cursor-pointer flex items-center justify-center backdrop-blur-xs"
             >
               <ChevronRight className="w-5 h-5" />
             </motion.button>
           </div>
 
           {/* Bottom Caption Bar */}
-          <div className="p-4 sm:p-6 bg-[#0D0D0D] border-t border-[#262626] shrink-0">
-            <h3 className="text-lg sm:text-xl font-display font-extrabold text-[#FCFAED] mb-1 leading-tight">
+          <div className="p-4 sm:p-6 bg-[#0A111C] border-t border-[#263643] shrink-0">
+            <h3 className="text-lg sm:text-xl font-display font-extrabold text-[#F4FDFF] mb-1 leading-tight">
               {item.title}
             </h3>
-            <p className="text-xs sm:text-sm font-mono-tech text-[#888888] leading-relaxed">
+            <p className="text-xs sm:text-sm font-mono-tech text-[#A9BAC8] leading-relaxed">
               {item.caption}
             </p>
           </div>

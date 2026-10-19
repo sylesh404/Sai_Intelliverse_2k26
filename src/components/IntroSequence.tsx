@@ -41,7 +41,7 @@ export const IntroSequence: React.FC<IntroSequenceProps> = ({ onComplete }) => {
     }, 1500);
 
     const t3 = setTimeout(() => {
-      setStep(3); // Diagonal red sweep
+      setStep(3); // Diagonal sweep
     }, 2400);
 
     const t4 = setTimeout(() => {
@@ -66,7 +66,6 @@ export const IntroSequence: React.FC<IntroSequenceProps> = ({ onComplete }) => {
     onComplete();
   };
 
-
   const symposiumLetters = symposiumConfig.name.split('');
 
   return (
@@ -75,13 +74,13 @@ export const IntroSequence: React.FC<IntroSequenceProps> = ({ onComplete }) => {
         key="cinematic-intro"
         initial={{ opacity: 1 }}
         exit={{ opacity: 0, transition: { duration: 0.6, ease: "easeInOut" } }}
-        className="fixed inset-0 z-50 bg-[#0D0D0D] flex flex-col justify-between p-4 sm:p-8 lg:p-12 overflow-hidden text-[#FCFAED] select-none"
+        className="fixed inset-0 z-50 bg-[#080A0F] flex flex-col justify-between p-4 sm:p-8 lg:p-12 overflow-hidden text-[#F4FDFF] select-none"
       >
         {/* Skip button with 48px touch target */}
         <div className="absolute top-4 right-4 sm:top-6 sm:right-6 z-50">
           <button
             onClick={handleSkip}
-            className="flex items-center gap-2 min-h-[44px] px-3.5 py-2 bg-[#1A1A1A] border border-[#333333] hover:border-[#6C3082] text-xs font-mono-tech uppercase tracking-widest text-[#FCFAED] transition-all hover:bg-[#6C3082] hover:text-white cursor-pointer active:scale-95"
+            className="flex items-center gap-2 min-h-[44px] px-3.5 py-2 bg-[#10151D] border border-[#263643] hover:border-[#4DE6FF] text-xs font-mono-tech uppercase tracking-widest text-[#F4FDFF] transition-all hover:bg-[#35DDF5] hover:text-[#080A0F] font-bold cursor-pointer active:scale-95 shadow-lg"
             aria-label="Skip Introduction Sequence"
           >
             <span>SKIP INTRO</span>
@@ -89,14 +88,14 @@ export const IntroSequence: React.FC<IntroSequenceProps> = ({ onComplete }) => {
           </button>
         </div>
 
-        {/* 1. Thin white/red lines drawing across screen */}
+        {/* 1. Thin lines drawing across screen */}
         <svg className="absolute inset-0 w-full h-full pointer-events-none stroke-current opacity-30">
           <motion.line
             x1="0"
             y1="25%"
             x2="100%"
             y2="25%"
-            stroke="#565656"
+            stroke="#263643"
             strokeWidth="1"
             strokeDasharray="6 6"
             initial={{ pathLength: 0 }}
@@ -108,7 +107,7 @@ export const IntroSequence: React.FC<IntroSequenceProps> = ({ onComplete }) => {
             y1="0"
             x2="15%"
             y2="100%"
-            stroke="#6C3082"
+            stroke="#35DDF5"
             strokeWidth="1"
             initial={{ pathLength: 0 }}
             animate={{ pathLength: 1 }}
@@ -119,7 +118,7 @@ export const IntroSequence: React.FC<IntroSequenceProps> = ({ onComplete }) => {
             y1="0"
             x2="85%"
             y2="100%"
-            stroke="#333333"
+            stroke="#263643"
             strokeWidth="1"
             initial={{ pathLength: 0 }}
             animate={{ pathLength: 1 }}
@@ -127,31 +126,31 @@ export const IntroSequence: React.FC<IntroSequenceProps> = ({ onComplete }) => {
           />
         </svg>
 
-        {/* Diagonal Red Geometric Sweep (safe animation zone) */}
+        {/* Diagonal Arctic Geometric Sweep */}
         <AnimatePresence>
           {step >= 3 && (
             <motion.div
               initial={{ x: "-100%", skewX: -20 }}
               animate={{ x: "200%", skewX: -20 }}
               transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-              className="absolute inset-y-0 w-1/2 bg-[#6C3082] opacity-70 pointer-events-none z-10"
+              className="absolute inset-y-0 w-1/2 bg-[#35DDF5] opacity-35 pointer-events-none z-10"
             />
           )}
         </AnimatePresence>
 
         {/* Top Technical Metadata */}
-        <div className="relative z-20 flex flex-wrap justify-between items-center gap-2 text-[10px] sm:text-xs font-mono-tech text-[#565656] pt-1">
+        <div className="relative z-20 flex flex-wrap justify-between items-center gap-2 text-[10px] sm:text-xs font-mono-tech text-[#A9BAC8] pt-1">
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="flex items-center gap-2 text-[#FCFAED]"
+            className="flex items-center gap-2 text-[#F4FDFF]"
           >
-            <span className="w-2 h-2 bg-[#6C3082] rounded-full animate-ping" />
-            <Terminal className="w-3.5 h-3.5 text-[#6C3082]" />
+            <span className="w-2 h-2 bg-[#35DDF5] rounded-full animate-ping" />
+            <Terminal className="w-3.5 h-3.5 text-[#35DDF5]" />
             <span>SYSTEM // 001 — READY</span>
           </motion.div>
 
-          <div className="text-[#6C3082] font-bold text-right pr-28 sm:pr-0">
+          <div className="text-[#35DDF5] font-bold text-right pr-28 sm:pr-0">
             STATUS: ACTIVE
           </div>
         </div>
@@ -164,11 +163,11 @@ export const IntroSequence: React.FC<IntroSequenceProps> = ({ onComplete }) => {
             animate={{ scale: 1, opacity: 1 }}
             className="relative"
           >
-            <span className="text-6xl sm:text-8xl md:text-9xl font-display font-extrabold tracking-tighter text-[#1A1A1A] select-none leading-none">
+            <span className="text-6xl sm:text-8xl md:text-9xl font-display font-extrabold tracking-tighter text-[#141C26] select-none leading-none">
               '{cycleYear}
             </span>
             <div className="absolute inset-0 flex items-center justify-center">
-              <span className="text-base sm:text-2xl font-mono-tech font-bold text-[#6C3082] tracking-widest bg-[#0D0D0D]/95 px-3 py-1 border border-[#6C3082]/40">
+              <span className="text-base sm:text-2xl font-mono-tech font-bold text-[#7DEBFF] tracking-widest bg-[#080A0F]/95 px-3 py-1 border border-[#4DE6FF]/50 shadow-[0_0_15px_rgba(77,230,255,0.3)]">
                 {symposiumConfig.edition}
               </span>
             </div>
@@ -189,7 +188,7 @@ export const IntroSequence: React.FC<IntroSequenceProps> = ({ onComplete }) => {
                     delay: index * 0.04,
                     ease: [0.22, 1, 0.36, 1],
                   }}
-                  className="text-2xl sm:text-5xl md:text-7xl lg:text-8xl font-display font-black tracking-tight text-[#FCFAED]"
+                  className="text-2xl sm:text-5xl md:text-7xl lg:text-8xl font-display font-black tracking-tight text-[#F4FDFF]"
                 >
                   {char}
                 </motion.span>
@@ -204,25 +203,25 @@ export const IntroSequence: React.FC<IntroSequenceProps> = ({ onComplete }) => {
             transition={{ duration: 0.4 }}
             className="max-w-xl px-2 text-center"
           >
-            <p className="text-[10px] sm:text-xs font-mono-tech tracking-wider text-[#6C3082] uppercase mb-1">
+            <p className="text-[10px] sm:text-xs font-mono-tech tracking-wider text-[#35DDF5] uppercase mb-1">
               {symposiumConfig.department}
             </p>
-            <p className="text-xs sm:text-sm font-bold text-[#FCFAED]">
+            <p className="text-xs sm:text-sm font-bold text-[#F4FDFF]">
               {symposiumConfig.college}
             </p>
-            <p className="text-[10px] sm:text-xs font-mono-tech text-[#888888] mt-1">
+            <p className="text-[10px] sm:text-xs font-mono-tech text-[#A9BAC8] mt-1">
               BANGALORE · {symposiumConfig.eventDate}
             </p>
           </motion.div>
         </div>
 
         {/* Bottom Technical Grid Bar */}
-        <div className="relative z-20 flex justify-between items-center border-t border-[#262626] pt-3 font-mono-tech text-[10px] sm:text-[11px] text-[#565656]">
+        <div className="relative z-20 flex justify-between items-center border-t border-[#263643] pt-3 font-mono-tech text-[10px] sm:text-[11px] text-[#A9BAC8]">
           <div>
             <span>SYSTEM / {symposiumConfig.year}</span>
           </div>
-          <div className="flex items-center gap-1.5 text-[#FCFAED]">
-            <span className="w-1.5 h-1.5 bg-[#6C3082]" />
+          <div className="flex items-center gap-1.5 text-[#F4FDFF]">
+            <span className="w-1.5 h-1.5 bg-[#35DDF5]" />
             <span>ONLINE</span>
           </div>
         </div>

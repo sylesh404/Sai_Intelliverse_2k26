@@ -57,9 +57,9 @@ const EventCard: React.FC<EventCardProps> = ({
     onLeave();
   };
 
-  // Vibrant purple theme accents
-  const accentColor = isTechnical ? '#8B35AD' : '#A855F7';
-  const secondaryColor = isTechnical ? '#A855F7' : '#C084FC';
+  // Distinctive Ice-Blue theme accents
+  const accentColor = isTechnical ? '#35DDF5' : '#7DEBFF';
+  const secondaryColor = isTechnical ? '#7DEBFF' : '#A5F3FF';
 
   // Desktop subtle perspective tilt
   const tiltX = isFinePointer && isHovered && !prefersReducedMotion && cardRef.current
@@ -102,10 +102,11 @@ const EventCard: React.FC<EventCardProps> = ({
           ? 'transform 0.12s ease-out, border-color 0.3s ease, box-shadow 0.3s ease'
           : 'transform 0.4s ease-out, border-color 0.3s ease, box-shadow 0.3s ease',
       }}
-      className={`group relative bg-[#19131D] border p-4 sm:p-6 lg:p-7 flex flex-col justify-between cursor-pointer overflow-hidden min-w-0 ${isTechnical
-        ? 'border-[#2E1F3B] hover:border-[#C084FC] hover:shadow-[0_0_32px_rgba(139,53,173,0.35)]'
-        : 'border-[#2E1F3B] hover:border-[#C084FC] hover:shadow-[0_0_32px_rgba(168,85,247,0.4)]'
-        }`}
+      className={`group relative bg-[#10151D] border p-4 sm:p-6 lg:p-7 flex flex-col justify-between cursor-pointer overflow-hidden min-w-0 ${
+        isTechnical
+          ? 'border-[#263643] hover:border-[#4DE6FF] hover:shadow-[0_0_32px_rgba(53,221,245,0.3)]'
+          : 'border-[#263643] hover:border-[#7DEBFF] hover:shadow-[0_0_32px_rgba(125,235,255,0.35)]'
+      }`}
     >
       {/* ========================================================================= */}
       {/* 1. LAYERED BACKGROUND & STATIONARY CURSOR SPOTLIGHT                       */}
@@ -169,7 +170,7 @@ const EventCard: React.FC<EventCardProps> = ({
         <span
           className="absolute top-1.5 right-1.5 w-1 h-1 rounded-full transition-colors"
           style={{
-            backgroundColor: isHovered ? '#FCFAED' : `${accentColor}88`,
+            backgroundColor: isHovered ? '#071521' : `${accentColor}88`,
           }}
         />
       </div>
@@ -191,7 +192,7 @@ const EventCard: React.FC<EventCardProps> = ({
 
       {/* Bottom-Right Watermark Coordinate */}
       <span
-        className="absolute bottom-1 right-2 font-mono-tech text-[8px] text-[#2E2E2E] group-hover:text-[#444444] tracking-widest select-none pointer-events-none transition-colors z-0"
+        className="absolute bottom-1 right-2 font-mono-tech text-[8px] text-[#263643] group-hover:text-[#3d5162] tracking-widest select-none pointer-events-none transition-colors z-0"
         aria-hidden="true"
       >
         SYS_{event.code}
@@ -204,7 +205,7 @@ const EventCard: React.FC<EventCardProps> = ({
         {/* Telemetry Row: Event Number + Category Label */}
         <div className="flex items-center justify-between font-mono-tech text-[9px] sm:text-xs mb-3">
           <div
-            className="flex items-center gap-1.5 bg-[#0D0D0D] px-2.5 py-1 border transition-colors shadow-xs"
+            className="flex items-center gap-1.5 bg-[#080A0F] px-2.5 py-1 border transition-colors shadow-xs"
             style={{
               borderColor: isHovered ? accentColor : `${accentColor}66`,
             }}
@@ -221,7 +222,7 @@ const EventCard: React.FC<EventCardProps> = ({
             </span>
           </div>
 
-          <div className="inline-flex items-center gap-1.5 text-[#666666] group-hover:text-[#999999] uppercase font-semibold tracking-wider text-[10px] transition-colors">
+          <div className="inline-flex items-center gap-1.5 text-[#A9BAC8]/60 group-hover:text-[#A9BAC8] uppercase font-semibold tracking-wider text-[10px] transition-colors">
             <span
               className="w-1 h-1 rounded-full opacity-60"
               style={{ backgroundColor: secondaryColor }}
@@ -230,8 +231,8 @@ const EventCard: React.FC<EventCardProps> = ({
           </div>
         </div>
 
-        {/* Event Title (Stationary with refined text glow on hover) */}
-        <h4 className="font-display font-black text-base sm:text-xl lg:text-2xl text-[#FCFAED] group-hover:text-white leading-snug uppercase mb-1.5 transition-colors duration-300 break-words drop-shadow-sm">
+        {/* Event Title */}
+        <h4 className="font-display font-black text-base sm:text-xl lg:text-2xl text-[#F4FDFF] group-hover:text-white leading-snug uppercase mb-1.5 transition-colors duration-300 break-words drop-shadow-sm">
           {event.title}
         </h4>
 
@@ -244,7 +245,7 @@ const EventCard: React.FC<EventCardProps> = ({
         </div>
 
         {/* Short Description */}
-        <p className="font-body text-xs sm:text-[13px] lg:text-sm text-[#B8AFC0] group-hover:text-[#FCFAED] leading-relaxed mb-4 transition-colors line-clamp-3 sm:line-clamp-none break-words">
+        <p className="font-body text-xs sm:text-[13px] lg:text-sm text-[#A9BAC8] group-hover:text-[#F4FDFF] leading-relaxed mb-4 transition-colors line-clamp-3 sm:line-clamp-none break-words">
           {event.shortDescription}
         </p>
 
@@ -252,13 +253,13 @@ const EventCard: React.FC<EventCardProps> = ({
         {/* 5. INTERACTIVE REGISTRATION FEE CONTAINER (STATIONARY)                    */}
         {/* ========================================================================= */}
         <div
-          className="group/fee mb-3 p-2.5 bg-[#151019] border border-[#2E1F3B] group-hover/fee:border-[#A855F7]/70 group-hover:border-[#3D264E] transition-colors duration-200 font-mono-tech text-[10px] sm:text-xs"
+          className="group/fee mb-3 p-2.5 bg-[#141C26] border border-[#263643] group-hover/fee:border-[#4DE6FF]/70 group-hover:border-[#35DDF5]/40 transition-colors duration-200 font-mono-tech text-[10px] sm:text-xs"
         >
-          <div className="flex items-center justify-between gap-2 text-[#B8AFC0]">
-            <span className="text-[#B8AFC0] group-hover/fee:text-[#FCFAED] uppercase text-[9px] sm:text-[10px] font-semibold tracking-wider transition-colors">
+          <div className="flex items-center justify-between gap-2 text-[#A9BAC8]">
+            <span className="text-[#A9BAC8] group-hover/fee:text-[#F4FDFF] uppercase text-[9px] sm:text-[10px] font-semibold tracking-wider transition-colors">
               ENTRY FEE:
             </span>
-            <span className="font-bold text-[#FCFAED] group-hover/fee:text-white uppercase transition-colors">
+            <span className="font-bold text-[#F4FDFF] group-hover/fee:text-white uppercase transition-colors">
               {event.entryFee}
             </span>
           </div>
@@ -266,47 +267,47 @@ const EventCard: React.FC<EventCardProps> = ({
       </div>
 
       {/* ========================================================================= */}
-      {/* 6. BOTTOM META & ACTION (STATIONARY WITH PURPLE GLOW HOVER)               */}
+      {/* 6. BOTTOM META & ACTION                                                   */}
       {/* ========================================================================= */}
-      <div className="pt-3 border-t border-[#2E1F3B] group-hover:border-[#3D264E] flex flex-col min-[380px]:flex-row min-[380px]:items-center justify-between gap-2.5 text-[9px] sm:text-xs font-mono-tech relative z-10 transition-colors">
+      <div className="pt-3 border-t border-[#263643] group-hover:border-[#35DDF5]/40 flex flex-col min-[380px]:flex-row min-[380px]:items-center justify-between gap-2.5 text-[9px] sm:text-xs font-mono-tech relative z-10 transition-colors">
         {/* Prize / Winner Reward Display */}
         {event.prizes?.first ? (
-          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[#FCFAED] min-w-0">
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[#F4FDFF] min-w-0">
             <div className="flex items-center gap-1.5">
               <Trophy
                 className="w-3.5 h-3.5 shrink-0"
                 style={{ color: accentColor }}
               />
-              <span className="text-[#B8AFC0] text-[9px] sm:text-[10px]">1ST:</span>
-              <span className="font-bold text-[#FCFAED] group-hover:text-white transition-colors">
+              <span className="text-[#A9BAC8] text-[9px] sm:text-[10px]">1ST:</span>
+              <span className="font-bold text-[#F4FDFF] group-hover:text-white transition-colors">
                 {event.prizes.first}
               </span>
             </div>
             {event.prizes?.second && (
               <div className="flex items-center gap-1.5">
-                <span className="text-[#B8AFC0] text-[9px] sm:text-[10px]">2ND:</span>
-                <span className="font-bold text-[#FCFAED] group-hover:text-white transition-colors">
+                <span className="text-[#A9BAC8] text-[9px] sm:text-[10px]">2ND:</span>
+                <span className="font-bold text-[#F4FDFF] group-hover:text-white transition-colors">
                   {event.prizes.second}
                 </span>
               </div>
             )}
           </div>
         ) : (
-          <div className="flex items-center gap-1.5 text-[#FCFAED] min-w-0">
-            <Trophy className="w-3.5 h-3.5 text-[#A855F7] shrink-0" />
-            <span className="font-bold text-[#FCFAED] group-hover:text-white truncate transition-colors">
+          <div className="flex items-center gap-1.5 text-[#F4FDFF] min-w-0">
+            <Trophy className="w-3.5 h-3.5 text-[#35DDF5] shrink-0" />
+            <span className="font-bold text-[#F4FDFF] group-hover:text-white truncate transition-colors">
               {event.winnerRewards || 'Mementos for Winners'}
             </span>
           </div>
         )}
 
-        {/* Stationary View Button with Luminous Purple Glow Hover */}
+        {/* Stationary View Button with Luminous Ice-Blue Glow Hover */}
         <div
-          className="relative inline-flex items-center justify-center gap-1.5 px-3 py-1.5 bg-[#151019] border text-[#FCFAED] transition-all duration-300 font-bold shrink-0 shadow-sm group-hover:shadow-[0_0_18px_rgba(168,85,247,0.5)] self-start min-[380px]:self-auto"
+          className="relative inline-flex items-center justify-center gap-1.5 px-3 py-1.5 bg-[#141C26] border text-[#F4FDFF] transition-all duration-300 font-bold shrink-0 shadow-sm group-hover:shadow-[0_0_18px_rgba(53,221,245,0.4)] self-start min-[380px]:self-auto"
           style={{
-            borderColor: isHovered ? '#C084FC' : `${secondaryColor}99`,
-            color: isHovered ? '#FFFFFF' : secondaryColor,
-            backgroundColor: isHovered ? accentColor : '#151019',
+            borderColor: isHovered ? '#7DEBFF' : `${secondaryColor}88`,
+            color: isHovered ? '#071521' : secondaryColor,
+            backgroundColor: isHovered ? accentColor : '#141C26',
           }}
         >
           <span className="text-[10px] sm:text-[11px] tracking-wide">VIEW</span>
@@ -346,7 +347,7 @@ export const EventsSection: React.FC<EventsSectionProps> = ({ onSelectEvent }) =
   return (
     <section
       id="events"
-      className="relative py-16 sm:py-24 px-3 sm:px-6 lg:px-12 bg-[#0D0D0D] border-b border-[#262626] overflow-hidden"
+      className="relative py-16 sm:py-24 px-3 sm:px-6 lg:px-12 bg-[#080A0F] border-b border-[#263643] overflow-hidden"
     >
       {/* Background Ghost Watermark */}
       <div
@@ -369,22 +370,22 @@ export const EventsSection: React.FC<EventsSectionProps> = ({ onSelectEvent }) =
             x: previewX,
             y: previewY,
           }}
-          className="fixed pointer-events-none z-40 w-64 sm:w-72 h-44 bg-[#141414] border-2 border-[#823A9D] overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.9),0_0_25px_rgba(108,48,130,0.35)] hidden lg:block"
+          className="fixed pointer-events-none z-40 w-64 sm:w-72 h-44 bg-[#0A111C] border-2 border-[#35DDF5] overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.9),0_0_25px_rgba(53,221,245,0.35)] hidden lg:block"
         >
           <img
             src={hoveredEvent.image}
             alt={hoveredEvent.title}
             className="w-full h-full object-cover"
           />
-          <div className="absolute bottom-0 inset-x-0 bg-[#0D0D0D]/95 px-3 py-1.5 font-mono-tech text-[10px] text-[#FCFAED] border-t border-[#823A9D] flex justify-between items-center">
+          <div className="absolute bottom-0 inset-x-0 bg-[#080A0F]/95 px-3 py-1.5 font-mono-tech text-[10px] text-[#F4FDFF] border-t border-[#35DDF5] flex justify-between items-center">
             {hoveredEvent.prizes?.first ? (
               <>
-                <span className="text-[#6C3082] font-bold">TOP PRIZE:</span>
+                <span className="text-[#35DDF5] font-bold">TOP PRIZE:</span>
                 <span>{hoveredEvent.prizes.first.split('+')[0]}</span>
               </>
             ) : (
               <>
-                <span className="text-[#823A9D] font-bold">REWARDS:</span>
+                <span className="text-[#7DEBFF] font-bold">REWARDS:</span>
                 <span>Mementos for Winners</span>
               </>
             )}
@@ -396,23 +397,23 @@ export const EventsSection: React.FC<EventsSectionProps> = ({ onSelectEvent }) =
         {/* ============================================================== */}
         {/* MAIN SECTION HEADER                                            */}
         {/* ============================================================== */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12 sm:mb-16 border-b border-[#262626] pb-6 sm:pb-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12 sm:mb-16 border-b border-[#263643] pb-6 sm:pb-8">
           <div>
-            <div className="flex items-center gap-3 font-mono-tech text-xs text-[#6C3082] uppercase tracking-widest mb-2 sm:mb-3">
+            <div className="flex items-center gap-3 font-mono-tech text-xs text-[#35DDF5] uppercase tracking-widest mb-2 sm:mb-3">
               <span className="font-bold">02</span>
               <span>───────────────</span>
-              <span className="text-[#823A9D] flex items-center gap-1.5">
+              <span className="text-[#7DEBFF] flex items-center gap-1.5">
                 <Sparkles className="w-3.5 h-3.5 animate-pulse" />
                 COMPETITIVE DISCIPLINES
               </span>
             </div>
-            <h2 className="font-display font-black tracking-tight text-[#FCFAED] uppercase text-[clamp(2.1rem,6.5vw,4.8rem)] leading-none">
+            <h2 className="font-display font-black tracking-tight text-[#F4FDFF] uppercase text-[clamp(2.1rem,6.5vw,4.8rem)] leading-none">
               THE EVENTS ARENA
             </h2>
           </div>
 
-          <div className="font-mono-tech text-xs text-[#888888] max-w-sm">
-            <span className="text-[#823A9D] font-bold block mb-1">
+          <div className="font-mono-tech text-xs text-[#A9BAC8] max-w-sm">
+            <span className="text-[#7DEBFF] font-bold block mb-1">
               [8 CORE COMPETITIONS // 2x2 GRIDS]
             </span>
             <p className="leading-relaxed">
@@ -425,16 +426,16 @@ export const EventsSection: React.FC<EventsSectionProps> = ({ onSelectEvent }) =
         {/* 1. TECHNICAL EVENTS BLOCK (2 EVENTS PER ROW ON DESKTOP & MOBILE) */}
         {/* ============================================================== */}
         <div className="mb-14 sm:mb-20">
-          {/* Category Header with Animated Purple Line */}
-          <div className="flex items-center justify-between mb-5 sm:mb-8 border-b-2 border-[#6C3082] pb-3.5">
+          {/* Category Header with Animated Ice-Blue Line */}
+          <div className="flex items-center justify-between mb-5 sm:mb-8 border-b-2 border-[#35DDF5] pb-3.5">
             <div className="flex items-center gap-2.5 sm:gap-3">
-              <span className="w-2.5 sm:w-3 h-2.5 sm:h-3 bg-[#6C3082] clip-diagonal-right shadow-[0_0_8px_#6C3082]" />
-              <h3 className="font-display font-black text-xl sm:text-3xl lg:text-4xl text-[#FCFAED] tracking-tight uppercase">
-                TECHNICAL <span className="text-[#6C3082] drop-shadow-[0_0_15px_rgba(108,48,130,0.35)]">EVENTS</span>
+              <span className="w-2.5 sm:w-3 h-2.5 sm:h-3 bg-[#35DDF5] clip-diagonal-right shadow-[0_0_8px_#35DDF5]" />
+              <h3 className="font-display font-black text-xl sm:text-3xl lg:text-4xl text-[#F4FDFF] tracking-tight uppercase">
+                TECHNICAL <span className="text-[#35DDF5] drop-shadow-[0_0_15px_rgba(53,221,245,0.35)]">EVENTS</span>
               </h3>
             </div>
-            <div className="flex items-center gap-2 font-mono-tech text-[10px] sm:text-xs text-[#888888] uppercase tracking-widest bg-[#141414] px-2.5 py-1 border border-[#262626]">
-              <span className="w-1.5 h-1.5 bg-[#6C3082] rounded-full animate-ping" />
+            <div className="flex items-center gap-2 font-mono-tech text-[10px] sm:text-xs text-[#A9BAC8] uppercase tracking-widest bg-[#10151D] px-2.5 py-1 border border-[#263643]">
+              <span className="w-1.5 h-1.5 bg-[#35DDF5] rounded-full animate-ping" />
               <span>// 04 DISCIPLINES</span>
             </div>
           </div>
@@ -460,19 +461,18 @@ export const EventsSection: React.FC<EventsSectionProps> = ({ onSelectEvent }) =
         {/* IN-SECTION TRANSITION: TECHNICAL ➔ NON-TECHNICAL DIVIDER        */}
         {/* ============================================================== */}
         <div className="relative my-10 sm:my-16 py-4 flex flex-col items-center justify-center select-none pointer-events-none">
-          {/* Sweeping center accent lines with purple gradient glow */}
           <div className="w-full flex items-center justify-center gap-3">
-            <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-[#823A9D]/50 to-[#823A9D]" />
-            <div className="px-3.5 py-1.5 bg-[#141414] border border-[#823A9D] flex items-center gap-2 font-mono-tech text-[9px] sm:text-xs text-[#FCFAED] shadow-[0_0_15px_rgba(108,48,130,0.25)]">
-              <Zap className="w-3.5 h-3.5 text-[#823A9D] animate-pulse" />
-              <span className="tracking-[0.2em] uppercase font-bold text-[#823A9D]">
+            <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-[#35DDF5]/50 to-[#35DDF5]" />
+            <div className="px-3.5 py-1.5 bg-[#10151D] border border-[#35DDF5] flex items-center gap-2 font-mono-tech text-[9px] sm:text-xs text-[#F4FDFF] shadow-[0_0_15px_rgba(53,221,245,0.25)]">
+              <Zap className="w-3.5 h-3.5 text-[#35DDF5] animate-pulse" />
+              <span className="tracking-[0.2em] uppercase font-bold text-[#7DEBFF]">
                 DISCIPLINE_SHIFT
               </span>
-              <span className="hidden sm:inline text-[#888888]">
+              <span className="hidden sm:inline text-[#A9BAC8]">
                 // EXPANDING TO STRATEGY &amp; CREATIVITY
               </span>
             </div>
-            <div className="h-[1px] flex-1 bg-gradient-to-l from-transparent via-[#823A9D]/50 to-[#823A9D]" />
+            <div className="h-[1px] flex-1 bg-gradient-to-l from-transparent via-[#35DDF5]/50 to-[#35DDF5]" />
           </div>
         </div>
 
@@ -480,16 +480,16 @@ export const EventsSection: React.FC<EventsSectionProps> = ({ onSelectEvent }) =
         {/* 2. NON-TECHNICAL EVENTS BLOCK (2 PER ROW ON DESKTOP & MOBILE)  */}
         {/* ============================================================== */}
         <div>
-          {/* Category Header with Animated Purple Accent */}
-          <div className="flex items-center justify-between mb-5 sm:mb-8 border-b-2 border-[#823A9D] pb-3.5">
+          {/* Category Header with Animated Ice-Blue Accent */}
+          <div className="flex items-center justify-between mb-5 sm:mb-8 border-b-2 border-[#7DEBFF] pb-3.5">
             <div className="flex items-center gap-2.5 sm:gap-3">
-              <span className="w-2.5 sm:w-3 h-2.5 sm:h-3 bg-[#823A9D] clip-diagonal-right shadow-[0_0_8px_#823A9D]" />
-              <h3 className="font-display font-black text-xl sm:text-3xl lg:text-4xl text-[#FCFAED] tracking-tight uppercase">
-                NON-TECHNICAL <span className="text-[#823A9D] drop-shadow-[0_0_15px_rgba(130,58,157,0.35)]">EVENTS</span>
+              <span className="w-2.5 sm:w-3 h-2.5 sm:h-3 bg-[#7DEBFF] clip-diagonal-right shadow-[0_0_8px_#7DEBFF]" />
+              <h3 className="font-display font-black text-xl sm:text-3xl lg:text-4xl text-[#F4FDFF] tracking-tight uppercase">
+                NON-TECHNICAL <span className="text-[#7DEBFF] drop-shadow-[0_0_15px_rgba(125,235,255,0.35)]">EVENTS</span>
               </h3>
             </div>
-            <div className="flex items-center gap-2 font-mono-tech text-[10px] sm:text-xs text-[#888888] uppercase tracking-widest bg-[#141414] px-2.5 py-1 border border-[#262626]">
-              <span className="w-1.5 h-1.5 bg-[#823A9D] rounded-full animate-ping" />
+            <div className="flex items-center gap-2 font-mono-tech text-[10px] sm:text-xs text-[#A9BAC8] uppercase tracking-widest bg-[#10151D] px-2.5 py-1 border border-[#263643]">
+              <span className="w-1.5 h-1.5 bg-[#7DEBFF] rounded-full animate-ping" />
               <span>// 04 DISCIPLINES</span>
             </div>
           </div>

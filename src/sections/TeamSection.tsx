@@ -19,15 +19,15 @@ const FacultyCard: React.FC<FacultyCardProps> = ({ member, featured = false, ind
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-30px" }}
       transition={{ duration: 0.4, delay: (index % 5) * 0.05, ease: "easeOut" }}
-      className={`group bg-[#19131D] border border-[#2E1F3B] hover:border-[#C084FC] transition-all duration-300 flex flex-col justify-between overflow-hidden shadow-md hover:shadow-[0_0_24px_rgba(168,85,247,0.35)] min-w-0 w-full relative ${
-        featured ? 'ring-1 ring-[#A855F7]/50 shadow-[0_0_25px_rgba(139,53,173,0.3)]' : ''
+      className={`group bg-[#10151D] border border-[#263643] hover:border-[#4DE6FF] transition-all duration-300 flex flex-col justify-between overflow-hidden shadow-md hover:shadow-[0_0_24px_rgba(53,221,245,0.35)] min-w-0 w-full relative ${
+        featured ? 'ring-1 ring-[#35DDF5]/50 shadow-[0_0_25px_rgba(53,221,245,0.25)]' : ''
       }`}
     >
       {/* Interactive Top Scanline on Hover */}
-      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#C084FC] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-30 pointer-events-none" />
+      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#7DEBFF] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-30 pointer-events-none" />
 
       {/* Portrait Container - Consistent ~4:5 Ratio */}
-      <div className={`relative aspect-[4/5] w-full overflow-hidden bg-[#151019] ${featured ? 'bg-[#19131D]' : ''}`}>
+      <div className={`relative aspect-[4/5] w-full overflow-hidden bg-[#141C26] ${featured ? 'bg-[#10151D]' : ''}`}>
         {member.image ? (
           <img
             src={member.image}
@@ -37,30 +37,30 @@ const FacultyCard: React.FC<FacultyCardProps> = ({ member, featured = false, ind
           />
         ) : (
           /* Technical Minimalist Placeholder for Unfilled Positions */
-          <div className="w-full h-full flex flex-col items-center justify-center p-2 sm:p-4 bg-gradient-to-b from-[#19131D] via-[#151019] to-[#0D0D0D] border-b border-[#2E1F3B]">
-            <div className="w-8 h-8 sm:w-14 sm:h-14 rounded-full border border-[#3D264E] group-hover:border-[#A855F7] flex items-center justify-center bg-[#151019] text-[#776B85] group-hover:text-[#C084FC] transition-colors mb-1 sm:mb-3 shadow-inner">
+          <div className="w-full h-full flex flex-col items-center justify-center p-2 sm:p-4 bg-gradient-to-b from-[#10151D] via-[#141C26] to-[#080A0F] border-b border-[#263643]">
+            <div className="w-8 h-8 sm:w-14 sm:h-14 rounded-full border border-[#263643] group-hover:border-[#35DDF5] flex items-center justify-center bg-[#141C26] text-[#A9BAC8]/60 group-hover:text-[#7DEBFF] transition-colors mb-1 sm:mb-3 shadow-inner">
               <UserCheck className="w-4 h-4 sm:w-7 sm:h-7" />
             </div>
-            <span className="font-mono-tech text-[8px] sm:text-[10px] text-[#B8AFC0] uppercase tracking-widest text-center font-semibold">
+            <span className="font-mono-tech text-[8px] sm:text-[10px] text-[#A9BAC8] uppercase tracking-widest text-center font-semibold">
               PORTRAIT PENDING
             </span>
-            <span className="font-mono-tech text-[7px] sm:text-[9px] text-[#776B85] tracking-wider mt-0.5 sm:mt-1">
+            <span className="font-mono-tech text-[7px] sm:text-[9px] text-[#A9BAC8]/50 tracking-wider mt-0.5 sm:mt-1">
               // POS_{padIndex}
             </span>
           </div>
         )}
 
         {/* Diagonal Corner Accent */}
-        <div className="absolute top-0 right-0 w-4 h-4 sm:w-6 sm:h-6 bg-[#A855F7]/20 clip-diagonal-left group-hover:bg-[#A855F7] transition-colors pointer-events-none z-10 shadow-[0_0_8px_#A855F7]" />
+        <div className="absolute top-0 right-0 w-4 h-4 sm:w-6 sm:h-6 bg-[#35DDF5]/20 clip-diagonal-left group-hover:bg-[#35DDF5] transition-colors pointer-events-none z-10 shadow-[0_0_8px_#35DDF5]" />
 
         {/* Numbered Position Badge */}
-        <div className="absolute top-1.5 left-1.5 sm:top-2 sm:left-2 bg-[#151019]/90 backdrop-blur-xs px-1.5 py-0.5 font-mono-tech text-[8px] sm:text-[10px] text-[#B8AFC0] group-hover:text-[#C084FC] border border-[#3D264E] font-bold z-10">
+        <div className="absolute top-1.5 left-1.5 sm:top-2 sm:left-2 bg-[#141C26]/90 backdrop-blur-xs px-1.5 py-0.5 font-mono-tech text-[8px] sm:text-[10px] text-[#A9BAC8] group-hover:text-[#7DEBFF] border border-[#263643] font-bold z-10">
           {padIndex}
         </div>
 
         {/* Lead Badge for Featured Member */}
         {featured && (
-          <div className="absolute bottom-1.5 right-1.5 sm:bottom-2 sm:right-2 bg-gradient-to-r from-[#8B35AD] to-[#A855F7] text-white px-1.5 sm:px-2 py-0.5 font-mono-tech text-[8px] sm:text-[9px] font-bold uppercase tracking-wider flex items-center gap-1 shadow-[0_0_12px_rgba(168,85,247,0.5)] z-10">
+          <div className="absolute bottom-1.5 right-1.5 sm:bottom-2 sm:right-2 bg-gradient-to-r from-[#35DDF5] to-[#7DEBFF] text-[#071521] px-1.5 sm:px-2 py-0.5 font-mono-tech text-[8px] sm:text-[9px] font-bold uppercase tracking-wider flex items-center gap-1 shadow-[0_0_12px_rgba(53,221,245,0.5)] z-10">
             <Award className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
             <span>HOD</span>
           </div>
@@ -68,18 +68,18 @@ const FacultyCard: React.FC<FacultyCardProps> = ({ member, featured = false, ind
       </div>
 
       {/* Faculty Information Details */}
-      <div className={`p-2.5 sm:p-3 lg:p-3.5 xl:p-4 bg-[#19131D] border-t border-[#2E1F3B] flex flex-col justify-between flex-grow space-y-1 sm:space-y-1.5 min-w-0 ${
-        featured ? 'bg-[#1E1325] p-3.5 sm:p-5' : ''
+      <div className={`p-2.5 sm:p-3 lg:p-3.5 xl:p-4 bg-[#10151D] border-t border-[#263643] flex flex-col justify-between flex-grow space-y-1 sm:space-y-1.5 min-w-0 ${
+        featured ? 'bg-[#0A111C] p-3.5 sm:p-5' : ''
       }`}>
         <div className="min-w-0">
-          <h3 className={`font-display font-extrabold text-[#FCFAED] group-hover:text-white transition-colors uppercase leading-snug break-words ${
+          <h3 className={`font-display font-extrabold text-[#F4FDFF] group-hover:text-white transition-colors uppercase leading-snug break-words ${
             featured ? 'text-base sm:text-xl font-black text-white' : 'text-[11px] sm:text-xs lg:text-[13px] xl:text-sm'
           }`}>
             {member.name}
           </h3>
 
           {member.designation && (
-            <div className={`font-mono-tech uppercase font-semibold tracking-wide leading-tight mt-0.5 sm:mt-1 break-words text-[#C084FC] ${
+            <div className={`font-mono-tech uppercase font-semibold tracking-wide leading-tight mt-0.5 sm:mt-1 break-words text-[#7DEBFF] ${
               featured ? 'text-xs sm:text-sm' : 'text-[8px] sm:text-[9px] lg:text-[10px] xl:text-[11px]'
             }`}>
               {member.designation}
@@ -88,11 +88,11 @@ const FacultyCard: React.FC<FacultyCardProps> = ({ member, featured = false, ind
         </div>
 
         {member.department && (
-          <div className={`font-mono-tech text-[#B8AFC0] uppercase pt-1 border-t border-[#2E1F3B] leading-tight break-words flex items-center justify-between ${
+          <div className={`font-mono-tech text-[#A9BAC8] uppercase pt-1 border-t border-[#263643] leading-tight break-words flex items-center justify-between ${
             featured ? 'text-[10px] sm:text-xs' : 'text-[7px] sm:text-[8px] lg:text-[9px] xl:text-[10px]'
           }`}>
             <span>{member.department}</span>
-            <span className="w-1.5 h-1.5 rounded-full bg-[#A855F7]/40 group-hover:bg-[#A855F7] shadow-[0_0_4px_#A855F7] transition-colors" />
+            <span className="w-1.5 h-1.5 rounded-full bg-[#35DDF5]/40 group-hover:bg-[#35DDF5] shadow-[0_0_4px_#35DDF5] transition-colors" />
           </div>
         )}
       </div>
@@ -104,24 +104,24 @@ export const TeamSection: React.FC = () => {
   return (
     <section
       id="team"
-      className="relative py-16 sm:py-24 px-2.5 sm:px-6 lg:px-12 bg-[#0D0D0D] border-b border-[#262626] overflow-hidden"
+      className="relative py-16 sm:py-24 px-2.5 sm:px-6 lg:px-12 bg-[#080A0F] border-b border-[#263643] overflow-hidden"
     >
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10 sm:mb-16 border-b border-[#262626] pb-6 sm:pb-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10 sm:mb-16 border-b border-[#263643] pb-6 sm:pb-8">
           <div>
-            <div className="flex items-center gap-3 font-mono-tech text-xs text-[#A855F7] uppercase tracking-widest mb-2 sm:mb-3">
+            <div className="flex items-center gap-3 font-mono-tech text-xs text-[#35DDF5] uppercase tracking-widest mb-2 sm:mb-3">
               <span className="font-bold">04</span>
               <span>───────────────</span>
-              <span className="text-[#C084FC]">THE PEOPLE BEHIND THE SYMPOSIUM</span>
+              <span className="text-[#7DEBFF]">THE PEOPLE BEHIND THE SYMPOSIUM</span>
             </div>
-            <h2 className="font-display font-black tracking-tight text-[#FCFAED] uppercase text-[clamp(2.2rem,6.5vw,4.8rem)] leading-none">
+            <h2 className="font-display font-black tracking-tight text-[#F4FDFF] uppercase text-[clamp(2.2rem,6.5vw,4.8rem)] leading-none">
               FACULTY COMMITTEE
             </h2>
           </div>
 
-          <div className="font-mono-tech text-xs text-[#B8AFC0] max-w-sm">
-            <span className="text-[#C084FC] font-bold block mb-1">
+          <div className="font-mono-tech text-xs text-[#A9BAC8] max-w-sm">
+            <span className="text-[#7DEBFF] font-bold block mb-1">
               [DEPARTMENT LEADERSHIP & CONVENORS]
             </span>
             <p className="leading-relaxed">

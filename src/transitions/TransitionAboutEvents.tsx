@@ -93,9 +93,9 @@ export const TransitionAboutEvents: React.FC = () => {
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-[50svh] sm:h-[60svh] bg-[#0D0D0D] overflow-hidden flex flex-col items-center justify-center pointer-events-none select-none z-1"
+      className="relative w-full h-[50svh] sm:h-[60svh] bg-[#080A0F] overflow-hidden flex flex-col items-center justify-center pointer-events-none select-none z-1"
     >
-      {/* Red Comic Speed Lines Inward Converging */}
+      {/* Cyan Speed Lines Inward Converging */}
       <svg
         ref={speedLinesGroupRef}
         className="absolute inset-0 w-full h-full opacity-0 pointer-events-none"
@@ -103,15 +103,15 @@ export const TransitionAboutEvents: React.FC = () => {
         viewBox="0 0 1000 600"
         preserveAspectRatio="xMidYMid slice"
       >
-        <g stroke="#6C3082" strokeWidth="2" strokeDasharray="30 15">
+        <g stroke="#35DDF5" strokeWidth="2" strokeDasharray="30 15">
           <line x1="0" y1="0" x2="480" y2="280" />
           <line x1="1000" y1="0" x2="520" y2="280" />
           <line x1="0" y1="600" x2="480" y2="320" />
           <line x1="1000" y1="600" x2="520" y2="320" />
-          <line x1="500" y1="0" x2="500" y2="260" stroke="#823A9D" strokeWidth="3" />
-          <line x1="500" y1="600" x2="500" y2="340" stroke="#823A9D" strokeWidth="3" />
-          <line x1="0" y1="300" x2="460" y2="300" stroke="#FCFAED" strokeWidth="1" />
-          <line x1="1000" y1="300" x2="540" y2="300" stroke="#FCFAED" strokeWidth="1" />
+          <line x1="500" y1="0" x2="500" y2="260" stroke="#7DEBFF" strokeWidth="3" />
+          <line x1="500" y1="600" x2="500" y2="340" stroke="#7DEBFF" strokeWidth="3" />
+          <line x1="0" y1="300" x2="460" y2="300" stroke="#F4FDFF" strokeWidth="1" />
+          <line x1="1000" y1="300" x2="540" y2="300" stroke="#F4FDFF" strokeWidth="1" />
         </g>
       </svg>
 
@@ -120,7 +120,7 @@ export const TransitionAboutEvents: React.FC = () => {
         {/* Departure Label */}
         <div
           ref={labelAboutRef}
-          className="font-mono-tech text-xs tracking-widest text-[#888888] uppercase mb-2"
+          className="font-mono-tech text-xs tracking-widest text-[#A9BAC8] uppercase mb-2"
         >
           CHAPTER_01 // ABOUT SYMPOSIUM
         </div>
@@ -129,14 +129,14 @@ export const TransitionAboutEvents: React.FC = () => {
         <div className="relative w-48 h-36 sm:w-72 sm:h-48 flex items-center justify-center">
           <div
             ref={num01Ref}
-            className="absolute font-display font-black text-7xl sm:text-9xl text-[#FCFAED] tracking-tighter opacity-0"
+            className="absolute font-display font-black text-7xl sm:text-9xl text-[#F4FDFF] tracking-tighter opacity-0"
           >
             01
           </div>
 
           <div
             ref={num02Ref}
-            className="absolute font-display font-black text-7xl sm:text-9xl text-[#6C3082] tracking-tighter opacity-0"
+            className="absolute font-display font-black text-7xl sm:text-9xl text-[#35DDF5] tracking-tighter opacity-0"
           >
             02
           </div>
@@ -145,7 +145,7 @@ export const TransitionAboutEvents: React.FC = () => {
         {/* Arrival Label */}
         <div
           ref={labelEventsRef}
-          className="font-display font-black text-xl sm:text-3xl text-[#FCFAED] tracking-wider uppercase opacity-0"
+          className="font-display font-black text-xl sm:text-3xl text-[#F4FDFF] tracking-wider uppercase opacity-0"
         >
           ENTER EVENTS ARENA
         </div>

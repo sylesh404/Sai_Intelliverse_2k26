@@ -58,7 +58,7 @@ export const TransitionDepartmentAbout: React.FC = () => {
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-[35svh] sm:h-[45svh] bg-[#0D0D0D] overflow-hidden flex flex-col justify-center pointer-events-none select-none z-1 border-y border-[#1A1A1A]"
+      className="relative w-full h-[35svh] sm:h-[45svh] bg-[#080A0F] overflow-hidden flex flex-col justify-center pointer-events-none select-none z-1 border-y border-[#263643]"
     >
       {/* 3D Coordinate Grid that folds and slides */}
       <div
@@ -66,8 +66,8 @@ export const TransitionDepartmentAbout: React.FC = () => {
         className="absolute inset-0 opacity-0 pointer-events-none transform-gpu"
         style={{
           backgroundImage: `
-            linear-gradient(to right, rgba(108, 48, 130, 0.2) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(252, 250, 237, 0.05) 1px, transparent 1px)
+            linear-gradient(to right, rgba(53, 221, 245, 0.2) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(244, 253, 255, 0.05) 1px, transparent 1px)
           `,
           backgroundSize: "40px 40px",
           perspective: "600px",
@@ -77,39 +77,39 @@ export const TransitionDepartmentAbout: React.FC = () => {
       {/* Kinetic Technical Labels Track 1 (Rightward Scroll Drift) */}
       <div
         ref={tickerTrack1Ref}
-        className="flex items-center gap-8 whitespace-nowrap font-mono-tech text-xs sm:text-sm text-[#6C3082] font-bold tracking-[0.25em] opacity-80 uppercase py-2 -translate-x-12"
+        className="flex items-center gap-8 whitespace-nowrap font-mono-tech text-xs sm:text-sm text-[#35DDF5] font-bold tracking-[0.25em] opacity-80 uppercase py-2 -translate-x-12"
       >
         <span>DEPARTMENT // 01</span>
-        <span className="text-[#333333]">◆</span>
+        <span className="text-[#263643]">◆</span>
         <span>INTELLIGENCE // 02</span>
-        <span className="text-[#333333]">◆</span>
+        <span className="text-[#263643]">◆</span>
         <span>INNOVATION // 03</span>
-        <span className="text-[#333333]">◆</span>
+        <span className="text-[#263643]">◆</span>
         <span>AUTONOMOUS_NETWORK // 04</span>
-        <span className="text-[#333333]">◆</span>
+        <span className="text-[#263643]">◆</span>
         <span>DEPARTMENT // 01</span>
-        <span className="text-[#333333]">◆</span>
+        <span className="text-[#263643]">◆</span>
         <span>INTELLIGENCE // 02</span>
       </div>
 
       {/* Kinetic Technical Labels Track 2 (Leftward Scroll Drift) */}
       <div
         ref={tickerTrack2Ref}
-        className="flex items-center gap-8 whitespace-nowrap font-mono-tech text-xs sm:text-sm text-[#FCFAED]/60 tracking-[0.2em] uppercase py-2 translate-x-12"
+        className="flex items-center gap-8 whitespace-nowrap font-mono-tech text-xs sm:text-sm text-[#F4FDFF]/60 tracking-[0.2em] uppercase py-2 translate-x-12"
       >
         <span>DATA_SCIENCE_FOUNDRY</span>
-        <span className="text-[#6C3082]">///</span>
+        <span className="text-[#35DDF5]">///</span>
         <span>COGNITIVE_ARCHITECTURE</span>
-        <span className="text-[#6C3082]">///</span>
+        <span className="text-[#35DDF5]">///</span>
         <span>TRANSFORMATION_GRID</span>
-        <span className="text-[#6C3082]">///</span>
+        <span className="text-[#35DDF5]">///</span>
         <span>DATA_SCIENCE_FOUNDRY</span>
-        <span className="text-[#6C3082]">///</span>
+        <span className="text-[#35DDF5]">///</span>
         <span>COGNITIVE_ARCHITECTURE</span>
       </div>
 
       {/* Central Horizon Line */}
-      <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-[#6C3082]/40 to-transparent my-2" />
+      <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-[#35DDF5]/40 to-transparent my-2" />
     </div>
   );
 };

@@ -40,12 +40,12 @@ export const comicBurstRays = [
 
 // Hand-drawn ink drops and splatters
 export const inkSplatters = [
-  { cx: -180, cy: -80, r: 8, color: "#6C3082" },
-  { cx: -150, cy: -110, r: 4, color: "#FCFAED" },
-  { cx: 160, cy: -70, r: 7, color: "#6C3082" },
-  { cx: 190, cy: -40, r: 5, color: "#FCFAED" },
-  { cx: -140, cy: 90, r: 6, color: "#6C3082" },
-  { cx: 150, cy: 100, r: 8, color: "#6C3082" },
-  { cx: 210, cy: 80, r: 4, color: "#FCFAED" },
-  { cx: -220, cy: 20, r: 5, color: "#FCFAED" },
+  { cx: -180, cy: -80, r: 8, color: "#35DDF5" },
+  { cx: -150, cy: -110, r: 4, color: "#F4FDFF" },
+  { cx: 160, cy: -70, r: 7, color: "#35DDF5" },
+  { cx: 190, cy: -40, r: 5, color: "#F4FDFF" },
+  { cx: -140, cy: 90, r: 6, color: "#35DDF5" },
+  { cx: 150, cy: 100, r: 8, color: "#35DDF5" },
+  { cx: 210, cy: 80, r: 4, color: "#F4FDFF" },
+  { cx: -220, cy: 20, r: 5, color: "#F4FDFF" },
 ];

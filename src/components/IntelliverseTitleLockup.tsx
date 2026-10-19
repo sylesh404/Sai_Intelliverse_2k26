@@ -123,7 +123,7 @@ export const IntelliverseTitleLockup: React.FC<IntelliverseTitleLockupProps> = (
       </span>
 
       {/* ================================================================= */}
-      {/* 5. STEP 5 ILLUMINATION: RESTINED SUBTLE PURPLE HALO BEHIND TITLE  */}
+      {/* 5. STEP 5 ILLUMINATION: RESTRAINED ARCTIC GLOW BEHIND TITLE       */}
       {/* ================================================================= */}
       <motion.div
         initial={prefersReducedMotion ? { opacity: 0.25 } : { opacity: 0, scale: 0.85 }}
@@ -131,8 +131,8 @@ export const IntelliverseTitleLockup: React.FC<IntelliverseTitleLockupProps> = (
         transition={{ duration: 1.2, delay: 1.0, ease: "easeOut" }}
         className="absolute -top-10 left-1/2 -translate-x-1/2 w-[115%] max-w-3xl h-44 pointer-events-none -z-1"
         style={{
-          background: 'radial-gradient(ellipse 70% 60% at 50% 50%, rgba(168, 85, 247, 0.22), rgba(139, 53, 173, 0.1) 50%, transparent 80%)',
-          filter: 'blur(30px)',
+          background: 'radial-gradient(ellipse 70% 60% at 50% 50%, rgba(125, 235, 255, 0.24), rgba(53, 221, 245, 0.1) 50%, transparent 80%)',
+          filter: 'blur(32px)',
         }}
       />
 
@@ -144,8 +144,8 @@ export const IntelliverseTitleLockup: React.FC<IntelliverseTitleLockupProps> = (
         <svg className="h-[2px] w-6 sm:w-10 shrink-0 overflow-visible" viewBox="0 0 40 2" fill="none">
           <defs>
             <linearGradient id="sai-line-grad-l" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#8B35AD" />
-              <stop offset="100%" stopColor="#A855F7" />
+              <stop offset="0%" stopColor="#35DDF5" />
+              <stop offset="100%" stopColor="#7DEBFF" />
             </linearGradient>
           </defs>
           <motion.line
@@ -166,13 +166,13 @@ export const IntelliverseTitleLockup: React.FC<IntelliverseTitleLockupProps> = (
           initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: -6 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.15, ease: "easeOut" }}
-          className="inline-flex items-center gap-2 px-2.5 sm:px-3 py-1 bg-[#19131D] border border-[#3D264E] shadow-[0_0_15px_rgba(139,53,173,0.15)]"
+          className="inline-flex items-center gap-2 px-2.5 sm:px-3 py-1 bg-[#10151D] border border-[#263643] shadow-[0_0_15px_rgba(53,221,245,0.15)]"
         >
-          <span className="w-1.5 h-1.5 bg-[#A855F7] clip-diagonal-right inline-block shadow-[0_0_6px_#A855F7]" />
-          <span className="font-mono-tech text-xs sm:text-sm font-black text-[#C084FC] tracking-[0.35em] sm:tracking-[0.5em] uppercase pl-1">
+          <span className="w-1.5 h-1.5 bg-[#35DDF5] clip-diagonal-right inline-block shadow-[0_0_6px_#35DDF5]" />
+          <span className="font-mono-tech text-xs sm:text-sm font-black text-[#7DEBFF] tracking-[0.35em] sm:tracking-[0.5em] uppercase pl-1">
             SAI
           </span>
-          <span className="text-[10px] text-[#B8AFC0] font-mono-tech uppercase tracking-wider hidden sm:inline border-l border-[#3D264E] pl-2">
+          <span className="text-[10px] text-[#A9BAC8] font-mono-tech uppercase tracking-wider hidden sm:inline border-l border-[#263643] pl-2">
             DEPARTMENT OF AI &amp; ML
           </span>
         </motion.div>
@@ -181,8 +181,8 @@ export const IntelliverseTitleLockup: React.FC<IntelliverseTitleLockupProps> = (
         <svg className="h-[2px] w-6 sm:w-10 shrink-0 overflow-visible" viewBox="0 0 40 2" fill="none">
           <defs>
             <linearGradient id="sai-line-grad-r" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#A855F7" />
-              <stop offset="100%" stopColor="#8B35AD" />
+              <stop offset="0%" stopColor="#7DEBFF" />
+              <stop offset="100%" stopColor="#35DDF5" />
             </linearGradient>
           </defs>
           <motion.line
@@ -217,9 +217,9 @@ export const IntelliverseTitleLockup: React.FC<IntelliverseTitleLockupProps> = (
             filter: prefersReducedMotion
               ? undefined
               : [
-                  "drop-shadow(0 0 0px #8B35AD)",
-                  "drop-shadow(0 0 30px rgba(168,85,247,0.5))",
-                  "drop-shadow(0 0 15px rgba(139,53,173,0.3))",
+                  "drop-shadow(0 0 0px #35DDF5)",
+                  "drop-shadow(0 0 30px rgba(125,235,255,0.45))",
+                  "drop-shadow(0 0 15px rgba(53,221,245,0.3))",
                 ],
           }}
           transition={{
@@ -239,13 +239,13 @@ export const IntelliverseTitleLockup: React.FC<IntelliverseTitleLockupProps> = (
         >
           <h1
             ref={textRef}
-            className={`font-display font-black uppercase text-[#FCFAED] tracking-tight leading-[0.9] sm:leading-[0.92] transition-transform duration-100 ${typographyClasses}`}
+            className={`font-display font-black uppercase text-[#F4FDFF] tracking-tight leading-[0.9] sm:leading-[0.92] transition-transform duration-100 ${typographyClasses}`}
             style={{
               whiteSpace: 'nowrap',
               display: 'inline-block',
               transform: scale < 1 ? `scale(${scale})` : undefined,
               transformOrigin: 'left center',
-              textShadow: '0 4px 35px rgba(0,0,0,0.95), 0 0 40px rgba(168,85,247,0.32), 0 0 80px rgba(108,48,130,0.2)',
+              textShadow: '0 4px 35px rgba(0,0,0,0.95), 0 0 40px rgba(125,235,255,0.35), 0 0 80px rgba(53,221,245,0.22)',
               letterSpacing: '-0.025em',
             }}
             aria-label="SAI INTELLIVERSE 3.0"
@@ -256,7 +256,7 @@ export const IntelliverseTitleLockup: React.FC<IntelliverseTitleLockupProps> = (
       </div>
 
       {/* ================================================================= */}
-      {/* 3. VISUALLY CONNECTED 3.0 EDITION BADGE (Distinctive & Vibrant)    */}
+      {/* 3. VISUALLY CONNECTED 3.0 EDITION BADGE (Luminous Ice Blue)       */}
       {/* Coordinated directional entrance                                  */}
       {/* ================================================================= */}
       <motion.div
@@ -265,39 +265,39 @@ export const IntelliverseTitleLockup: React.FC<IntelliverseTitleLockupProps> = (
         transition={{ duration: 0.65, delay: 0.6, ease: "easeOut" }}
         className={`flex flex-wrap items-center ${flexAlignClasses} gap-2.5 sm:gap-3.5 mt-1 sm:mt-1.5 z-10`}
       >
-        {/* Distinctive Bright Purple Edition Badge */}
-        <div className="flex items-baseline gap-1.5 sm:gap-2 bg-[#19131D] border border-[#8B35AD]/70 px-3 sm:px-4 py-1 shadow-[0_0_20px_rgba(139,53,173,0.3)] hover:border-[#C084FC] transition-colors">
-          <span className="font-display font-black text-2xl sm:text-4xl md:text-5xl text-transparent bg-clip-text bg-gradient-to-r from-[#FFFFFF] via-[#C084FC] to-[#A855F7] tracking-wider leading-none drop-shadow-[0_0_15px_rgba(168,85,247,0.5)]">
+        {/* Distinctive Ice-Blue Edition Badge */}
+        <div className="flex items-baseline gap-1.5 sm:gap-2 bg-[#10151D] border border-[#4DE6FF]/70 px-3 sm:px-4 py-1 shadow-[0_0_20px_rgba(53,221,245,0.3)] hover:border-[#7DEBFF] transition-colors">
+          <span className="font-display font-black text-2xl sm:text-4xl md:text-5xl text-transparent bg-clip-text bg-gradient-to-r from-[#FFFFFF] via-[#A5F3FF] to-[#7DEBFF] tracking-wider leading-none drop-shadow-[0_0_15px_rgba(125,235,255,0.5)]">
             3.0
           </span>
-          <span className="font-mono-tech text-[10px] sm:text-xs text-[#FCFAED]/90 uppercase tracking-widest font-bold">
+          <span className="font-mono-tech text-[10px] sm:text-xs text-[#F4FDFF]/90 uppercase tracking-widest font-bold">
             EDITION
           </span>
         </div>
 
-        <span className="w-1.5 h-1.5 bg-[#A855F7] rounded-full animate-ping hidden min-[380px]:inline-block shadow-[0_0_8px_#A855F7]" />
+        <span className="w-1.5 h-1.5 bg-[#35DDF5] rounded-full animate-ping hidden min-[380px]:inline-block shadow-[0_0_8px_#35DDF5]" />
 
         {/* National level technical symposium supporting tag */}
-        <div className="inline-flex items-center gap-2 font-mono-tech text-[9px] min-[360px]:text-[10px] sm:text-xs text-[#B8AFC0] tracking-wider min-[360px]:tracking-widest uppercase bg-[#151019] px-2.5 sm:px-3 py-1.5 border border-[#33233D] max-w-full">
-          <span className="w-1.5 h-1.5 bg-[#A855F7] rounded-full shrink-0 shadow-[0_0_6px_#A855F7]" />
-          <span className="font-semibold text-[#FCFAED]/90 leading-tight break-words">NATIONAL LEVEL TECHNICAL SYMPOSIUM</span>
+        <div className="inline-flex items-center gap-2 font-mono-tech text-[9px] min-[360px]:text-[10px] sm:text-xs text-[#A9BAC8] tracking-wider min-[360px]:tracking-widest uppercase bg-[#141C26] px-2.5 sm:px-3 py-1.5 border border-[#263643] max-w-full">
+          <span className="w-1.5 h-1.5 bg-[#35DDF5] rounded-full shrink-0 shadow-[0_0_6px_#35DDF5]" />
+          <span className="font-semibold text-[#F4FDFF]/90 leading-tight break-words">NATIONAL LEVEL TECHNICAL SYMPOSIUM</span>
         </div>
       </motion.div>
 
       {/* ================================================================= */}
-      {/* 4. BRIGHT PURPLE ACCENT DIVIDER LINE WITH TERMINAL NOTCHES         */}
+      {/* 4. BRIGHT ICE-BLUE ACCENT DIVIDER LINE WITH TERMINAL NOTCHES      */}
       {/* Smooth line expansion beneath the title                           */}
       {/* ================================================================= */}
       <div className={`relative w-full max-w-xl flex items-center ${flexAlignClasses} mt-2.5 sm:mt-3 px-1 z-10`}>
-        <span className="w-2 h-2 bg-[#A855F7] clip-diagonal-right shrink-0 shadow-[0_0_8px_#A855F7]" />
+        <span className="w-2 h-2 bg-[#35DDF5] clip-diagonal-right shrink-0 shadow-[0_0_8px_#35DDF5]" />
         <motion.div
           initial={prefersReducedMotion ? { scaleX: 1 } : { scaleX: 0 }}
           animate={{ scaleX: 1 }}
           transition={{ duration: 0.8, delay: 0.85, ease: "easeOut" }}
           style={{ originX: align === 'responsive' ? 0 : 0.5 }}
-          className="h-[2px] flex-1 bg-gradient-to-r from-[#8B35AD] via-[#C084FC] to-[#8B35AD] shadow-[0_0_12px_rgba(168,85,247,0.6)]"
+          className="h-[2px] flex-1 bg-gradient-to-r from-[#35DDF5] via-[#7DEBFF] to-[#A5F3FF] shadow-[0_0_12px_rgba(125,235,255,0.6)]"
         />
-        <span className="w-2 h-2 bg-[#A855F7] clip-diagonal-left shrink-0 shadow-[0_0_8px_#A855F7]" />
+        <span className="w-2 h-2 bg-[#35DDF5] clip-diagonal-left shrink-0 shadow-[0_0_8px_#35DDF5]" />
       </div>
     </div>
   );

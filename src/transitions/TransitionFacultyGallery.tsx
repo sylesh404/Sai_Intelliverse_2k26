@@ -86,23 +86,23 @@ export const TransitionFacultyGallery: React.FC = () => {
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-[45svh] sm:h-[55svh] bg-[#0D0D0D] overflow-hidden flex flex-col justify-center pointer-events-none select-none z-1 border-y border-[#1A1A1A]"
+      className="relative w-full h-[45svh] sm:h-[55svh] bg-[#080A0F] overflow-hidden flex flex-col justify-center pointer-events-none select-none z-1 border-y border-[#263643]"
     >
       {/* Background vignette */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0D0D0D] via-transparent to-[#0D0D0D] z-10" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#080A0F] via-transparent to-[#080A0F] z-10" />
 
       {/* Top Telemetry Header */}
       <div
         ref={labelRef}
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 w-full mb-4 flex items-center justify-between font-mono-tech text-[10px] sm:text-xs text-[#888888] relative z-20 opacity-0"
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 w-full mb-4 flex items-center justify-between font-mono-tech text-[10px] sm:text-xs text-[#A9BAC8] relative z-20 opacity-0"
       >
-        <div className="flex items-center gap-2 text-[#FCFAED]">
-          <Film className="w-3.5 h-3.5 text-[#6C3082]" />
+        <div className="flex items-center gap-2 text-[#F4FDFF]">
+          <Film className="w-3.5 h-3.5 text-[#35DDF5]" />
           <span className="font-bold tracking-wider">
             TRANSITION // FACULTY COMMITTEE ➔ SYMPOSIUM ARCHIVE
           </span>
         </div>
-        <span className="text-[#6C3082] font-semibold hidden sm:inline">
+        <span className="text-[#35DDF5] font-semibold hidden sm:inline">
           CHAPTER_04 ──► CHAPTER_05
         </span>
       </div>
@@ -110,14 +110,14 @@ export const TransitionFacultyGallery: React.FC = () => {
       {/* Center Camera Reticle */}
       <div
         ref={reticleRef}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-32 sm:w-64 sm:h-44 border border-[#6C3082]/40 z-20 pointer-events-none flex items-center justify-center opacity-0"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-32 sm:w-64 sm:h-44 border border-[#35DDF5]/40 z-20 pointer-events-none flex items-center justify-center opacity-0 shadow-[0_0_20px_rgba(53,221,245,0.15)]"
       >
-        <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-[#6C3082]" />
-        <div className="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-[#6C3082]" />
-        <div className="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-[#6C3082]" />
-        <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-[#6C3082]" />
-        <div className="w-2 h-2 rounded-full bg-[#6C3082] animate-ping" />
-        <span className="absolute bottom-1 right-2 font-mono-tech text-[8px] text-[#6C3082] font-bold">
+        <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-[#4DE6FF]" />
+        <div className="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-[#4DE6FF]" />
+        <div className="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-[#4DE6FF]" />
+        <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-[#4DE6FF]" />
+        <div className="w-2 h-2 rounded-full bg-[#35DDF5] animate-ping" />
+        <span className="absolute bottom-1 right-2 font-mono-tech text-[8px] text-[#35DDF5] font-bold">
           REC ● 24FPS
         </span>
       </div>
@@ -133,7 +133,7 @@ export const TransitionFacultyGallery: React.FC = () => {
             ref={(el) => {
               cardRefs.current[idx] = el;
             }}
-            className="w-52 sm:w-72 h-36 sm:h-48 shrink-0 bg-[#141414] border border-[#2E2E2E] p-1.5 flex flex-col justify-between shadow-2xl relative overflow-hidden group"
+            className="w-52 sm:w-72 h-36 sm:h-48 shrink-0 bg-[#10151D] border border-[#263643] p-1.5 flex flex-col justify-between shadow-2xl relative overflow-hidden group"
           >
             <img
               src={preview.img}
@@ -141,22 +141,22 @@ export const TransitionFacultyGallery: React.FC = () => {
               className="absolute inset-0 w-full h-full object-cover filter grayscale contrast-125 opacity-70"
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0D0D0D] via-black/30 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#080A0F] via-black/30 to-transparent" />
 
             {/* Top metadata */}
             <div className="relative z-10 flex justify-between items-center text-[9px] font-mono-tech">
-              <span className="bg-[#6C3082] text-white px-1.5 py-0.5 font-bold tracking-wider">
+              <span className="bg-[#35DDF5] text-[#080A0F] px-1.5 py-0.5 font-bold tracking-wider">
                 {preview.tag}
               </span>
-              <span className="text-[#FCFAED] bg-[#0D0D0D]/80 px-1 border border-[#333333]">
+              <span className="text-[#F4FDFF] bg-[#080A0F]/80 px-1 border border-[#263643]">
                 0{idx + 1} // MEMORY
               </span>
             </div>
 
             {/* Bottom title */}
-            <div className="relative z-10 flex items-center justify-between font-mono-tech text-[10px] text-[#FCFAED] font-bold">
+            <div className="relative z-10 flex items-center justify-between font-mono-tech text-[10px] text-[#F4FDFF] font-bold">
               <span>{preview.label}</span>
-              <Camera className="w-3.5 h-3.5 text-[#6C3082]" />
+              <Camera className="w-3.5 h-3.5 text-[#35DDF5]" />
             </div>
           </div>
         ))}

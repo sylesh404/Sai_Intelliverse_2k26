@@ -74,10 +74,10 @@ export const CustomCursor: React.FC = () => {
           animate={{
             scale: mode === 'default' ? 1 : mode === 'hover' ? 0.5 : 0,
             opacity: mode === 'view' || mode === 'open' ? 0 : 1,
-            backgroundColor: mode === 'hover' ? '#A855F7' : '#FFFFFF',
+            backgroundColor: mode === 'hover' ? '#35DDF5' : '#FFFFFF',
           }}
           transition={{ duration: 0.15 }}
-          className="w-2.5 h-2.5 rounded-full shadow-[0_0_10px_rgba(168,85,247,0.8)]"
+          className="w-2.5 h-2.5 rounded-full shadow-[0_0_10px_rgba(53,221,245,0.8)]"
         />
       </motion.div>
 
@@ -91,21 +91,21 @@ export const CustomCursor: React.FC = () => {
         animate={{
           width: mode === 'view' || mode === 'open' ? 76 : mode === 'hover' ? 44 : 28,
           height: mode === 'view' || mode === 'open' ? 76 : mode === 'hover' ? 44 : 28,
-          backgroundColor: mode === 'view' || mode === 'open' ? '#8B35AD' : 'transparent',
-          borderColor: mode === 'hover' ? '#C084FC' : 'rgba(255, 255, 255, 0.4)',
+          backgroundColor: mode === 'view' || mode === 'open' ? '#35DDF5' : 'transparent',
+          borderColor: mode === 'hover' ? '#7DEBFF' : 'rgba(244, 253, 255, 0.4)',
           borderWidth: mode === 'view' || mode === 'open' ? 0 : 1.5,
           borderRadius: '9999px',
-          boxShadow: mode === 'hover' ? '0 0 16px rgba(168, 85, 247, 0.4)' : (mode === 'view' || mode === 'open' ? '0 0 25px rgba(139, 53, 173, 0.6)' : 'none'),
+          boxShadow: mode === 'hover' ? '0 0 16px rgba(125, 235, 255, 0.45)' : (mode === 'view' || mode === 'open' ? '0 0 25px rgba(53, 221, 245, 0.6)' : 'none'),
         }}
         transition={{ type: 'spring', stiffness: 350, damping: 25 }}
       >
         {mode === 'view' && (
-          <span className="text-white text-[11px] font-bold tracking-widest uppercase">
+          <span className="text-[#071521] text-[11px] font-black tracking-widest uppercase">
             VIEW
           </span>
         )}
         {mode === 'open' && (
-          <span className="text-white text-[11px] font-bold tracking-widest uppercase">
+          <span className="text-[#071521] text-[11px] font-black tracking-widest uppercase">
             OPEN
           </span>
         )}

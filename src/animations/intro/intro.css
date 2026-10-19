@@ -1,12 +1,12 @@
 /* Comic Title Sequence Texture and Halftone Styles */
 
 .comic-grain-bg {
-  background-image: radial-gradient(rgba(252, 250, 237, 0.08) 1px, transparent 0);
+  background-image: radial-gradient(rgba(244, 253, 255, 0.08) 1px, transparent 0);
   background-size: 8px 8px;
 }
 
 .comic-halftone-pattern {
-  background-image: radial-gradient(#6C3082 1.5px, transparent 1.5px), radial-gradient(#FCFAED 1px, transparent 1px);
+  background-image: radial-gradient(#35DDF5 1.5px, transparent 1.5px), radial-gradient(#F4FDFF 1px, transparent 1px);
   background-size: 10px 10px;
   background-position: 0 0, 5px 5px;
 }
@@ -14,12 +14,12 @@
 /* Comic print misregistration / ink shadow */
 .comic-print-offset {
   text-shadow: 
-    -2px -1px 0px #6C3082,
-    2px 1px 0px #1A1A1A;
+    -2px -1px 0px #35DDF5,
+    2px 1px 0px #080A0F;
 }
 
 .comic-ink-glow {
-  filter: drop-shadow(0 0 16px rgba(108, 48, 130, 0.45));
+  filter: drop-shadow(0 0 16px rgba(53, 221, 245, 0.45));
 }
 
 /* Subtle hand-drawn jitter animation */

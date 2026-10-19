@@ -40,7 +40,7 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({
         particleCount: 80,
         spread: 70,
         origin: { y: 0.6 },
-        colors: ['#6C3082', '#8B35AD', '#A855F7', '#C084FC', '#FCFAED'],
+        colors: ['#A5F3FF', '#7DEBFF', '#35DDF5', '#64CFFF', '#F4FDFF'],
       });
     } catch {
       // safe fallback
@@ -67,21 +67,21 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({
           initial={{ opacity: 0, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.96 }}
-          className="relative w-full max-w-lg bg-[#19131D] border border-[#2E1F3B] text-[#FCFAED] z-10 overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.8),0_0_30px_rgba(168,85,247,0.2)] my-auto max-h-[92vh] flex flex-col"
+          className="relative w-full max-w-lg bg-[#10151D] border border-[#263643] text-[#F4FDFF] z-10 overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.8),0_0_30px_rgba(53,221,245,0.2)] my-auto max-h-[92vh] flex flex-col"
         >
           {/* Top header bar */}
-          <div className="flex items-center justify-between border-b border-[#2E1F3B] bg-[#151019] px-4 sm:px-6 py-3 shrink-0">
+          <div className="flex items-center justify-between border-b border-[#263643] bg-[#0A111C] px-4 sm:px-6 py-3 shrink-0">
             <div className="flex items-center gap-2 font-mono-tech text-xs">
-              <span className="w-2 h-2 bg-[#A855F7] rounded-full animate-pulse shadow-[0_0_6px_rgba(168,85,247,0.8)]" />
-              <span className="font-bold text-[#FCFAED]">PORTAL // REGISTRATION</span>
-              <span className="text-[#B8AFC0]">[{symposiumConfig.year}]</span>
+              <span className="w-2 h-2 bg-[#35DDF5] rounded-full animate-pulse shadow-[0_0_6px_rgba(53,221,245,0.8)]" />
+              <span className="font-bold text-[#F4FDFF]">PORTAL // REGISTRATION</span>
+              <span className="text-[#A9BAC8]">[{symposiumConfig.year}]</span>
             </div>
 
             <motion.button
               whileTap={{ scale: 0.92 }}
               onClick={onClose}
               aria-label="Close Registration Portal"
-              className="min-h-[44px] min-w-[44px] flex items-center justify-center border border-[#3E294F] hover:border-[#A855F7] hover:bg-[#8B35AD] text-[#B8AFC0] hover:text-white cursor-pointer transition-colors"
+              className="min-h-[44px] min-w-[44px] flex items-center justify-center border border-[#263643] hover:border-[#4DE6FF] hover:bg-[#35DDF5]/20 text-[#A9BAC8] hover:text-[#7DEBFF] cursor-pointer transition-colors"
             >
               <X className="w-4 h-4" />
             </motion.button>
@@ -91,19 +91,19 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({
             {!isSubmitted ? (
               <>
                 <div>
-                  <h3 className="text-xl sm:text-2xl font-display font-extrabold text-[#FCFAED] mb-1">
+                  <h3 className="text-xl sm:text-2xl font-display font-extrabold text-[#F4FDFF] mb-1">
                     CLAIM DELEGATE PASS
                   </h3>
-                  <p className="text-xs font-mono-tech text-[#B8AFC0]">
+                  <p className="text-xs font-mono-tech text-[#A9BAC8]">
                     Register directly or access the verified Google Form.
                   </p>
                 </div>
 
                 {/* External Form Direct Link */}
-                <div className="bg-[#151019] border border-[#2E1F3B] p-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+                <div className="bg-[#0A111C] border border-[#263643] p-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
                   <div className="text-xs font-mono-tech">
                     <span className="text-white block font-bold">OFFICIAL INSTITUTION FORM</span>
-                    <span className="text-[#B8AFC0]">For group contingent registrations</span>
+                    <span className="text-[#A9BAC8]">For group contingent registrations</span>
                   </div>
                   <MagneticButton
                     variant="primary"
@@ -119,71 +119,71 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({
                   </MagneticButton>
                 </div>
 
-                <div className="relative flex items-center justify-center my-4 border-t border-[#2E1F3B]">
-                  <span className="bg-[#19131D] px-2.5 font-mono-tech text-[10px] text-[#B8AFC0] uppercase font-bold">
+                <div className="relative flex items-center justify-center my-4 border-t border-[#263643]">
+                  <span className="bg-[#10151D] px-2.5 font-mono-tech text-[10px] text-[#A9BAC8] uppercase font-bold">
                     OR INSTANT PASS GENERATION
                   </span>
                 </div>
 
                 <form onSubmit={handleSubmit} className="space-y-3.5 font-mono-tech text-xs">
                   <div>
-                    <label className="block text-[#B8AFC0] uppercase mb-1">FULL NAME *</label>
+                    <label className="block text-[#A9BAC8] uppercase mb-1">FULL NAME *</label>
                     <input
                       type="text"
                       required
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       placeholder="e.g. SAKTHI SYLESH"
-                      className="w-full min-h-[44px] bg-[#151019] border border-[#2E1F3B] focus:border-[#A855F7] px-3 text-[#FCFAED] outline-none transition-colors"
+                      className="w-full min-h-[44px] bg-[#0A111C] border border-[#263643] focus:border-[#4DE6FF] px-3 text-[#F4FDFF] outline-none transition-colors"
                     />
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
-                      <label className="block text-[#B8AFC0] uppercase mb-1">EMAIL ADDRESS *</label>
+                      <label className="block text-[#A9BAC8] uppercase mb-1">EMAIL ADDRESS *</label>
                       <input
                         type="email"
                         required
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="delegate@institution.edu"
-                        className="w-full min-h-[44px] bg-[#151019] border border-[#2E1F3B] focus:border-[#A855F7] px-3 text-[#FCFAED] outline-none transition-colors"
+                        className="w-full min-h-[44px] bg-[#0A111C] border border-[#263643] focus:border-[#4DE6FF] px-3 text-[#F4FDFF] outline-none transition-colors"
                       />
                     </div>
                     <div>
-                      <label className="block text-[#B8AFC0] uppercase mb-1">PHONE NUMBER *</label>
+                      <label className="block text-[#A9BAC8] uppercase mb-1">PHONE NUMBER *</label>
                       <input
                         type="tel"
                         required
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
                         placeholder="+91 98400 12345"
-                        className="w-full min-h-[44px] bg-[#151019] border border-[#2E1F3B] focus:border-[#A855F7] px-3 text-[#FCFAED] outline-none transition-colors"
+                        className="w-full min-h-[44px] bg-[#0A111C] border border-[#263643] focus:border-[#4DE6FF] px-3 text-[#F4FDFF] outline-none transition-colors"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-[#B8AFC0] uppercase mb-1">INSTITUTION / COLLEGE *</label>
+                    <label className="block text-[#A9BAC8] uppercase mb-1">INSTITUTION / COLLEGE *</label>
                     <input
                       type="text"
                       required
                       value={college}
                       onChange={(e) => setCollege(e.target.value)}
                       placeholder="e.g. SRI SAIRAM COLLEGE OF ENGINEERING"
-                      className="w-full min-h-[44px] bg-[#151019] border border-[#2E1F3B] focus:border-[#A855F7] px-3 text-[#FCFAED] outline-none transition-colors"
+                      className="w-full min-h-[44px] bg-[#0A111C] border border-[#263643] focus:border-[#4DE6FF] px-3 text-[#F4FDFF] outline-none transition-colors"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-[#B8AFC0] uppercase mb-1">PRIMARY TRACK SELECTION</label>
+                    <label className="block text-[#A9BAC8] uppercase mb-1">PRIMARY TRACK SELECTION</label>
                     <select
                       value={selectedEventId}
                       onChange={(e) => setSelectedEventId(e.target.value)}
-                      className="w-full min-h-[44px] bg-[#151019] border border-[#2E1F3B] focus:border-[#A855F7] px-3 text-[#FCFAED] outline-none cursor-pointer"
+                      className="w-full min-h-[44px] bg-[#0A111C] border border-[#263643] focus:border-[#4DE6FF] px-3 text-[#F4FDFF] outline-none cursor-pointer"
                     >
                       {eventsData.map((evt) => (
-                        <option key={evt.id} value={evt.id} className="bg-[#19131D] text-white">
+                        <option key={evt.id} value={evt.id} className="bg-[#10151D] text-white">
                           [{evt.code}] {evt.title} ({evt.category})
                         </option>
                       ))}
@@ -206,44 +206,44 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({
             ) : (
               /* Success Confirmation Card */
               <div className="text-center py-2 space-y-4">
-                <div className="w-12 h-12 bg-[#A855F7]/15 border border-[#A855F7] text-[#C084FC] mx-auto flex items-center justify-center shadow-[0_0_15px_rgba(168,85,247,0.3)]">
+                <div className="w-12 h-12 bg-[#35DDF5]/15 border border-[#35DDF5] text-[#7DEBFF] mx-auto flex items-center justify-center shadow-[0_0_15px_rgba(53,221,245,0.3)]">
                   <CheckCircle className="w-6 h-6" />
                 </div>
 
                 <div>
-                  <span className="font-mono-tech text-[10px] text-[#A855F7] uppercase tracking-wider block mb-1 font-bold">
+                  <span className="font-mono-tech text-[10px] text-[#35DDF5] uppercase tracking-wider block mb-1 font-bold">
                     TRANSMISSION VERIFIED
                   </span>
-                  <h3 className="text-xl sm:text-2xl font-display font-extrabold text-[#FCFAED]">
+                  <h3 className="text-xl sm:text-2xl font-display font-extrabold text-[#F4FDFF]">
                     DELEGATE PASS ISSUED
                   </h3>
-                  <p className="text-xs font-mono-tech text-[#B8AFC0] mt-1">
+                  <p className="text-xs font-mono-tech text-[#A9BAC8] mt-1">
                     Present this pass identifier at the registration desk on {symposiumConfig.eventDate}.
                   </p>
                 </div>
 
                 {/* Digital Ticket Pass */}
-                <div className="bg-[#151019] border border-dashed border-[#A855F7] p-4 text-left font-mono-tech space-y-2.5 shadow-lg">
-                  <div className="flex justify-between items-center border-b border-[#2E1F3B] pb-2">
+                <div className="bg-[#0A111C] border border-dashed border-[#4DE6FF] p-4 text-left font-mono-tech space-y-2.5 shadow-lg">
+                  <div className="flex justify-between items-center border-b border-[#263643] pb-2">
                     <div className="flex items-center gap-1.5 text-xs font-bold text-white">
-                      <Ticket className="w-3.5 h-3.5 text-[#A855F7]" />
+                      <Ticket className="w-3.5 h-3.5 text-[#35DDF5]" />
                       <span>{symposiumConfig.name} {symposiumConfig.year}</span>
                     </div>
-                    <span className="text-xs text-[#C084FC] font-bold">{ticketId}</span>
+                    <span className="text-xs text-[#7DEBFF] font-bold">{ticketId}</span>
                   </div>
 
                   <div className="grid grid-cols-2 gap-2 text-xs">
                     <div>
-                      <span className="text-[10px] text-[#B8AFC0] block">DELEGATE</span>
-                      <span className="text-[#FCFAED] font-bold uppercase truncate block">{name}</span>
+                      <span className="text-[10px] text-[#A9BAC8] block">DELEGATE</span>
+                      <span className="text-[#F4FDFF] font-bold uppercase truncate block">{name}</span>
                     </div>
                     <div>
-                      <span className="text-[10px] text-[#B8AFC0] block">COLLEGE</span>
-                      <span className="text-[#FCFAED] font-bold truncate block">{college}</span>
+                      <span className="text-[10px] text-[#A9BAC8] block">COLLEGE</span>
+                      <span className="text-[#F4FDFF] font-bold truncate block">{college}</span>
                     </div>
                   </div>
 
-                  <div className="border-t border-[#2E1F3B] pt-2 flex justify-between text-[10px] text-[#B8AFC0]">
+                  <div className="border-t border-[#263643] pt-2 flex justify-between text-[10px] text-[#A9BAC8]">
                     <span>STATUS: VALIDATED</span>
                     <span>VENUE: {symposiumConfig.venue.split(',')[0]}</span>
                   </div>

@@ -6,7 +6,7 @@ interface MarqueeTickerProps {
   items?: string[];
   reverse?: boolean;
   className?: string;
-  theme?: 'dark' | 'red' | 'ivory';
+  theme?: 'dark' | 'red' | 'purple' | 'ivory';
 }
 
 export const MarqueeTicker: React.FC<MarqueeTickerProps> = ({
@@ -33,10 +33,10 @@ export const MarqueeTicker: React.FC<MarqueeTickerProps> = ({
   const skewX = isFinePointer ? Math.max(-5, Math.min(5, velocity * 0.2)) : 0;
 
   const themeClasses = {
-    dark: "bg-[#151019] text-[#FCFAED] border-y border-[#2E1F3B]",
-    red: "bg-[#6C3082] text-white border-y border-[#8B35AD]",
-    purple: "bg-[#6C3082] text-white border-y border-[#8B35AD]",
-    ivory: "bg-[#FCFAED] text-[#0D0D0D] border-y border-[#FCFAED]",
+    dark: "bg-[#141C26] text-[#F4FDFF] border-y border-[#263643]",
+    red: "bg-[#071521] text-[#7DEBFF] border-y border-[#35DDF5]/40 shadow-[0_0_15px_rgba(53,221,245,0.1)]",
+    purple: "bg-[#071521] text-[#7DEBFF] border-y border-[#35DDF5]/40 shadow-[0_0_15px_rgba(53,221,245,0.1)]",
+    ivory: "bg-[#F4FDFF] text-[#080A0F] border-y border-[#F4FDFF]",
   };
 
   const repeatedItems = [...items, ...items, ...items, ...items];
@@ -66,10 +66,10 @@ export const MarqueeTicker: React.FC<MarqueeTickerProps> = ({
         >
           {repeatedItems.map((item, idx) => (
             <React.Fragment key={idx}>
-              <span className="hover:text-[#C084FC] transition-colors">
+              <span className="hover:text-[#7DEBFF] transition-colors">
                 {item}
               </span>
-              <span className={`w-1.5 h-1.5 rounded-full inline-block shrink-0 ${theme === 'red' || (theme as string) === 'purple' ? 'bg-[#FCFAED]' : 'bg-[#A855F7] shadow-[0_0_6px_rgba(168,85,247,0.8)]'}`} />
+              <span className="w-1.5 h-1.5 rounded-full inline-block shrink-0 bg-[#35DDF5] shadow-[0_0_6px_rgba(53,221,245,0.8)]" />
             </React.Fragment>
           ))}
         </motion.div>

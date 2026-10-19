@@ -99,8 +99,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister, onGoHome }) => {
       <header
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
           isScrolled
-            ? 'py-2.5 sm:py-3 bg-[#0D0D0D]/95 backdrop-blur-md border-b border-[#262626] shadow-2xl'
-            : 'py-4 sm:py-6 bg-gradient-to-b from-[#0D0D0D]/95 to-transparent'
+            ? 'py-2.5 sm:py-3 bg-[#080A0F]/95 backdrop-blur-md border-b border-[#263643] shadow-2xl'
+            : 'py-4 sm:py-6 bg-gradient-to-b from-[#080A0F]/95 to-transparent'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 flex items-center justify-between">
@@ -111,20 +111,20 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister, onGoHome }) => {
             className="flex items-center gap-2.5 sm:gap-3 group no-underline cursor-pointer"
             aria-label="SAI INTELLIVERSE 3.0 Home"
           >
-            <div className="w-7 h-7 sm:w-8 sm:h-8 bg-gradient-to-r from-[#8B35AD] to-[#A855F7] flex items-center justify-center font-display font-black text-white text-xs sm:text-sm clip-diagonal-right group-hover:from-[#A855F7] group-hover:to-[#C084FC] transition-all shadow-[0_0_12px_rgba(168,85,247,0.5)] shrink-0">
+            <div className="w-7 h-7 sm:w-8 sm:h-8 bg-gradient-to-r from-[#35DDF5] to-[#7DEBFF] flex items-center justify-center font-display font-black text-[#071521] text-xs sm:text-sm clip-diagonal-right group-hover:from-[#7DEBFF] group-hover:to-[#A5F3FF] transition-all shadow-[0_0_12px_rgba(53,221,245,0.5)] shrink-0">
               3.0
             </div>
             <div className="flex flex-col min-w-0">
-              <span className="font-display font-extrabold text-xs min-[360px]:text-sm sm:text-lg tracking-tight text-[#FCFAED] group-hover:text-white transition-colors leading-tight truncate">
+              <span className="font-display font-extrabold text-xs min-[360px]:text-sm sm:text-lg tracking-tight text-[#F4FDFF] group-hover:text-white transition-colors leading-tight truncate">
                 {symposiumConfig.name}
               </span>
-              <span className="font-mono-tech text-[8px] sm:text-[9px] tracking-widest text-[#C084FC] font-semibold truncate">
+              <span className="font-mono-tech text-[8px] sm:text-[9px] tracking-widest text-[#7DEBFF] font-semibold truncate">
                 {symposiumConfig.edition}
               </span>
             </div>
           </a>
 
-          {/* Desktop Navigation Links with Active Indicator */}
+          {/* Desktop Navigation Links with Ice-Blue Active Indicator */}
           <nav className="hidden md:flex items-center gap-3 sm:gap-4 lg:gap-6 xl:gap-8 font-mono-tech text-[11px] lg:text-xs tracking-wider shrink-0">
             {navLinks.map((link) => {
               const isActive = activeSection === link.id;
@@ -137,12 +137,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister, onGoHome }) => {
                     handleLinkClick(link.href);
                   }}
                   className={`relative py-1.5 transition-colors group ${
-                    isActive ? 'text-white font-bold' : 'text-[#FCFAED]/75 hover:text-white'
+                    isActive ? 'text-white font-bold' : 'text-[#F4FDFF]/75 hover:text-white'
                   }`}
                 >
                   <span
                     className={`text-[10px] mr-1.5 font-bold transition-opacity ${
-                      isActive ? 'text-[#C084FC] opacity-100' : 'text-[#A855F7] opacity-0 group-hover:opacity-100'
+                      isActive ? 'text-[#7DEBFF] opacity-100' : 'text-[#35DDF5] opacity-0 group-hover:opacity-100'
                     }`}
                   >
                     {link.code}
@@ -153,11 +153,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister, onGoHome }) => {
                   {isActive ? (
                     <motion.span
                       layoutId="navActiveIndicator"
-                      className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#8B35AD] via-[#C084FC] to-[#A855F7] shadow-[0_0_10px_rgba(168,85,247,0.8)]"
+                      className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#35DDF5] via-[#7DEBFF] to-[#A5F3FF] shadow-[0_0_10px_rgba(125,235,255,0.8)]"
                       transition={{ type: "spring", stiffness: 380, damping: 30 }}
                     />
                   ) : (
-                    <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-[#A855F7] transition-all duration-200 group-hover:w-full shadow-[0_0_6px_#A855F7]" />
+                    <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-[#35DDF5] transition-all duration-200 group-hover:w-full shadow-[0_0_6px_#35DDF5]" />
                   )}
                 </a>
               );
@@ -179,7 +179,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister, onGoHome }) => {
             />
           </div>
 
-          {/* Mobile Actions: Register + Menu Button (Accessible touch targets) */}
+          {/* Mobile Actions: Register + Menu Button */}
           <div className="flex md:hidden items-center gap-1.5 sm:gap-2 shrink-0">
             <MagneticButton
               size="sm"
@@ -196,7 +196,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister, onGoHome }) => {
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
-              className="min-h-[44px] min-w-[44px] flex items-center justify-center border border-[#3D264E] hover:border-[#C084FC] bg-[#19131D] text-[#FCFAED] active:text-[#C084FC] active:bg-[#251730] transition-colors cursor-pointer"
+              className="min-h-[44px] min-w-[44px] flex items-center justify-center border border-[#263643] hover:border-[#4DE6FF] bg-[#10151D] text-[#F4FDFF] active:text-[#7DEBFF] active:bg-[#141C26] transition-colors cursor-pointer"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
@@ -212,15 +212,15 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister, onGoHome }) => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-50 bg-[#0D0D0D]/98 backdrop-blur-xl flex flex-col justify-between p-4 sm:p-6 pt-20 sm:pt-24 overflow-y-auto md:hidden"
+            className="fixed inset-0 z-50 bg-[#080A0F]/98 backdrop-blur-xl flex flex-col justify-between p-4 sm:p-6 pt-20 sm:pt-24 overflow-y-auto md:hidden"
           >
             {/* Header row in mobile menu */}
-            <div className="flex items-center justify-between border-b border-[#2E1F3B] pb-3 text-xs font-mono-tech text-[#B8AFC0]">
+            <div className="flex items-center justify-between border-b border-[#263643] pb-3 text-xs font-mono-tech text-[#A9BAC8]">
               <span>NAVIGATION DIRECTORY</span>
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(false)}
-                className="min-h-[44px] px-3 text-[#C084FC] font-bold uppercase flex items-center gap-1 cursor-pointer hover:text-white active:text-[#A855F7] transition-colors"
+                className="min-h-[44px] px-3 text-[#7DEBFF] font-bold uppercase flex items-center gap-1 cursor-pointer hover:text-white active:text-[#35DDF5] transition-colors"
               >
                 <span>CLOSE</span>
                 <X className="w-4 h-4" />
@@ -237,23 +237,23 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister, onGoHome }) => {
                     e.preventDefault();
                     handleLinkClick(link.href);
                   }}
-                  className="min-h-[48px] flex items-center justify-between py-2 border-b border-[#2E1F3B] group active:bg-[#19131D] px-2 transition-colors cursor-pointer"
+                  className="min-h-[48px] flex items-center justify-between py-2 border-b border-[#263643] group active:bg-[#10151D] px-2 transition-colors cursor-pointer"
                 >
                   <div className="flex items-baseline gap-3">
-                    <span className="font-mono-tech text-xs text-[#A855F7]">
+                    <span className="font-mono-tech text-xs text-[#35DDF5]">
                       {link.code}
                     </span>
-                    <span className="font-display font-extrabold text-2xl text-[#FCFAED] group-hover:text-[#C084FC] transition-colors">
+                    <span className="font-display font-extrabold text-2xl text-[#F4FDFF] group-hover:text-[#7DEBFF] transition-colors">
                       {link.label}
                     </span>
                   </div>
-                  <ArrowUpRight className="w-5 h-5 text-[#B8AFC0] group-hover:text-[#C084FC]" />
+                  <ArrowUpRight className="w-5 h-5 text-[#A9BAC8] group-hover:text-[#7DEBFF]" />
                 </a>
               ))}
             </div>
 
             {/* Bottom Actions */}
-            <div className="pt-4 border-t border-[#262626] flex flex-col gap-3">
+            <div className="pt-4 border-t border-[#263643] flex flex-col gap-3">
               <MagneticButton
                 variant="primary"
                 size="md"
@@ -270,7 +270,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister, onGoHome }) => {
                 className="w-full min-h-[48px]"
               />
 
-              <div className="flex justify-between text-[10px] font-mono-tech text-[#565656] px-1">
+              <div className="flex justify-between text-[10px] font-mono-tech text-[#A9BAC8]/60 px-1">
                 <span>{symposiumConfig.eventDate}</span>
                 <span>{symposiumConfig.venue.split(',')[0]}</span>
               </div>

@@ -85,46 +85,46 @@ export const TransitionAboutVision: React.FC = () => {
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-[38svh] sm:h-[48svh] bg-[#0D0D0D] overflow-hidden flex flex-col items-center justify-center pointer-events-none select-none z-1 px-4"
+      className="relative w-full h-[38svh] sm:h-[48svh] bg-[#080A0F] overflow-hidden flex flex-col items-center justify-center pointer-events-none select-none z-1 px-4"
     >
       {/* Animated divider lines meeting in center */}
       <div className="w-full max-w-5xl flex items-center justify-center relative">
         <div
           ref={leftLineRef}
-          className="h-[2px] flex-1 bg-gradient-to-r from-transparent via-[#6C3082] to-[#823A9D]"
+          className="h-[2px] flex-1 bg-gradient-to-r from-transparent via-[#35DDF5] to-[#7DEBFF]"
         />
 
         <div
           ref={centerNodeRef}
-          className="mx-3 w-4 h-4 rounded-full border-2 border-[#6C3082] bg-[#0D0D0D] flex items-center justify-center shadow-[0_0_12px_#6C3082] z-10 shrink-0"
+          className="mx-3 w-4 h-4 rounded-full border-2 border-[#4DE6FF] bg-[#080A0F] flex items-center justify-center shadow-[0_0_12px_#35DDF5] z-10 shrink-0"
         >
-          <span className="w-1.5 h-1.5 bg-[#6C3082] rounded-full animate-ping" />
+          <span className="w-1.5 h-1.5 bg-[#35DDF5] rounded-full animate-ping" />
         </div>
 
         <div
           ref={rightLineRef}
-          className="h-[2px] flex-1 bg-gradient-to-l from-transparent via-[#6C3082] to-[#823A9D]"
+          className="h-[2px] flex-1 bg-gradient-to-l from-transparent via-[#35DDF5] to-[#7DEBFF]"
         />
       </div>
 
       {/* Directional Mask Reveal Panel */}
       <div
         ref={maskRevealRef}
-        className="mt-6 bg-[#141414] border border-[#262626] p-4 sm:p-6 max-w-2xl w-full text-center shadow-2xl relative overflow-hidden"
+        className="mt-6 bg-[#10151D] border border-[#263643] p-4 sm:p-6 max-w-2xl w-full text-center shadow-[0_0_30px_rgba(53,221,245,0.15)] relative overflow-hidden"
       >
-        <div className="absolute top-0 right-0 w-6 h-6 bg-[#6C3082]/20 clip-diagonal-left" />
+        <div className="absolute top-0 right-0 w-6 h-6 bg-[#35DDF5]/20 clip-diagonal-left" />
 
-        <div className="flex items-center justify-center gap-2 font-mono-tech text-[10px] sm:text-xs text-[#6C3082] uppercase tracking-[0.25em] font-bold mb-2">
+        <div className="flex items-center justify-center gap-2 font-mono-tech text-[10px] sm:text-xs text-[#35DDF5] uppercase tracking-[0.25em] font-bold mb-2">
           <Target className="w-3.5 h-3.5" />
           <span>TRANSITION_VECTOR // 01.1 ➔ 01.2</span>
           <Compass className="w-3.5 h-3.5" />
         </div>
 
-        <h3 className="font-display font-black text-lg sm:text-2xl text-[#FCFAED] uppercase tracking-wide">
+        <h3 className="font-display font-black text-lg sm:text-2xl text-[#F4FDFF] uppercase tracking-wide">
           CONNECTING VISION &amp; STRATEGIC MISSION
         </h3>
 
-        <p className="font-mono-tech text-[10px] sm:text-xs text-[#888888] tracking-widest mt-1 uppercase">
+        <p className="font-mono-tech text-[10px] sm:text-xs text-[#A9BAC8] tracking-widest mt-1 uppercase">
           AI &amp; MACHINE LEARNING &bull; QUALITY EDUCATION &bull; INNOVATION
         </p>
       </div>
@@ -132,12 +132,12 @@ export const TransitionAboutVision: React.FC = () => {
       {/* Technical Labels */}
       <div
         ref={labelRef}
-        className="mt-4 flex items-center gap-4 font-mono-tech text-[9px] sm:text-[10px] text-[#565656] tracking-widest uppercase"
+        className="mt-4 flex items-center gap-4 font-mono-tech text-[9px] sm:text-[10px] text-[#A9BAC8]/60 tracking-widest uppercase"
       >
         <span>[01.1] ABOUT</span>
-        <span className="text-[#6C3082]">───►</span>
+        <span className="text-[#35DDF5]">───►</span>
         <span>[01.2] VISION &amp; MISSION</span>
-        <span className="text-[#6C3082]">───►</span>
+        <span className="text-[#35DDF5]">───►</span>
         <span>[02.0] EVENTS</span>
       </div>
     </div>

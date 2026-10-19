@@ -57,24 +57,24 @@ export const TransitionCTAFooter: React.FC = () => {
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-[20svh] sm:h-[26svh] bg-[#0D0D0D] overflow-hidden flex flex-col items-center justify-between pointer-events-none select-none z-1"
+      className="relative w-full h-[20svh] sm:h-[26svh] bg-[#080A0F] overflow-hidden flex flex-col items-center justify-between pointer-events-none select-none z-1"
     >
-      {/* Downward traveling red technical guide line */}
+      {/* Downward traveling ice-blue technical guide line */}
       <div
         ref={redStemRef}
-        className="w-[2px] h-full bg-gradient-to-b from-[#6C3082] to-[#823A9D] shadow-[0_0_10px_rgba(108,48,130,0.6)]"
+        className="w-[2px] h-full bg-gradient-to-b from-[#35DDF5] to-[#7DEBFF] shadow-[0_0_10px_rgba(53,221,245,0.6)]"
       />
 
       {/* Central Terminal Anchor Node */}
       <div
         ref={nodeRef}
-        className="w-3 h-3 rounded-full bg-[#6C3082] -mb-1.5 z-10 scale-0"
+        className="w-3 h-3 rounded-full bg-[#35DDF5] shadow-[0_0_8px_rgba(53,221,245,0.8)] -mb-1.5 z-10 scale-0"
       />
 
       {/* Spreading Footer Divider */}
       <div
         ref={dividerLineRef}
-        className="w-full h-[1px] bg-gradient-to-r from-transparent via-[#6C3082] to-transparent scale-x-0"
+        className="w-full h-[1px] bg-gradient-to-r from-transparent via-[#35DDF5] to-transparent scale-x-0"
       />
     </div>
   );
